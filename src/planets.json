@@ -1,0 +1,1232 @@
+[
+  {
+    "name": "Abafar",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2012",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "A desert planet located in the Outer Rim with a completely white surface. Known as The Void, the planet is barely populated but is home to massive amounts of rhydonium, a scarce and volatile fuel."
+  },
+  {
+    "name": "Aeos Prime",
+    "appearances": [
+      {
+        "title": "Star Wars Resistance",
+        "year": "2020",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "An oceanic planet located in the Outer Rim territories. Home to native Aeosians and the site of a former Rebel Alliance base."
+  },
+  {
+    "name": "Agamar",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2016",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "A barren, rocky planet in the Outer Rim Territories. Site of a Clone Wars battle between the Republic and Separatists where years after the end of the war, Captain Rex and a band of rebels visited the planet searching for weapons, and encountered a still-active reserve of Separatist droids. The Super Tactical Droid commander demanded they have one last battle to decide the war."
+  },
+  {
+    "name": "Ahch-To",
+    "appearances": [
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      },
+      {
+        "title": "Episode VIII - The Last Jedi",
+        "year": "2017",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      },
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Oceanic planet on which Luke Skywalker has been hiding for several years, and the location of the first Jedi Temple and the Tree Library of sacred Jedi texts. Porgs are among the native species."
+  },
+  {
+    "name": "Ajan Kloss",
+    "appearances": [
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "A jungle moon which serves as a new base of operations for the Resistance. Leia Organa dies here after using the last of her energy to reach out to her son through the Force."
+  },
+  {
+    "name": "Alderaan",
+    "appearances": [
+      {
+        "title": "Episode IV - A New Hope",
+        "year": "1977",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Forests, mountains; home planet of Princess Leia and the House of Organa. Destroyed by the first Death Star as punishment for involvement in the Rebel Alliance and also as a demonstration of power."
+  },
+  {
+    "name": "Arvala-7",
+    "appearances": [
+      {
+        "title": "The Mandalorian",
+        "year": "2019",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "An \"out-of-the-way\" desert planet where the Mandalorian was sent by the Client to look for the Child and where Kuiil worked as a vapor farmer."
+  },
+  {
+    "name": "Atollon",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2016",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Desert covered planet, site of Phoenix Squadron Rebel base. Home of the spider-like hexapods known as the Krykna, and the powerful force-wielder Bendu."
+  },
+  {
+    "name": "Bespin",
+    "appearances": [
+      {
+        "title": "Episode V - The Empire Strikes Back",
+        "year": "1980",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "A gas planet with a thin layer of habitable atmosphere where Cloud City was located. The planet's gas layers were a source of rare tibanna gas which was harvested and refined at mining complexes like Cloud City."
+  },
+  {
+    "name": "Cantonica",
+    "appearances": [
+      {
+        "title": "Episode VIII - The Last Jedi",
+        "year": "2017",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "An arid planet where the resort city of Canto Bight, home of the Canto Casino and Racetrack, is located."
+  },
+  {
+    "name": "Castilon",
+    "appearances": [
+      {
+        "title": "Star Wars Resistance",
+        "year": "2018",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "An ocean planet located in the Outer Rim near Wild Space. Home to the aircraft refueling station Colossus, as well as a destination for racers."
+  },
+  {
+    "name": "Cato Neimoidia",
+    "appearances": [
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "The site of battles throughout the Clone Wars, notable for its \"Bridge Cities\". Also the site of Plo Koon's death during the Great Jedi Purge."
+  },
+  {
+    "name": "Celsor 3",
+    "appearances": [
+      {
+        "title": "Star Wars Resistance",
+        "year": "2019",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "An uninhabited ice moon and home to the Jakoosk."
+  },
+  {
+    "name": "Christophsis",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "During the Clone Wars, the Battle of Christophsis occurs here, serving as an introduction to Ahsoka Tano."
+  },
+  {
+    "name": "Concord Dawn",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2016",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Home planet of Jango Fett. Habitable planet that is surrounded by a large amount of debris from many vicious wars. Formerly controlled by the Mandalorians."
+  },
+  {
+    "name": "Corellia",
+    "appearances": [
+      {
+        "title": "Solo: A Star Wars Story",
+        "year": "2018",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Industrial planet located in the Core of the galaxy, with a strong culture of training pilots. Homeworld of Han Solo."
+  },
+  {
+    "name": "Coruscant",
+    "appearances": [
+      {
+        "title": "Episode I - The Phantom Menace",
+        "year": "1999",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode II - Attack of the Clones",
+        "year": "2002",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2003",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Cosmopolitan urban world consisting of one planet-wide city. Governmental center of the Galactic Republic and later the Galactic Empire."
+  },
+  {
+    "name": "Crait",
+    "appearances": [
+      {
+        "title": "Episode VIII - The Last Jedi",
+        "year": "2017",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Small mineral planet located in a remote section of the galaxy, its surface is covered with a layer of white salt over its red-colored soil. In Leia, Princess of Alderaan it is the location of an early Rebel Alliance outpost. Leia and her remaining Resistance forces flee there in The Last Jedi, where they face off with the First Order."
+  },
+  {
+    "name": "D'Qar",
+    "appearances": [
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      },
+      {
+        "title": "Episode VIII - The Last Jedi",
+        "year": "2017",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Site of a Resistance operations base led by General Leia Organa."
+  },
+  {
+    "name": "Dantooine",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2004",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Rural planet and the former site of a Rebel base."
+  },
+  {
+    "name": "Dagobah",
+    "appearances": [
+      {
+        "title": "Episode V - The Empire Strikes Back",
+        "year": "1980",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Episode VI - Return of the Jedi",
+        "year": "1983",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Swamp planet and Yoda's residence after the fall of the Jedi."
+  },
+  {
+    "name": "Dathomir",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Homeworld of the Force-sensitive Nightsisters, including Asajj Ventress. Also the homeworld of the Zabrak warriors, including Darth Maul and his brother Savage Opress."
+  },
+  {
+    "name": "Devaron",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Forest planet with an ancient Jedi Temple."
+  },
+  {
+    "name": "Eadu",
+    "appearances": [
+      {
+        "title": "Rogue One: A Star Wars Story",
+        "year": "2016",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Rocky, mountainous planet beset by constant severe storms. Home to an Imperial weapons research facility. Its appearance was partly inspired by the fictitious planet LV-426 from the Alien franchise."
+  },
+  {
+    "name": "Endor",
+    "appearances": [
+      {
+        "title": "Episode VI - Return of the Jedi",
+        "year": "1983",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Forest moon that the second Death Star orbits. Inhabited by Ewoks. The location of the battle between the Rebel Alliance and the Empire leading to the destruction of the second Death Star."
+  },
+  {
+    "name": "Exegol",
+    "appearances": [
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Planet located in the galaxy's \"Unknown Regions\", considered to be the homeworld of the Sith. The planet served the lair of Emperor Palpatine after his defeat and apparent death at Endor. It was also the site of a massive battle between Final Order forces and the Resistance and its allies, which marked the end of the conflict between Resistance and the First Order, as well as the Sith, with the death of Palpatine."
+  },
+  {
+    "name": "Felucia",
+    "appearances": [
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Jungle planet teeming with plants but little animal life. Aayla Secura is assassinated here during the Jedi Purge."
+  },
+  {
+    "name": "Florrum",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Sulfurous desert planet. Hondo Ohnaka is the leader of a pirate gang based on the planet."
+  },
+  {
+    "name": "Geonosis",
+    "appearances": [
+      {
+        "title": "Episode II - Attack of the Clones",
+        "year": "2002",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars Rebels",
+        "year": "2016",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Rocky desert planet where battle droids are manufactured, and the site of the opening battle of the Clone Wars. All life on the planet is presumed destroyed by the Empire in Star Wars Rebels, with two exceptions: Klik-Klak and his offspring. Primary construction site of the first Death Star. Homewold of the Geonosians."
+  },
+  {
+    "name": "Hosnian Prime",
+    "appearances": [
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      },
+      {
+        "title": "Star Wars Resistance",
+        "year": "2018",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Urban planet and capital of the New Republic. Destroyed by the First Order's Starkiller Base."
+  },
+  {
+    "name": "Hoth",
+    "appearances": [
+      {
+        "title": "Episode V - The Empire Strikes Back",
+        "year": "1980",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Desolate ice planet and base for the Rebel Alliance."
+  },
+  {
+    "name": "Hypori",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2004",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": ""
+  },
+  {
+    "name": "Iego",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "A planet located on the fringes of the Outer Rim, its desert surface is covered with basaltic spires and canyons which are home to reeska, large carnivorous plants whose roots are used to create the only known cure for the deadly Blue Shadow virus, and are inhabited by flying four-winged xandu. Iego is surrounded by a 1000 moons and at least one of these, named Millius Prime, is home to a race called the Angels."
+  },
+  {
+    "name": "Ilum",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2004",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2012",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Remote ice planet where the crystals that focus lightsabers are mined. It is later revealed to have been converted by the First Order into the superweapon Starkiller Base, which is ultimately destroyed by the Resistance. Prior to this reveal, there were speculations that the two planets might be one and the same, as official reference guides state the diameters of both to be 660 kilometres (410 mi). Additionally, the video game Jedi: Fallen Order depicts the planet with a huge trench resembling the superweapon's appearance as a result of the Galactic Empire's excavations."
+  },
+  {
+    "name": "Jakku",
+    "appearances": [
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      },
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Desert planet. Site of a \"graveyard\" of ships damaged during the Battle of Jakku, the final battle between the New Republic and the Galactic Empire. Also the homeworld of Rey."
+  },
+  {
+    "name": "Jedha",
+    "appearances": [
+      {
+        "title": "Rogue One: A Star Wars Story",
+        "year": "2016",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Cold desert moon, and a sacred place for believers in the Force. A source of kyber crystals, which are used to power lightsabers and the Death Star's primary weapon. It is also the first location on which the Death Star's destructive capability is tested.\\nRogue One's director, Gareth Edwards, has described the location as \"a Mecca or Jerusalem within the Star Wars world\". It is also a homonym for Jeddah, the principal gateway to Mecca."
+  },
+  {
+    "name": "Kamino",
+    "appearances": [
+      {
+        "title": "Episode II - Attack of the Clones",
+        "year": "2002",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2010",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Ocean planet where cloning technology is developed and the Clone Army is created and trained. Obi-Wan Kenobi discovers that the planet is missing from the Jedi archives; it is later revealed to have been deleted as a part of Darth Sidious' plot to start the Clone Wars."
+  },
+  {
+    "name": "Kashyyyk",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2005",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Forest planet and home of the Wookiees. Also the site of one of the final battles of the Clone Wars."
+  },
+  {
+    "name": "Kef Bir",
+    "appearances": [
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "A moon of Endor and the location of some of the wreckage of the second Death Star after it was destroyed in Return of the Jedi."
+  },
+  {
+    "name": "Kessel",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2014",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Solo: A Star Wars Story",
+        "year": "2018",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "A mining planet that has been fought over by crime lords for its valuable Spice. A fissure vent beneath the spice mines served as a source of astatic coaxium, an element that could be refined into hyperfuel for starships."
+  },
+  {
+    "name": "Kijimi",
+    "appearances": [
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "A frigid mountainous planet. It was the homeworld of Zorii Bliss, leader of the smuggling gang known as the Spice Runners of Kijimi. It is later destroyed by the Final Order as a show of force for the rest of the galaxy."
+  },
+  {
+    "name": "Lira San",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2016",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "The original homeworld of the Lasat, according to Zeb Orrelios, member of the Spectres."
+  },
+  {
+    "name": "Lothal",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2014",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Remote farm planet and birthplace of Ezra Bridger."
+  },
+  {
+    "name": "Lotho Minor",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "A planetary junkyard and hiding place of Darth Maul after his presumed death."
+  },
+  {
+    "name": "Malachor",
+    "appearances": [
+      {
+        "title": "Star Wars Rebels",
+        "year": "2016",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Desolate Sith temple world and site of two major battles thousands of year apart: one involving the Scourge of Malachor, the other between Darth Maul, several Rebels, Darth Vader, and several Inquisitors."
+  },
+  {
+    "name": "Malastare",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2010",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Forested planet where podracing is popular. Birthplace of Sebulba and homeworld of the Dug."
+  },
+  {
+    "name": "Mandalore",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2010",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Formerly habitable planet and the subject of legends due to its history of Mandalorian warriors."
+  },
+  {
+    "name": "Maridun",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Grassy planet remaining undiscovered until the Clone Wars."
+  },
+  {
+    "name": "Mimban",
+    "appearances": [
+      {
+        "title": "Solo: A Star Wars Story",
+        "year": "2018",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Swamp planet with perpetual fog and overcast sky."
+  },
+  {
+    "name": "Mon Cala",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2003",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Ocean planet, home to the Mon Calamari and Quarren species. Also known as Mon Calamari, or Dac."
+  },
+  {
+    "name": "Moraband",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2014",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Home planet of ancient Sith lords. Known as Korriban in Legends."
+  },
+  {
+    "name": "Mortis",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Planet with a wall surrounding it, home to the three omnipotent Force wielders known only in the Jedi Archives as the Mortis Gods."
+  },
+  {
+    "name": "Mustafar",
+    "appearances": [
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Rogue One: A Star Wars Story",
+        "year": "2016",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Originally lush and forested planet, which served as the site of a battle between an army of unknown attackers and the native Mustafarians, including their allies, the Force-sensitve Corvax and her husband. After her husband died in battle, Corvax stole the Mustafarians' Bright Star, believing that it could revive him, but it only turned Mustafar into a volcanic and almost lifeless planet. During the final days of the Clone Wars, the planet served as a stronghold of the Confederacy of Independent Systems and a hiding spot for its leaders, until they were all murdered by Anakin Skywalker, under orders from the newly-established Emperor Palpatine. It was also the location of the duel between Anakin and his former Jedi Master Obi-Wan Kenobi, which led to the former's transformation into Darth Vader. The planet later became the site of Vader's sanctuary, which at some point was unwillingly visited by a smuggler and her droid ZOE3, who restored the Bright Star, allowing the planet to slowly restore itself to its original form. During the final days of the conflict between the Resistance and the First Order, it also served as the battle site between a cult of Alazmec colonists from Winsit, sworn to protect the ruins of Vader's castle, and First Order forces led by Kylo Ren, who sought a Sith wayfinder hidden amongst the ruins."
+  },
+  {
+    "name": "Muunilinst",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2003",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Capital of the Intergalacting Banking Clan and homeworld of the Muun race, which includes Separatist leader San Hill and Sith Lord Darth Plagueis."
+  },
+  {
+    "name": "Mygeeto",
+    "appearances": [
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Cold, urban planet that served as a battle site in the final days of the Clone Wars, as well as the death place of Jedi Master Ki Adi Mundi."
+  },
+  {
+    "name": "Naboo",
+    "appearances": [
+      {
+        "title": "Episode I - The Phantom Menace",
+        "year": "1999",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode II - Attack of the Clones",
+        "year": "2002",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2005",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Home planet of the Gungans, including Jar-Jar Binks, and various humans, who compose a civilization called the Naboo, which includes Padmé Amidala and Emperor Palpatine."
+  },
+  {
+    "name": "Nal Hutta",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2010",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Home planet of Jabba and other Hutts. Close to the urban moon of Nar Shaddaa."
+  },
+  {
+    "name": "Nelvaan",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2005",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": ""
+  },
+  {
+    "name": "Nevarro",
+    "appearances": [
+      {
+        "title": "The Mandalorian",
+        "year": "2019",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Desert planet. Local outpost of Bounty Hunters' Guild"
+  },
+  {
+    "name": "Onderon",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2012",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Jungle planet where Anakin Skywalker leads a revolt against its monarchy; birthplace of Saw Gerrera."
+  },
+  {
+    "name": "Pasaana",
+    "appearances": [
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "A desert planet on the edge of the galaxy, home to the Aki-Aki species."
+  },
+  {
+    "name": "Polis Massa",
+    "appearances": [
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Outer Rim planetoid within an asteroid field of the same name; birthplace of Luke Skywalker and Leia Organa."
+  },
+  {
+    "name": "Rattatak",
+    "appearances": [
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2003",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Outer Rim planet and former home to Asajj Ventress. Homeworld of the white-skinned Rattataki. Ruled by various warlords."
+  },
+  {
+    "name": "Rishi",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Tropical planet used by the Republic to monitor the nearby cloning facility on Kamino."
+  },
+  {
+    "name": "Rodia",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Home planet of the Rodians, including Greedo. A remote swampy, jungle planet, it was represented by Onaconda Farr in the Galactic Senate during the Clone Wars."
+  },
+  {
+    "name": "Ruusan",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Barren planet housing the Valley of the Jedi. Site of a great battle between the Sith and the Jedi."
+  },
+  {
+    "name": "Ryloth",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2009",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Dry, hot home planet of the Twi'leks, including Hera Syndulla and Jedi Master Aayla Secura."
+  },
+  {
+    "name": "Saleucami",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2010",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Primary terrain deserts and swamps. Home of the Clone Trooper deserter Cut Lawquane."
+  },
+  {
+    "name": "Savareen",
+    "appearances": [
+      {
+        "title": "Solo: A Star Wars Story",
+        "year": "2018",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Desert and ocean planet. where destitute villages farm wind and refine coaxium. In Solo: A Star Wars Story, the Millennium Falcon arrives there after Han and his crew steal coaxium from Kessel, and Dryden Vos and Tobias Beckett die there."
+  },
+  {
+    "name": "Scarif",
+    "appearances": [
+      {
+        "title": "Rogue One: A Star Wars Story",
+        "year": "2016",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Oceanic \"paradise world\" with tropical islands. Location of a high security Imperial database; a repository of valuable resources, including a cache of refined coaxium hyperfuel; and the primary shipyard and construction facility for the Imperial military forces, which included final construction of the first Death Star after principal building at Geonosis. The location of the Death Star plans that get stolen by the Rebel Alliance, and also the site of a massive battle between it and the Galactic Empire, marking the Rebels' first major victory against the Empire. Destroyed by the Death Star."
+  },
+  {
+    "name": "Serenno",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "A planet in the Outer Rim Territories. Homeworld of Count Dooku."
+  },
+  {
+    "name": "Shili",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2012",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Home planet of the Togruta, including Jedi Council member Shaak Ti and Ahsoka Tano."
+  },
+  {
+    "name": "Starkiller Base",
+    "appearances": [
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Snowy planet of forested mountains converted by the First Order into a superweapon. It is later revealed to have once been the planet Illum, where lightsaber crystals originated from, as the video game Jedi: Fallen Order revealed that the Galactic Empire had been doing excavation on Ilum, resulting in a large trench along the equator of the planet, giving it an appearance similar to the superweapon. Ilum and Starkiller Base also share the same dimensions, being 660 kilometres (410 mi). The planet is ultimately destroyed by the Resistance, becoming a small star after the explosion. Being the death place of Han Solo, the star was named \"Solo\" in his homage."
+  },
+  {
+    "name": "Takodana",
+    "appearances": [
+      {
+        "title": "Episode VII - The Force Awakens",
+        "year": "2015",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Forest planet and site of Maz Kanata's castle. Neutral territory between First Order and Resistance."
+  },
+  {
+    "name": "Tatooine",
+    "appearances": [
+      {
+        "title": "Episode IV - A New Hope",
+        "year": "1977",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Episode VI - Return of the Jedi",
+        "year": "1983",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Episode I - The Phantom Menace",
+        "year": "1999",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode II - Attack of the Clones",
+        "year": "2002",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2008",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      },
+      {
+        "title": "Star Wars Rebels",
+        "year": "2017",
+        "media": "TV Series",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "The Mandalorian",
+        "year": "2019",
+        "media": "TV Series",
+        "era": "Sequel Trilogy"
+      },
+      {
+        "title": "Episode IX - The Rise of Skywalker",
+        "year": "2019",
+        "media": "Film",
+        "era": "Sequel Trilogy"
+      }
+    ],
+    "description": "Desert planet and childhood home of Anakin Skywalker and Luke Skywalker. Location of Jabba the Hutt's palace."
+  },
+  {
+    "name": "Toydaria",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2010",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Home planet of Watto and other Toydarians. Close to Nal Hutta."
+  },
+  {
+    "name": "Trandosha",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Homeworld of the Trandoshan hunters. Close to Kashyyyk."
+  },
+  {
+    "name": "Umbara",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Planet with a thick, foggy atmosphere. Home to the Umbarans."
+  },
+  {
+    "name": "Utapau",
+    "appearances": [
+      {
+        "title": "Episode III - Revenge of the Sith",
+        "year": "2005",
+        "media": "Film",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Remote planet, covered in deep sinkholes and home to the Utai and Pau'ans. Site of General Grievous' defeat and a separatist base during the last days of the Clone Wars."
+  },
+  {
+    "name": "Vandor-1",
+    "appearances": [
+      {
+        "title": "Solo: A Star Wars Story",
+        "year": "2018",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Icy, mountainous planet that is the site of a Crimson Dawn train heist led by Tobias Beckett in Solo: A Star Wars Story."
+  },
+  {
+    "name": "Wobani",
+    "appearances": [
+      {
+        "title": "Rogue One: A Star Wars Story",
+        "year": "2016",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "A desolate wasteland and the site of an Imperial penal labor colony."
+  },
+  {
+    "name": "Yavin",
+    "appearances": [
+      {
+        "title": "Episode IV - A New Hope",
+        "year": "1977",
+        "media": "Film",
+        "era": "Original Trilogy"
+      }
+    ],
+    "description": "Gas planet with several moons, including Yavin 4."
+  },
+  {
+    "name": "Yavin 4",
+    "appearances": [
+      {
+        "title": "Episode IV - A New Hope",
+        "year": "1977",
+        "media": "Film",
+        "era": "Original Trilogy"
+      },
+      {
+        "title": "Star Wars: Clone Wars",
+        "year": "2003",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "Forest moon and base for the Rebel Alliance."
+  },
+  {
+    "name": "Zygerria",
+    "appearances": [
+      {
+        "title": "Star Wars: The Clone Wars",
+        "year": "2011",
+        "media": "TV Series",
+        "era": "Prequel Trilogy"
+      }
+    ],
+    "description": "A planet in the Outer Rim Territories home of the Zygerrian species. Zygerria was also known for a slave empire."
+  }
+]

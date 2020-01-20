@@ -1,0 +1,135 @@
+// @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+
+// body {
+//   font-family: 'Dosis', sans-serif;
+// }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+body {
+  background-color: #e8e6e9;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin-top: 0;
+}
+
+.header {
+  background-color: white;
+  padding: 20px;
+}
+.filter-form {
+  display: flex;
+}
+.filter-form-fieldset {
+  flex-grow: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+// .filter-form-heading {
+// }
+.filter-form-input-wrapper {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.filter-form-input {
+  display: none;
+}
+
+.filter-form-label {
+  background-color: white;
+  border-radius: 5px;
+  color: #666;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 13px 15px;
+
+  &:hover {
+    background-color: #ddd;
+    color: #666;
+  }
+
+  .filter-form-input:checked + & {
+    background-color: #ddd;
+    color: #666;
+    font-weight: 700;
+  }
+}
+
+.planet-cards {
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.planet-card {
+  background-color: white;
+  border-radius: 5px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin: 0 10px 20px;
+  padding: 20px;
+  width: 25%;
+}
+
+// .planet-card-heading {
+// }
+// .planet-card-appearances {
+// }
+
+.planet-card-appearances-heading {
+  margin-bottom: 10px;
+}
+
+.planet-card-appearances-list {
+  padding-left: 30px;
+}
+
+.planet-card-appearances-list-item {
+  list-style: none;
+  margin-bottom: 10px;
+
+  &--prequel,
+  &--original,
+  &--sequel {
+    position: relative;
+
+    &:before {
+      content: '';
+      border-radius: 5px;
+      width: 10px;
+      height: 10px;
+      display: block;
+      position: absolute;
+      left: -20px;
+      top: 4px;
+    }
+  }
+
+  &--prequel:before {
+    background-color: #ffbf05;
+  }
+  &--original:before {
+    background-color: #fd4f06;
+  }
+  &--sequel:before {
+    background-color: #af1201;
+  }
+}
+
+// #0ad6dd
+// #00c7dc
+// #03aad4
