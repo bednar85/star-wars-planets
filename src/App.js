@@ -85,7 +85,12 @@ class App extends Component {
     if (activeFilterKeys.length > 1) {
       return planets.filter(planet => {
         const matchingAppearances = planet.appearances
-          .filter(appearance => appearance.media === filters.media)
+          .filter(appearance =>
+            filters.media === 'Film (Episodes Only)'
+              ? appearance.media === 'Film' &&
+                appearance.title.startsWith('Episode')
+              : appearance.media === filters.media
+          )
           .map(appearance => appearance.era);
 
         return findAny(filters.era, matchingAppearances);
@@ -97,6 +102,15 @@ class App extends Component {
       return planets.filter(planet => {
         const activeFilterKey = activeFilterKeys[0];
         const planetValues = planet.appearances.map(p => p[activeFilterKey]);
+
+        if (
+          activeFilterKey === 'media' &&
+          filters.media === 'Film (Episodes Only)'
+        ) {
+          return planet.appearances
+            .filter(appearance => appearance.media === 'Film')
+            .some(appearance => appearance.title.startsWith('Episode'));
+        }
 
         return activeFilterKey === 'era'
           ? findAny(filters.era, planetValues)
@@ -188,6 +202,19 @@ class App extends Component {
               />
               <label className="filter-form-label" htmlFor="media-film">
                 Film
+              </label>
+              <input
+                type="radio"
+                className="filter-form-input"
+                id="media-film-episodes-only"
+                name="media"
+                value="media:Film (Episodes Only)"
+              />
+              <label
+                className="filter-form-label"
+                htmlFor="media-film-episodes-only"
+              >
+                Film (Episodes Only)
               </label>
             </div>
             <div className="filter-form-input-wrapper">
