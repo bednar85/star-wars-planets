@@ -121,25 +121,6 @@ class App extends Component {
     return planets;
   }
 
-  // get filterOptions() {
-  //   const reducedAppearances = planets
-  //     .map(planet => planet.appearances)
-  //     .flat()
-  //     .reduce((acc, curr) => {
-  //       const itemAlreadyExists = acc.find(
-  //         item => item.title === curr.title && item.media === curr.media
-  //       );
-
-  //       if (!itemAlreadyExists) {
-  //         acc.push(curr);
-  //       }
-
-  //       return acc;
-  //     }, []);
-
-  //   return sortByKey(reducedAppearances, 'ascending', 'numerical', 'year');
-  // }
-
   renderAppearances(planet) {
     return (
       <ul className="planet-card-appearances-list">
@@ -203,6 +184,8 @@ class App extends Component {
               <label className="filter-form-label" htmlFor="media-film">
                 Film
               </label>
+            </div>
+            <div className="filter-form-input-wrapper">
               <input
                 type="radio"
                 className="filter-form-input"
@@ -281,13 +264,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log('');
-    // console.log('planets:', planets);
-    // console.log('planets.length:', planets.length);
-    // console.log('this.state:', this.state);
-
-    // console.log('this.filterOptions:', this.filterOptions);
-
     return (
       <div className="App">
         {this.filterForm}
