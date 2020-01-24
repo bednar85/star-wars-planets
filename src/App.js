@@ -14,11 +14,13 @@ class App extends Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.renderPlanets = this.renderPlanets.bind(this);
     this.renderAppearances = this.renderAppearances.bind(this);
+    this.ryanApprovedAppearances = this.ryanApprovedAppearances.bind(this);
 
     this.state = {
       filters: {
         media: 'All',
-        era: []
+        era: [],
+        myCanon: false
       }
     };
   }
@@ -26,11 +28,15 @@ class App extends Component {
   handleFilterChange(event) {
     const { filters } = this.state;
 
-    const [key, value] = event.target.value.split(':');
+    if (event.target.value === 'my-canon') {
+      this.setState({
+        filters: { ...filters, myCanon: !filters.myCanon }
+      });
 
-    // console.log('');
-    // console.log('key:', key);
-    // console.log('value:', value);
+      return;
+    }
+
+    const [key, value] = event.target.value.split(':');
 
     let newFilterValue;
 
@@ -55,12 +61,22 @@ class App extends Component {
     });
   }
 
+  ryanApprovedAppearances(planet) {
+    return planet.appearances.filter(appearance => {
+      const { title } = appearance;
+
+      return (
+        title !== 'Star Wars: The Clone Wars' &&
+        title !== 'Star Wars Resistance' &&
+        !title.startsWith('Episode VII') &&
+        !title.startsWith('Episode VIII') &&
+        !title.startsWith('Episode IX')
+      );
+    });
+  }
+
   get filteredPlanets() {
     const { filters } = this.state;
-
-    // console.log('');
-    // console.log('get filteredPlanets');
-    // console.log('Object.entries(filters):', Object.entries(filters));
 
     const activeFilterKeys = Object.entries(filters).reduce((acc, curr) => {
       const [key, value] = curr;
@@ -81,44 +97,68 @@ class App extends Component {
       return acc;
     }, []);
 
+    // first determine if myCanon was selected, if so, reduce and modify the planets array
+    const filteredPlanets = filters.myCanon
+      ? planets.reduce((reducedPlanets, planet) => {
+          const appearances = this.ryanApprovedAppearances(planet) || [];
+
+          if (appearances.length) {
+            reducedPlanets.push({
+              ...planet,
+              appearances: this.ryanApprovedAppearances(planet)
+            });
+          }
+
+          return reducedPlanets;
+        }, [])
+      : planets;
+
     // if both filters are applied check both conditions
-    if (activeFilterKeys.length > 1) {
-      return planets.filter(planet => {
-        const matchingAppearances = planet.appearances
-          .filter(appearance =>
-            filters.media === 'Film (Episodes Only)'
-              ? appearance.media === 'Film' &&
-                appearance.title.startsWith('Episode')
-              : appearance.media === filters.media
-          )
-          .map(appearance => appearance.era);
+    if (activeFilterKeys.length) {
+      const { media: selectedMedia, era: selectedEras } = filters;
 
-        return findAny(filters.era, matchingAppearances);
-      });
-    }
+      if (activeFilterKeys.length > 1) {
+        return filteredPlanets.filter(planet => {
+          if (!planet.appearances.length) {
+            return false;
+          }
 
-    // if only one filter is applied
-    if (activeFilterKeys.length === 1) {
-      return planets.filter(planet => {
-        const activeFilterKey = activeFilterKeys[0];
-        const planetValues = planet.appearances.map(p => p[activeFilterKey]);
+          const matchingAppearances = planet.appearances
+            .filter(appearance =>
+              selectedMedia === 'Film (Episodes Only)'
+                ? appearance.media === 'Film' &&
+                  appearance.title.startsWith('Episode')
+                : appearance.media === selectedMedia
+            )
+            .map(appearance => appearance.era);
 
-        if (
-          activeFilterKey === 'media' &&
-          filters.media === 'Film (Episodes Only)'
-        ) {
-          return planet.appearances
-            .filter(appearance => appearance.media === 'Film')
-            .some(appearance => appearance.title.startsWith('Episode'));
+          return findAny(selectedEras, matchingAppearances);
+        });
+      }
+
+      // if only one filter is applied
+      const activeFilterKey = activeFilterKeys[0];
+
+      return filteredPlanets.filter(planet => {
+        // a map of either all of the eras or all of the media values associated with all of the appearances
+        const appearanceValues = planet.appearances.map(
+          appearance => appearance[activeFilterKey]
+        );
+
+        if (activeFilterKey === 'era') {
+          return findAny(selectedEras, appearanceValues);
         }
 
-        return activeFilterKey === 'era'
-          ? findAny(filters.era, planetValues)
-          : planetValues.includes(filters.media);
+        // check if any of the film titles start with "Episode"
+        return selectedMedia === 'Film (Episodes Only)'
+          ? planet.appearances
+              .filter(appearance => appearance.media === 'Film')
+              .some(appearance => appearance.title.startsWith('Episode'))
+          : appearanceValues.includes(selectedMedia);
       });
     }
 
-    return planets;
+    return filteredPlanets;
   }
 
   renderAppearances(planet) {
@@ -255,6 +295,20 @@ class App extends Component {
               />
               <label className="filter-form-label" htmlFor="era-sequel-trilogy">
                 Sequel Trilogy
+              </label>
+            </div>
+          </fieldset>
+          <fieldset className="filter-form-fieldset">
+            <div className="filter-form-input-wrapper">
+              <input
+                type="checkbox"
+                className="filter-form-input"
+                id="my-canon"
+                name="my-canon"
+                value="my-canon"
+              />
+              <label className="filter-form-label" htmlFor="my-canon">
+                My Canon
               </label>
             </div>
           </fieldset>
