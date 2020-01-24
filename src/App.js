@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.scss';
 import { findAny } from './utils';
 
@@ -9,8 +9,9 @@ class App extends Component {
     super(props);
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
-    this.renderPlanets = this.renderPlanets.bind(this);
     this.renderAppearances = this.renderAppearances.bind(this);
+    this.renderPlanets = this.renderPlanets.bind(this);
+    this.appearancesByEra = this.appearancesByEra.bind(this);
     this.ryanApprovedAppearances = this.ryanApprovedAppearances.bind(this);
 
     this.state = {
@@ -158,22 +159,73 @@ class App extends Component {
     return filteredPlanets;
   }
 
-  renderAppearances(planet) {
-    return (
-      <ul className="planet-card-appearances-list">
-        {planet.appearances.map((appearance, index) => {
-          const eraModifier = appearance.era.split(' ')[0].toLowerCase();
+  appearancesByEra(appearances, media) {
+    const appearancesByMedia = appearances.filter(
+      appearance => appearance.media === media
+    );
 
-          return (
-            <li
-              key={`appearance-${index}`}
-              className={`planet-card-appearances-list-item planet-card-appearances-list-item--${eraModifier}`}
-            >
-              {appearance.title} ({appearance.year})
-            </li>
-          );
-        })}
-      </ul>
+    if (!appearancesByMedia.length) {
+      return [];
+    }
+
+    const prequelAppearances = appearancesByMedia.filter(
+      appearance => appearance.era === 'Prequel Trilogy'
+    );
+
+    const originalAppearances = appearancesByMedia.filter(
+      appearance => appearance.era === 'Original Trilogy'
+    );
+
+    const sequelAppearances = appearancesByMedia.filter(
+      appearance => appearance.era === 'Sequel Trilogy'
+    );
+
+    return [
+      ...prequelAppearances,
+      ...originalAppearances,
+      ...sequelAppearances
+    ];
+  }
+
+  renderAppearances(planet) {
+    const { appearances } = planet;
+
+    const filmAppearances = this.appearancesByEra(appearances, 'Film');
+    const tvAppearances = this.appearancesByEra(appearances, 'TV Series');
+
+    const renderEntries = appearances =>
+      appearances.map((appearance, index) => {
+        const eraModifier = appearance.era.split(' ')[0].toLowerCase();
+
+        return (
+          <li
+            key={`appearance-${index}`}
+            className={`planet-card-appearances-list-item planet-card-appearances-list-item--${eraModifier}`}
+          >
+            {appearance.title} ({appearance.year})
+          </li>
+        );
+      });
+
+    return (
+      <div className="planet-card-appearances">
+        {filmAppearances.length ? (
+          <Fragment>
+            <h4 className="planet-card-appearances-heading">Film</h4>
+            <ul className="planet-card-appearances-list">
+              {renderEntries(filmAppearances)}
+            </ul>
+          </Fragment>
+        ) : null}
+        {tvAppearances.length ? (
+          <Fragment>
+            <h4 className="planet-card-appearances-heading">TV</h4>
+            <ul className="planet-card-appearances-list">
+              {renderEntries(tvAppearances)}
+            </ul>
+          </Fragment>
+        ) : null}
+      </div>
     );
   }
 
@@ -182,10 +234,7 @@ class App extends Component {
       return (
         <div key={`planet-${index}`} className="planet-card">
           <h3 className="planet-card-heading">{planet.name}</h3>
-          <div className="planet-card-appearances">
-            <h4 className="planet-card-appearances-heading">Appearances:</h4>
-            {this.renderAppearances(planet)}
-          </div>
+          {this.renderAppearances(planet)}
         </div>
       );
     });
