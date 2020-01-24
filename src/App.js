@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.scss';
-// import uniqBy from 'lodash/uniqBy';
-// import { sortByKey } from './utils';
 import { findAny } from './utils';
 
 import planets from './planets.json';
