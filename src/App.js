@@ -411,7 +411,7 @@ class App extends Component {
   get header() {
     return (
       <header className="header">
-        <img src={logo} alt="Star Wars" />
+        <img className="app-logo" src={logo} alt="Star Wars" />
         <span className="image-attribution">Illustration by Pablo Olivera</span>
       </header>
     );

@@ -30,17 +30,17 @@ ul {
   position: relative;
   text-align: center;
 
-  img {
+  .app-logo {
     width: 200px;
   }
 
   .image-attribution {
-    bottom: 13px;
+    bottom: 20px;
     color: #fe5a6d;
     font-size: 13px;
     font-style: italic;
     position: absolute;
-    right: 13px;
+    right: 20px;
   }
 }
 
