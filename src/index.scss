@@ -47,7 +47,7 @@ ul {
   color: #666;
   cursor: pointer;
   font-size: 13px;
-  padding: 13px 15px;
+  padding: 10px 15px;
 
   &:hover {
     background-color: #ddd;
@@ -62,64 +62,86 @@ ul {
 }
 
 .planet-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
   padding: 20px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-around;
 }
 
 .planet-card {
   background-color: white;
-  border-radius: 5px;
-  flex-grow: 1;
-  flex-shrink: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   margin: 0 10px 20px;
-  padding: 20px;
-  width: 25%;
-}
+  padding: 25px 20px 20px;
+  position: relative;
 
-// .planet-card-heading {
-// }
-// .planet-card-appearances {
-// }
+  // &-heading {
+  // }
+  // &-appearances {
+  // }
 
-.planet-card-appearances-heading {
-  margin-bottom: 10px;
-}
+  &-appearances-heading {
+    margin-bottom: 10px;
+  }
 
-.planet-card-appearances-list {
-  padding-left: 30px;
-}
+  &-appearances-list {
+    padding-left: 30px;
+  }
 
-.planet-card-appearances-list-item {
-  list-style: none;
-  margin-bottom: 10px;
+  &-appearances-list-item {
+    list-style: none;
+    margin-bottom: 10px;
 
-  &--prequel,
-  &--original,
-  &--sequel {
-    position: relative;
+    &--prequel,
+    &--original,
+    &--sequel {
+      position: relative;
 
-    &:before {
-      content: '';
-      border-radius: 5px;
-      width: 10px;
-      height: 10px;
-      display: block;
-      position: absolute;
-      left: -20px;
-      top: 4px;
+      &:before {
+        content: '';
+        border-radius: 5px;
+        width: 10px;
+        height: 10px;
+        display: block;
+        position: absolute;
+        left: -20px;
+        top: 4px;
+      }
+    }
+
+    &--prequel:before {
+      background-color: #00c8ff;
+    }
+    &--original:before {
+      background-color: #0096bf;
+    }
+    &--sequel:before {
+      // background-color: #006480;
+      background-color: #003240;
     }
   }
 
-  &--prequel:before {
-    background-color: #ffbf05;
-  }
-  &--original:before {
-    background-color: #fd4f06;
-  }
-  &--sequel:before {
-    background-color: #af1201;
+  &-era-visualizer {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    &-segment {
+      flex-grow: 1;
+      height: 8px;
+
+      &--prequel {
+        background-color: #00c8ff;
+      }
+      &--original {
+        background-color: #0096bf;
+      }
+      &--sequel {
+        // background-color: #006480;
+        background-color: #003240;
+      }
+    }
   }
 }

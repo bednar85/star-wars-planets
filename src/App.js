@@ -8,10 +8,11 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.appearancesGroupedByEra = this.appearancesGroupedByEra.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.renderAppearances = this.renderAppearances.bind(this);
+    this.renderEraVisualizer = this.renderEraVisualizer.bind(this);
     this.renderPlanets = this.renderPlanets.bind(this);
-    this.appearancesByEra = this.appearancesByEra.bind(this);
     this.ryanApprovedAppearances = this.ryanApprovedAppearances.bind(this);
 
     this.state = {
@@ -159,14 +160,10 @@ class App extends Component {
     return filteredPlanets;
   }
 
-  appearancesByEra(appearances, media) {
-    const appearancesByMedia = appearances.filter(
-      appearance => appearance.media === media
-    );
-
-    if (!appearancesByMedia.length) {
-      return [];
-    }
+  appearancesGroupedByEra(appearances, media) {
+    const appearancesByMedia = media
+      ? appearances.filter(appearance => appearance.media === media)
+      : appearances;
 
     const prequelAppearances = appearancesByMedia.filter(
       appearance => appearance.era === 'Prequel Trilogy'
@@ -190,8 +187,11 @@ class App extends Component {
   renderAppearances(planet) {
     const { appearances } = planet;
 
-    const filmAppearances = this.appearancesByEra(appearances, 'Film');
-    const tvAppearances = this.appearancesByEra(appearances, 'TV Series');
+    const filmAppearances = this.appearancesGroupedByEra(appearances, 'Film');
+    const tvAppearances = this.appearancesGroupedByEra(
+      appearances,
+      'TV Series'
+    );
 
     const renderEntries = appearances =>
       appearances.map((appearance, index) => {
@@ -229,10 +229,30 @@ class App extends Component {
     );
   }
 
+  renderEraVisualizer(planet) {
+    const { appearances } = planet;
+
+    const renderSegments = this.appearancesGroupedByEra(appearances).map(
+      (appearance, index) => {
+        const eraModifier = appearance.era.split(' ')[0].toLowerCase();
+
+        return (
+          <div
+            key={`appearance-${index}`}
+            className={`planet-card-era-visualizer-segment planet-card-era-visualizer-segment--${eraModifier}`}
+          />
+        );
+      }
+    );
+
+    return <div className="planet-card-era-visualizer">{renderSegments}</div>;
+  }
+
   renderPlanets() {
     return this.filteredPlanets.map((planet, index) => {
       return (
         <div key={`planet-${index}`} className="planet-card">
+          {this.renderEraVisualizer(planet)}
           <h3 className="planet-card-heading">{planet.name}</h3>
           {this.renderAppearances(planet)}
         </div>
@@ -345,6 +365,7 @@ class App extends Component {
             </div>
           </fieldset>
           <fieldset className="filter-form-fieldset">
+            <h2 className="filter-form-heading">Canon:</h2>
             <div className="filter-form-input-wrapper">
               <input
                 type="checkbox"
