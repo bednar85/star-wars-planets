@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './App.scss';
-import { findAny, search } from './utils';
+import { includesAny, search } from './utils';
 import logo from './assets/imgs/star-wars-logo-coral.png';
 
 import planets from './planets.json';
@@ -10,8 +10,8 @@ class App extends Component {
     super(props);
 
     this.appearancesGroupedByEra = this.appearancesGroupedByEra.bind(this);
-    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
     this.renderAppearances = this.renderAppearances.bind(this);
     this.renderEraVisualizer = this.renderEraVisualizer.bind(this);
     this.renderPlanetCards = this.renderPlanetCards.bind(this);
@@ -95,7 +95,7 @@ class App extends Component {
     console.log('searchQuery:', searchQuery);
 
     const searchedPlanets = searchQuery.length
-      ? planets.filter(planet => search(planet.name, searchQuery))
+      ? planets.filter(planet => search(searchQuery, planet.name))
       : planets;
 
     const activeFilterKeys = Object.entries(filters).reduce((acc, curr) => {
@@ -152,7 +152,7 @@ class App extends Component {
             )
             .map(appearance => appearance.era);
 
-          return findAny(selectedEras, matchingAppearances);
+          return includesAny(selectedEras, matchingAppearances);
         });
       }
 
@@ -166,7 +166,7 @@ class App extends Component {
         );
 
         if (activeFilterKey === 'era') {
-          return findAny(selectedEras, appearanceValues);
+          return includesAny(selectedEras, appearanceValues);
         }
 
         // check if any of the film titles start with "Episode"
