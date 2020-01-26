@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
+@font-face {
+  font-family: 'Outage';
+  src: url('./assets/fonts/outage-webfont.woff2') format('woff2'),
+    url('./assets/fonts/outage-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -22,7 +30,8 @@ ul {
 }
 
 .header {
-  background-image: url(./assets/img/rostyslav-zagornov-92gooayayc4.jpg);
+  background-image: url(./assets/imgs/rostyslav-zagornov-92gooayayc4.jpg);
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 400px;
@@ -41,46 +50,89 @@ ul {
     font-style: italic;
     position: absolute;
     right: 20px;
+
+    a {
+      color: #fe5a6d;
+    }
+  }
+}
+
+.search-and-filter-forms {
+  background-color: white;
+  display: flex;
+}
+
+.search-form {
+  flex-grow: 1;
+  padding: 20px;
+
+  &-input {
+    background-image: url(./assets/icons/search.svg);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 12%;
+    border-radius: 30px;
+    border: 1px solid #d8dde2;
+    display: inline-block;
+    font-size: 13px;
+    padding: 12px;
+    padding-left: 45px;
+    width: 225px;
   }
 }
 
 .filter-form {
   display: flex;
-}
+  flex-grow: 3;
+  padding: 20px;
 
-.filter-form-fieldset {
-  flex-grow: 1;
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.filter-form-input-wrapper {
-  display: inline-flex;
-  margin-right: 10px;
-}
-
-.filter-form-input {
-  display: none;
-}
-
-.filter-form-label {
-  background-color: white;
-  border-radius: 5px;
-  color: #666;
-  cursor: pointer;
-  font-size: 13px;
-  padding: 10px 15px;
-
-  &:hover {
-    background-color: #ddd;
-    color: #666;
+  &-fieldset {
+    // display: flex;
+    flex-grow: 1;
+    border: none;
+    margin: 0;
+    padding: 0;
   }
 
-  .filter-form-input:checked + & {
-    background-color: #ddd;
+  &-heading,
+  &-input-wrapper {
+    display: inline-flex;
+    margin-right: 5px;
+  }
+
+  &-heading {
+    // display: inline-flex;
+    font-size: 13px;
+    margin-right: 10px;
+  }
+
+  // &-input-wrapper {
+  //   display: inline-flex;
+  //   margin-right: 10px;
+  // }
+
+  &-input {
+    display: none;
+  }
+
+  &-label {
+    background-color: white;
+    border-radius: 5px;
     color: #666;
-    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 13px;
+
+    &:hover {
+      background-color: #ddd;
+      color: #666;
+    }
+
+    .filter-form-input:checked + & {
+      background-color: #ddd;
+      color: #666;
+      font-weight: 700;
+    }
   }
 }
 
@@ -88,6 +140,12 @@ ul {
   display: grid;
   grid-template-columns: 33.3% 33.3% 33.3%;
   padding: 20px;
+
+  &--no-data {
+    display: block;
+    font-family: 'Outage', sans-serif;
+    text-align: center;
+  }
 }
 
 .planet-card {
@@ -98,49 +156,50 @@ ul {
   padding: 25px 20px 20px;
   position: relative;
 
-  // &-heading {
-  // }
-  // &-appearances {
-  // }
-
-  &-appearances-heading {
-    margin-bottom: 10px;
+  &-heading {
+    font-family: 'Outage', sans-serif;
   }
 
-  &-appearances-list {
-    padding-left: 30px;
-  }
+  &-appearances {
+    &-heading {
+      margin-bottom: 10px;
+    }
 
-  &-appearances-list-item {
-    list-style: none;
-    margin-bottom: 10px;
+    &-list {
+      padding-left: 30px;
+    }
 
-    &--prequel,
-    &--original,
-    &--sequel {
-      position: relative;
+    &-list-item {
+      list-style: none;
+      margin-bottom: 10px;
 
-      &:before {
-        content: '';
-        border-radius: 5px;
-        width: 10px;
-        height: 10px;
-        display: block;
-        position: absolute;
-        left: -20px;
-        top: 4px;
+      &--prequel,
+      &--original,
+      &--sequel {
+        position: relative;
+
+        &:before {
+          content: '';
+          border-radius: 5px;
+          width: 10px;
+          height: 10px;
+          display: block;
+          position: absolute;
+          left: -20px;
+          top: 4px;
+        }
       }
-    }
 
-    &--prequel:before {
-      background-color: #00c8ff;
-    }
-    &--original:before {
-      background-color: #0096bf;
-    }
-    &--sequel:before {
-      // background-color: #006480;
-      background-color: #003240;
+      &--prequel:before {
+        background-color: #00c8ff;
+      }
+      &--original:before {
+        background-color: #0096bf;
+      }
+      &--sequel:before {
+        // background-color: #006480;
+        background-color: #003240;
+      }
     }
   }
 

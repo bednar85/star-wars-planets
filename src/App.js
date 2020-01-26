@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.scss';
 import { findAny, search } from './utils';
-import logo from './assets/img/star-wars-logo-coral.png';
+import logo from './assets/imgs/star-wars-logo-coral.png';
 
 import planets from './planets.json';
 
@@ -14,7 +14,7 @@ class App extends Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.renderAppearances = this.renderAppearances.bind(this);
     this.renderEraVisualizer = this.renderEraVisualizer.bind(this);
-    this.renderPlanets = this.renderPlanets.bind(this);
+    this.renderPlanetCards = this.renderPlanetCards.bind(this);
     this.ryanApprovedAppearances = this.ryanApprovedAppearances.bind(this);
 
     this.state = {
@@ -269,21 +269,35 @@ class App extends Component {
     return <div className="planet-card-era-visualizer">{renderSegments}</div>;
   }
 
-  renderPlanets() {
-    return this.filteredPlanets.map((planet, index) => {
+  renderPlanetCards() {
+    const filteredPlanets = this.filteredPlanets;
+
+    if (!filteredPlanets.length) {
       return (
-        <div key={`planet-${index}`} className="planet-card">
-          {this.renderEraVisualizer(planet)}
-          <h3 className="planet-card-heading">{planet.name}</h3>
-          {this.renderAppearances(planet)}
+        <div className="planet-cards planet-cards--no-data">
+          <p className="">
+            Sorry, no planets match the filters you've selected.
+          </p>
         </div>
       );
-    });
+    }
+
+    return (
+      <div className="planet-cards">
+        {filteredPlanets.map((planet, index) => (
+          <div key={`planet-${index}`} className="planet-card">
+            {this.renderEraVisualizer(planet)}
+            <h3 className="planet-card-heading">{planet.name}</h3>
+            {this.renderAppearances(planet)}
+          </div>
+        ))}
+      </div>
+    );
   }
 
-  get filterForm() {
+  get searchAndFilterForms() {
     return (
-      <div className="">
+      <div className="search-and-filter-forms">
         <form className="search-form" onChange={this.handleSearchQueryChange}>
           <input type="text" className="search-form-input" />
         </form>
@@ -412,7 +426,16 @@ class App extends Component {
     return (
       <header className="header">
         <img className="app-logo" src={logo} alt="Star Wars" />
-        <span className="image-attribution">Illustration by Pablo Olivera</span>
+        <span className="image-attribution">
+          Illustration by{' '}
+          <a
+            href="https://www.artstation.com/pabloolivera"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Pablo Olivera
+          </a>
+        </span>
       </header>
     );
   }
@@ -421,8 +444,8 @@ class App extends Component {
     return (
       <div className="App">
         {this.header}
-        {this.filterForm}
-        <div className="planet-cards">{this.renderPlanets()}</div>
+        {this.searchAndFilterForms}
+        {this.renderPlanetCards()}
       </div>
     );
   }
