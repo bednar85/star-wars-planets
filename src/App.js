@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.scss';
-import { findAny } from './utils';
+import { findAny, search } from './utils';
+import logo from './assets/img/star-wars-logo-coral.png';
 
 import planets from './planets.json';
 
@@ -9,6 +10,7 @@ class App extends Component {
     super(props);
 
     this.appearancesGroupedByEra = this.appearancesGroupedByEra.bind(this);
+    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.renderAppearances = this.renderAppearances.bind(this);
     this.renderEraVisualizer = this.renderEraVisualizer.bind(this);
@@ -20,8 +22,19 @@ class App extends Component {
         media: 'All',
         era: [],
         myCanon: false
-      }
+      },
+      searchQuery: ''
     };
+  }
+
+  handleSearchQueryChange(event) {
+    const { searchQuery } = this.state;
+
+    if (event.target.value !== searchQuery) {
+      this.setState({
+        searchQuery: event.target.value
+      });
+    }
   }
 
   handleFilterChange(event) {
@@ -75,7 +88,15 @@ class App extends Component {
   }
 
   get filteredPlanets() {
-    const { filters } = this.state;
+    const { filters, searchQuery } = this.state;
+
+    console.log('');
+    console.log('get filteredPlanets');
+    console.log('searchQuery:', searchQuery);
+
+    const searchedPlanets = searchQuery.length
+      ? planets.filter(planet => search(planet.name, searchQuery))
+      : planets;
 
     const activeFilterKeys = Object.entries(filters).reduce((acc, curr) => {
       const [key, value] = curr;
@@ -98,7 +119,7 @@ class App extends Component {
 
     // first determine if myCanon was selected, if so, reduce and modify the planets array
     const filteredPlanets = filters.myCanon
-      ? planets.reduce((reducedPlanets, planet) => {
+      ? searchedPlanets.reduce((reducedPlanets, planet) => {
           const appearances = this.ryanApprovedAppearances(planet) || [];
 
           if (appearances.length) {
@@ -110,7 +131,7 @@ class App extends Component {
 
           return reducedPlanets;
         }, [])
-      : planets;
+      : searchedPlanets;
 
     // if both filters are applied check both conditions
     if (activeFilterKeys.length) {
@@ -262,7 +283,10 @@ class App extends Component {
 
   get filterForm() {
     return (
-      <header className="header">
+      <div className="">
+        <form className="search-form" onChange={this.handleSearchQueryChange}>
+          <input type="text" className="search-form-input" />
+        </form>
         <form className="filter-form" onChange={this.handleFilterChange}>
           <fieldset className="filter-form-fieldset">
             <h2 className="filter-form-heading">Media:</h2>
@@ -380,6 +404,15 @@ class App extends Component {
             </div>
           </fieldset>
         </form>
+      </div>
+    );
+  }
+
+  get header() {
+    return (
+      <header className="header">
+        <img src={logo} alt="Star Wars" />
+        <span className="image-attribution">Illustration by Pablo Olivera</span>
       </header>
     );
   }
@@ -387,6 +420,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.header}
         {this.filterForm}
         <div className="planet-cards">{this.renderPlanets()}</div>
       </div>
