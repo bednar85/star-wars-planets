@@ -87,7 +87,6 @@ ul {
   padding: 20px;
 
   &-fieldset {
-    // display: flex;
     flex-grow: 1;
     border: none;
     margin: 0;
@@ -101,15 +100,11 @@ ul {
   }
 
   &-heading {
-    // display: inline-flex;
     font-size: 13px;
     margin-right: 10px;
   }
 
-  // &-input-wrapper {
-  //   display: inline-flex;
-  //   margin-right: 10px;
-  // }
+  // &-input-wrapper {}
 
   &-input {
     display: none;
@@ -197,7 +192,6 @@ ul {
         background-color: #0096bf;
       }
       &--sequel:before {
-        // background-color: #006480;
         background-color: #003240;
       }
     }
@@ -221,7 +215,6 @@ ul {
         background-color: #0096bf;
       }
       &--sequel {
-        // background-color: #006480;
         background-color: #003240;
       }
     }
