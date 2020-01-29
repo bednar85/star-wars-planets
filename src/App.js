@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'App.scss';
 import { includesAny, search } from 'utils';
 
 import Header from 'components/Header/Header.jsx';
