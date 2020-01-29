@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.scss';
 import { includesAny, search } from './utils';
-import logo from './assets/imgs/star-wars-logo-coral.png';
+import logo from './assets/imgs/star-wars-logo-yellow.png';
 
 import planets from './planets.json';
 
