@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { includesAny, search } from './utils';
-import logo from './assets/imgs/star-wars-logo-yellow.png';
 
+import Header from './components/Header/Header.jsx';
 import FilterBar from './components/FilterBar/FilterBar.jsx';
 import PlanetCards from './components/PlanetCards/PlanetCards.jsx';
 
@@ -180,28 +180,10 @@ class App extends Component {
     return filteredPlanets;
   }
 
-  get header() {
-    return (
-      <header className="header">
-        <img className="app-logo" src={logo} alt="Star Wars" />
-        <span className="image-attribution">
-          Illustration by{' '}
-          <a
-            href="https://www.artstation.com/pabloolivera"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Pablo Olivera
-          </a>
-        </span>
-      </header>
-    );
-  }
-
   render() {
     return (
       <div className="App">
-        {this.header}
+        <Header />
         <FilterBar
           searchFormHandler={this.handleSearchQueryChange}
           filterFormHandler={this.handleFilterChange}
