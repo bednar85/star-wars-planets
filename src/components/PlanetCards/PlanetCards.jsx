@@ -44,14 +44,19 @@ class PlanetCards extends Component {
 
     const renderEntries = appearances =>
       appearances.map((appearance, index) => {
-        const eraModifier = appearance.era.split(' ')[0].toLowerCase();
+        const { title, era, year } = appearance;
+
+        const eraModifier = era.split(' ')[0].toLowerCase();
+        const updatedTitle = title.includes('Clone Wars')
+          ? `${title} (${year})`
+          : title;
 
         return (
           <li
             key={`appearance-${index}`}
             className={`planet-card-appearances-list-item planet-card-appearances-list-item--${eraModifier}`}
           >
-            {appearance.title} ({appearance.year})
+            {updatedTitle}
           </li>
         );
       });
