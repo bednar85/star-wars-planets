@@ -89,10 +89,6 @@ class App extends Component {
   get filteredPlanets() {
     const { filters, searchQuery } = this.state;
 
-    console.log('');
-    console.log('get filteredPlanets');
-    console.log('searchQuery:', searchQuery);
-
     const searchedPlanets = searchQuery.length
       ? planets.filter(planet => search(searchQuery, planet.name))
       : planets;
