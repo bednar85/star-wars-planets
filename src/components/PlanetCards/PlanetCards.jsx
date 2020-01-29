@@ -44,12 +44,13 @@ class PlanetCards extends Component {
 
     const renderEntries = appearances =>
       appearances.map((appearance, index) => {
-        const { title, era, year } = appearance;
+        const { title, year, media, era } = appearance;
 
         const eraModifier = era.split(' ')[0].toLowerCase();
-        const updatedTitle = title.includes('Clone Wars')
-          ? `${title} (${year})`
-          : title;
+        const updatedTitle =
+          title.includes('Clone Wars') && media === 'TV Series'
+            ? `${title} (${year})`
+            : title;
 
         return (
           <li
