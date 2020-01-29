@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from '../../assets/imgs/star-wars-logo-yellow.png';
+import logo from 'assets/imgs/star-wars-logo-yellow.png';
 
 function Header() {
   return (

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './App.scss';
-import { includesAny, search } from './utils';
+import 'App.scss';
+import { includesAny, search } from 'utils';
 
-import Header from './components/Header/Header.jsx';
-import FilterBar from './components/FilterBar/FilterBar.jsx';
-import PlanetCards from './components/PlanetCards/PlanetCards.jsx';
+import Header from 'components/Header/Header.jsx';
+import FilterBar from 'components/FilterBar/FilterBar.jsx';
+import PlanetCards from 'components/PlanetCards/PlanetCards.jsx';
 
-import planets from './planets.json';
+import planets from 'planets.json';
 
 class App extends Component {
   constructor(props) {
