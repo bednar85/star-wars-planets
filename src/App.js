@@ -202,7 +202,6 @@ class App extends Component {
     return (
       <div className="App">
         {this.header}
-        {this.searchAndFilterForms}
         <FilterBar
           searchFormHandler={this.handleSearchQueryChange}
           filterFormHandler={this.handleFilterChange}
