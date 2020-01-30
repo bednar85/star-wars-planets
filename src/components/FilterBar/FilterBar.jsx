@@ -1,7 +1,7 @@
 import React from 'react';
 
 function FilterBar(props) {
-  const { searchFormHandler, filterFormHandler } = props;
+  const { filterFormHandler, searchFormHandler } = props;
 
   const renderInputs = inputData => {
     const { category, defaultChecked, labels, type } = inputData;
