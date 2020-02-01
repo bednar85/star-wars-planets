@@ -30,6 +30,19 @@ it('includesOnly works correctly', () => {
 });
 
 it('search works correctly', () => {
+  // Lower Case
   expect(search('galaxy', testString)).toBeTruthy();
   expect(search('planet', testString)).toBeFalsy();
+
+  // Title Case
+  expect(search('Galaxy', testString)).toBeTruthy();
+  expect(search('Planet', testString)).toBeFalsy();
+
+  // Upper Case
+  expect(search('GALAXY', testString)).toBeTruthy();
+  expect(search('PLANET', testString)).toBeFalsy();
+
+  // Studly Caps
+  expect(search('GaLaXy', testString)).toBeTruthy();
+  expect(search('PlAnEt', testString)).toBeFalsy();
 });
