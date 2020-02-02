@@ -1,5 +1,7 @@
 import App from 'App';
 
+import planets from 'planets.json';
+
 describe('App Component', () => {
   const defaultState = {
     filters: {
@@ -45,7 +47,7 @@ describe('App Component', () => {
   });
 
   // refactor this, it's brittle bc it relies on a specific order for checking the state changes
-  // change this to a describe with it blocks in it
+  // consider changing this so it's a describe with it blocks in it / so it's more modular
   it('handles filter changes', () => {
     const wrapper = mount(<App />);
     const instance = wrapper.instance();
@@ -123,5 +125,49 @@ describe('App Component', () => {
     };
 
     expect(wrapper.state()).toEqual(expectedState);
+  });
+
+  it('handles filtering appearance based on what I deem canon', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+
+    expect(instance.ryanApprovedAppearances).toBeDefined();
+
+    const tatooine = planets.find(planet => planet.name === 'Tatooine');
+    const updatedAppearances = instance
+      .ryanApprovedAppearances(tatooine)
+      .map(appearance => appearance.title);
+
+    expect(updatedAppearances).toContain('Episode IV - A New Hope');
+    expect(updatedAppearances).not.toContain('Star Wars: The Clone Wars');
+    expect(updatedAppearances).not.toContain(
+      'Episode IX - The Rise of Skywalker'
+    );
+  });
+
+  it('handles filtering planets based on the filters stored in the state', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+
+    expect(instance.filteredPlanets).toBeDefined();
+
+    const tatooine = planets.find(planet => planet.name === 'Tatooine');
+    let updatedAppearances = instance
+      .ryanApprovedAppearances(tatooine)
+      .map(appearance => appearance.title);
+
+    expect(updatedAppearances).toContain('Episode IV - A New Hope');
+    expect(updatedAppearances).not.toContain('Star Wars: The Clone Wars');
+    expect(updatedAppearances).not.toContain(
+      'Episode IX - The Rise of Skywalker'
+    );
+
+    const ahchTo = planets.find(planet => planet.name === 'Ahch-To');
+
+    updatedAppearances = instance
+      .ryanApprovedAppearances(ahchTo)
+      .map(appearance => appearance.title);
+
+    expect(updatedAppearances.length).toEqual(0);
   });
 });
