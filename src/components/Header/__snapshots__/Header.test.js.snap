@@ -2,18 +2,17 @@
 
 exports[`App Component renders correctly 1`] = `
 <header
-  className="header"
+  class="header"
 >
   <img
     alt="Star Wars"
-    className="app-logo"
+    class="app-logo"
     src="star-wars-logo-yellow.png"
   />
   <span
-    className="image-attribution"
+    class="image-attribution"
   >
-    Illustration by
-     
+    Illustration by 
     <a
       href="https://www.artstation.com/pabloolivera"
       rel="noreferrer noopener"
