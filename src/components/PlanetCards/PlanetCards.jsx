@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class PlanetCards extends Component {
   constructor(props) {
@@ -129,5 +130,9 @@ class PlanetCards extends Component {
     );
   }
 }
+
+PlanetCards.propTypes = {
+  planets: PropTypes.array.isRequired
+};
 
 export default PlanetCards;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function FilterBar(props) {
   const { filterFormHandler, searchFormHandler } = props;
@@ -81,5 +82,10 @@ function FilterBar(props) {
     </div>
   );
 }
+
+FilterBar.propTypes = {
+  filterFormHandler: PropTypes.func.isRequired,
+  searchFormHandler: PropTypes.func.isRequired
+};
 
 export default FilterBar;
