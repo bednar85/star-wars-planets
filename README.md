@@ -1,4 +1,4 @@
-# Star Wars Planets Organizer
+# Star Wars Planets Finder
 
 _based on the data from [Wikipedia](https://en.wikipedia.org/wiki/List_of_Star_Wars_planets_and_moons)_
 
