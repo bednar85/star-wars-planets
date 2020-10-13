@@ -11,10 +11,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.handleFilterChange = this.handleFilterChange.bind(this);
-    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
-    this.myCanonAppearances = this.myCanonAppearances.bind(this);
-
     this.state = {
       filters: {
         media: 'All',
@@ -25,7 +21,7 @@ class App extends Component {
     };
   }
 
-  handleSearchQueryChange(event) {
+  handleSearchQueryChange = event => {
     const { searchQuery } = this.state;
 
     if (event.target.value !== searchQuery) {
@@ -33,9 +29,9 @@ class App extends Component {
         searchQuery: event.target.value
       });
     }
-  }
+  };
 
-  handleFilterChange(event) {
+  handleFilterChange = event => {
     const { filters } = this.state;
     const { name, value, checked } = event.target;
 
@@ -68,9 +64,9 @@ class App extends Component {
         }
       });
     }
-  }
+  };
 
-  myCanonAppearances(planet) {
+  myCanonAppearances = planet => {
     return planet.appearances.filter(appearance => {
       const { title } = appearance;
 
@@ -82,9 +78,9 @@ class App extends Component {
         !title.startsWith('Episode IX')
       );
     });
-  }
+  };
 
-  get filteredPlanets() {
+  filteredPlanets = () => {
     const { filters, searchQuery } = this.state;
 
     const searchedPlanets = searchQuery.length
@@ -172,7 +168,7 @@ class App extends Component {
     }
 
     return filteredPlanets;
-  }
+  };
 
   render() {
     return (
@@ -182,7 +178,7 @@ class App extends Component {
           searchFormHandler={this.handleSearchQueryChange}
           filterFormHandler={this.handleFilterChange}
         />
-        <PlanetCards planets={this.filteredPlanets} />
+        <PlanetCards planets={this.filteredPlanets()} />
       </div>
     );
   }
