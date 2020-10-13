@@ -26,7 +26,7 @@ function FilterBar(props) {
             className="filter-form-input"
             id={`${category}-${labelKebabCased}`}
             name={category}
-            value={`${category}:${label}`}
+            value={label}
             defaultChecked={isCheckedByDefault}
           />
           <label

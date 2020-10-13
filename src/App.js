@@ -13,7 +13,7 @@ class App extends Component {
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
-    this.ryanApprovedAppearances = this.ryanApprovedAppearances.bind(this);
+    this.myCanonAppearances = this.myCanonAppearances.bind(this);
 
     this.state = {
       filters: {
@@ -37,41 +37,40 @@ class App extends Component {
 
   handleFilterChange(event) {
     const { filters } = this.state;
+    const { name, value, checked } = event.target;
 
-    if (event.target.value === 'my-canon') {
+    if (name === 'my-canon') {
       this.setState({
-        filters: { ...filters, myCanon: !filters.myCanon }
+        filters: { ...filters, myCanon: checked }
       });
-
-      return;
-    }
-
-    const [key, value] = event.target.value.split(':');
-
-    let newFilterValue;
-
-    if (key === 'era') {
+    } else if (name === 'era') {
       const targetFilterGroup = filters.era;
 
       /**
        * if the filter already exists in the targetFilterGroup, remove it with .filter
        * else use the spread operator, create a copy of the targetFilterGroup and append the new filter to the end
        */
-      newFilterValue = targetFilterGroup.includes(value)
+      const newFilterValue = targetFilterGroup.includes(value)
         ? targetFilterGroup.filter(filter => filter !== value)
         : [...targetFilterGroup, value];
+
+      this.setState({
+        filters: {
+          ...filters,
+          [name]: newFilterValue
+        }
+      });
     } else {
-      newFilterValue = value;
+      this.setState({
+        filters: {
+          ...filters,
+          [name]: value
+        }
+      });
     }
-
-    const updatedFilters = { ...filters, [key]: newFilterValue };
-
-    this.setState({
-      filters: updatedFilters
-    });
   }
 
-  ryanApprovedAppearances(planet) {
+  myCanonAppearances(planet) {
     return planet.appearances.filter(appearance => {
       const { title } = appearance;
 
@@ -114,12 +113,12 @@ class App extends Component {
     // first determine if myCanon was selected, if so, reduce and modify the planets array
     const filteredPlanets = filters.myCanon
       ? searchedPlanets.reduce((reducedPlanets, planet) => {
-          const appearances = this.ryanApprovedAppearances(planet) || [];
+          const appearances = this.myCanonAppearances(planet) || [];
 
           if (appearances.length) {
             reducedPlanets.push({
               ...planet,
-              appearances: this.ryanApprovedAppearances(planet)
+              appearances: this.myCanonAppearances(planet)
             });
           }
 
