@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FILTER_KEY } from '../../constants';
 
 function FilterBar(props) {
   const { filterFormHandler, searchFormHandler } = props;
 
   const renderInputs = inputData => {
-    const { category, defaultChecked, labels, type } = inputData;
+    const { name, defaultChecked, labels, type } = inputData;
 
     return labels.map((label, index) => {
       const isCheckedByDefault =
@@ -24,14 +25,14 @@ function FilterBar(props) {
           <input
             type={type}
             className="filter-form-input"
-            id={`${category}-${labelKebabCased}`}
-            name={category}
+            id={`${name}-${labelKebabCased}`}
+            name={name}
             value={label}
             defaultChecked={isCheckedByDefault}
           />
           <label
             className="filter-form-label"
-            htmlFor={`${category}-${labelKebabCased}`}
+            htmlFor={`${name}-${labelKebabCased}`}
           >
             {label}
           </label>
@@ -50,7 +51,7 @@ function FilterBar(props) {
           <h2 className="filter-form-heading">Media:</h2>
           {renderInputs({
             type: 'radio',
-            category: 'media',
+            name: FILTER_KEY.MEDIA,
             labels: ['All', 'Film', 'Film (Episodes Only)', 'TV Series'],
             defaultChecked: 0
           })}
@@ -59,7 +60,7 @@ function FilterBar(props) {
           <h2 className="filter-form-heading">Era:</h2>
           {renderInputs({
             type: 'checkbox',
-            category: 'era',
+            name: FILTER_KEY.ERA,
             labels: ['Prequel Trilogy', 'Original Trilogy', 'Sequel Trilogy']
           })}
         </fieldset>
@@ -69,11 +70,11 @@ function FilterBar(props) {
             <input
               type="checkbox"
               className="filter-form-input"
-              id="my-canon"
-              name="my-canon"
-              value="my-canon"
+              id={FILTER_KEY.MY_CANON}
+              name={FILTER_KEY.MY_CANON}
+              value={FILTER_KEY.MY_CANON}
             />
-            <label className="filter-form-label" htmlFor="my-canon">
+            <label className="filter-form-label" htmlFor={FILTER_KEY.MY_CANON}>
               My Canon
             </label>
           </div>

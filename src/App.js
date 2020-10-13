@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { includesAny, search } from 'utils';
+import { FILTER_KEY } from './constants';
 
 import Header from 'components/Header/Header.jsx';
 import FilterBar from 'components/FilterBar/FilterBar.jsx';
@@ -23,102 +24,92 @@ class App extends Component {
 
   handleSearchQueryChange = event => {
     const { searchQuery } = this.state;
+    const { value } = event.target;
 
-    if (event.target.value !== searchQuery) {
+    if (value !== searchQuery) {
       this.setState({
-        searchQuery: event.target.value
+        searchQuery: value
       });
     }
   };
 
   handleFilterChange = event => {
     const { filters } = this.state;
-    const { name, value, checked } = event.target;
+    const { name: filterName, value, checked } = event.target;
 
-    if (name === 'my-canon') {
-      this.setState({
-        filters: { ...filters, myCanon: checked }
-      });
-    } else if (name === 'era') {
-      const targetFilterGroup = filters.era;
+    const updatedFilters = { ...filters };
+
+    if (filterName === FILTER_KEY.MY_CANON) {
+      updatedFilters.myCanon = checked;
+    } else if (filterName === FILTER_KEY.ERA) {
+      const currentEra = filters.era;
 
       /**
-       * if the filter already exists in the targetFilterGroup, remove it with .filter
-       * else use the spread operator, create a copy of the targetFilterGroup and append the new filter to the end
+       * if the newly selected era is already included in filter.era, remove it
+       * otherwise, append it to the end of filter.era
        */
-      const newFilterValue = targetFilterGroup.includes(value)
-        ? targetFilterGroup.filter(filter => filter !== value)
-        : [...targetFilterGroup, value];
-
-      this.setState({
-        filters: {
-          ...filters,
-          [name]: newFilterValue
-        }
-      });
+      updatedFilters.era = currentEra.includes(value)
+        ? currentEra.filter(filter => filter !== value)
+        : [...currentEra, value];
     } else {
-      this.setState({
-        filters: {
-          ...filters,
-          [name]: value
-        }
-      });
+      updatedFilters[filterName] = value;
     }
+
+    this.setState({
+      filters: updatedFilters
+    });
   };
 
-  myCanonAppearances = planet => {
-    return planet.appearances.filter(appearance => {
-      const { title } = appearance;
-
-      return (
+  myCanonAppearances = planet =>
+    planet.appearances.filter(
+      ({ title }) =>
         title !== 'Star Wars: The Clone Wars' &&
         title !== 'Star Wars Resistance' &&
         !title.startsWith('Episode VII') &&
         !title.startsWith('Episode VIII') &&
         !title.startsWith('Episode IX')
-      );
-    });
-  };
+    );
 
-  filteredPlanets = () => {
+  get filteredPlanets() {
     const { filters, searchQuery } = this.state;
 
     const searchedPlanets = searchQuery.length
-      ? planets.filter(planet => search(searchQuery, planet.name))
+      ? planets.filter(({ name }) => search(searchQuery, name))
       : planets;
 
-    const activeFilterKeys = Object.entries(filters).reduce((acc, curr) => {
-      const [key, value] = curr;
+    const activeFilterKeys = Object.entries(filters).reduce(
+      (acc, [key, value]) => {
+        /**
+         * if key is media and value is not All
+         * OR
+         * if key is era and value array has a length
+         * add filter key to accumulator
+         */
+        if (
+          (key === FILTER_KEY.MEDIA && value !== 'All') ||
+          (key === FILTER_KEY.ERA && value.length)
+        ) {
+          acc.push(key);
+        }
 
-      /**
-       * if key is media and value is not All
-       * OR
-       * if key is era and value array has a length
-       * add filter key to accumulator
-       */
-      if (
-        (key === 'media' && value !== 'All') ||
-        (key === 'era' && value.length)
-      ) {
-        acc.push(key);
-      }
-
-      return acc;
-    }, []);
+        return acc;
+      },
+      []
+    );
 
     // first determine if myCanon was selected, if so, reduce and modify the planets array
     const filteredPlanets = filters.myCanon
-      ? searchedPlanets.reduce((reducedPlanets, planet) => {
-          const appearances = this.myCanonAppearances(planet) || [];
+      ? searchedPlanets.reduce((acc, planet) => {
+          const appearances = this.myCanonAppearances(planet);
 
           if (appearances.length) {
-            reducedPlanets.push({
+            acc.push({
               ...planet,
-              appearances: this.myCanonAppearances(planet)
+              appearances
             });
           }
 
-          return reducedPlanets;
+          return acc;
         }, [])
       : searchedPlanets;
 
@@ -127,19 +118,18 @@ class App extends Component {
       const { media: selectedMedia, era: selectedEras } = filters;
 
       if (activeFilterKeys.length > 1) {
-        return filteredPlanets.filter(planet => {
-          if (!planet.appearances.length) {
+        return filteredPlanets.filter(({ appearances }) => {
+          if (!appearances.length) {
             return false;
           }
 
-          const matchingAppearances = planet.appearances
-            .filter(appearance =>
+          const matchingAppearances = appearances
+            .filter(({ media, title }) =>
               selectedMedia === 'Film (Episodes Only)'
-                ? appearance.media === 'Film' &&
-                  appearance.title.startsWith('Episode')
-                : appearance.media === selectedMedia
+                ? media === 'Film' && title.startsWith('Episode')
+                : media === selectedMedia
             )
-            .map(appearance => appearance.era);
+            .map(({ era }) => era);
 
           return includesAny(selectedEras, matchingAppearances);
         });
@@ -148,9 +138,9 @@ class App extends Component {
       // if only one filter is applied
       const activeFilterKey = activeFilterKeys[0];
 
-      return filteredPlanets.filter(planet => {
+      return filteredPlanets.filter(({ appearances }) => {
         // a map of either all of the eras or all of the media values associated with all of the appearances
-        const appearanceValues = planet.appearances.map(
+        const appearanceValues = appearances.map(
           appearance => appearance[activeFilterKey]
         );
 
@@ -160,15 +150,15 @@ class App extends Component {
 
         // check if any of the film titles start with "Episode"
         return selectedMedia === 'Film (Episodes Only)'
-          ? planet.appearances
-              .filter(appearance => appearance.media === 'Film')
-              .some(appearance => appearance.title.startsWith('Episode'))
+          ? appearances
+              .filter(({ media }) => media === 'Film')
+              .some(({ title }) => title.startsWith('Episode'))
           : appearanceValues.includes(selectedMedia);
       });
     }
 
     return filteredPlanets;
-  };
+  }
 
   render() {
     return (
@@ -178,7 +168,7 @@ class App extends Component {
           searchFormHandler={this.handleSearchQueryChange}
           filterFormHandler={this.handleFilterChange}
         />
-        <PlanetCards planets={this.filteredPlanets()} />
+        <PlanetCards planets={this.filteredPlanets} />
       </div>
     );
   }
