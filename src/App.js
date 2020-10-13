@@ -49,7 +49,7 @@ class App extends Component {
        * otherwise, append it to the end of filter.era
        */
       updatedFilters.era = currentEra.includes(value)
-        ? currentEra.filter(filter => filter !== value)
+        ? currentEra.filter(era => era !== value)
         : [...currentEra, value];
     } else {
       updatedFilters[filterName] = value;
