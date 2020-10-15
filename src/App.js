@@ -1,27 +1,110 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { search, includesAny, fetchData } from 'utils';
+
 import Header from 'components/Header/Header.jsx';
 import FilterBar from 'components/FilterBar/FilterBar.jsx';
 import PlanetCards from 'components/PlanetCards/PlanetCards.jsx';
 
-import planets from 'planets.json';
+import planetsData from 'planets.json';
+
+const filterOutNonCanonAppearances = appearances =>
+  appearances.filter(
+    ({ title }) =>
+      title !== 'Star Wars: The Clone Wars' &&
+      title !== 'Star Wars Resistance' &&
+      !title.startsWith('Episode VII') &&
+      !title.startsWith('Episode VIII') &&
+      !title.startsWith('Episode IX')
+  );
+
+const filterBySearchQuery = (planets, filters) => {
+  if (!filters.searchQuery.length) return planets;
+
+  return planets.filter(({ name }) => search(filters.searchQuery, name));
+};
+
+const filterByMyCanon = (planets, filters) => {
+  if (!filters.myCanon) return planets;
+
+  return planets.reduce((acc, planet) => {
+    const modifiedAppearances = filterOutNonCanonAppearances(
+      planet.appearances
+    );
+
+    if (modifiedAppearances.length) {
+      acc.push({
+        ...planet,
+        appearances: modifiedAppearances
+      });
+    }
+
+    return acc;
+  }, []);
+};
+
+const filterByMedia = (planets, filters) => {
+  if (filters.media === 'All') return planets;
+
+  return planets.filter(planet => {
+    const { appearances } = planet;
+
+    const mediaPlanetAppearedIn = appearances.map(({ media }) => media);
+    const titlesPlanetAppearedIn = appearances.map(({ title }) => title);
+
+    return filters.media === 'Film (Episodes Only)'
+      ? mediaPlanetAppearedIn.includes('Film') &&
+          titlesPlanetAppearedIn.some(title => title.startsWith('Episode'))
+      : mediaPlanetAppearedIn.includes(filters.media);
+  });
+};
+
+const filterByEra = (planets, filters) => {
+  if (!filters.era.length) return planets;
+
+  return planets.filter(({ appearances }) => {
+    const erasPlanetAppearedIn = appearances.map(({ era }) => era);
+
+    return includesAny(filters.era, erasPlanetAppearedIn);
+  });
+};
+
+const filteredPlanets = (planets, filters) =>
+  [
+    filterBySearchQuery, //
+    filterByMyCanon,
+    filterByMedia,
+    filterByEra
+  ].reduce(
+    (newPlanetsArray, currentFilterFunction) =>
+      currentFilterFunction(newPlanetsArray, filters),
+    planets
+  );
 
 function App() {
+  // SETUP FILTERS AND FORM
   const defaultValues = {
+    searchQuery: '',
     media: 'All',
     era: [],
-    myCanon: false,
-    searchQuery: ''
+    myCanon: false
   };
 
   const methods = useForm({ defaultValues });
 
   const watchAll = methods.watch();
-  const values = methods.getValues();
+  const filters = Object.keys(watchAll).length ? watchAll : defaultValues;
 
-  console.log('App');
-  console.log('  watchAll:', watchAll);
-  console.log('  values:', values);
+  // SETUP DATA
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    if (!data.length) {
+      fetchData(setData, planetsData);
+    }
+  }, [data]);
+
+  const planets = data.length ? filteredPlanets(data, filters) : data;
 
   return (
     <div className="App">
@@ -33,107 +116,3 @@ function App() {
 }
 
 export default App;
-
-// need to refactor and work this filtering logic back in
-// import { includesAny, search } from 'utils';
-// import { FILTER_KEY } from './constants';
-
-//   myCanonAppearances = planet =>
-//     planet.appearances.filter(
-//       ({ title }) =>
-//         title !== 'Star Wars: The Clone Wars' &&
-//         title !== 'Star Wars Resistance' &&
-//         !title.startsWith('Episode VII') &&
-//         !title.startsWith('Episode VIII') &&
-//         !title.startsWith('Episode IX')
-//     );
-
-//   get filteredPlanets() {
-//     const { filters, searchQuery } = this.state;
-
-//     const searchedPlanets = searchQuery.length
-//       ? planets.filter(({ name }) => search(searchQuery, name))
-//       : planets;
-
-//     const activeFilterKeys = Object.entries(filters).reduce(
-//       (acc, [key, value]) => {
-//         /**
-//          * if key is media and value is not All
-//          * OR
-//          * if key is era and value array has a length
-//          * add filter key to accumulator
-//          */
-//         if (
-//           (key === FILTER_KEY.MEDIA && value !== 'All') ||
-//           (key === FILTER_KEY.ERA && value.length)
-//         ) {
-//           acc.push(key);
-//         }
-
-//         return acc;
-//       },
-//       []
-//     );
-
-//     // first determine if myCanon was selected, if so, reduce and modify the planets array
-//     const filteredPlanets = filters.myCanon
-//       ? searchedPlanets.reduce((acc, planet) => {
-//           const appearances = this.myCanonAppearances(planet);
-
-//           if (appearances.length) {
-//             acc.push({
-//               ...planet,
-//               appearances
-//             });
-//           }
-
-//           return acc;
-//         }, [])
-//       : searchedPlanets;
-
-//     // if both filters are applied check both conditions
-//     if (activeFilterKeys.length) {
-//       const { media: selectedMedia, era: selectedEras } = filters;
-
-//       if (activeFilterKeys.length > 1) {
-//         return filteredPlanets.filter(({ appearances }) => {
-//           if (!appearances.length) {
-//             return false;
-//           }
-
-//           const matchingAppearances = appearances
-//             .filter(({ media, title }) =>
-//               selectedMedia === 'Film (Episodes Only)'
-//                 ? media === 'Film' && title.startsWith('Episode')
-//                 : media === selectedMedia
-//             )
-//             .map(({ era }) => era);
-
-//           return includesAny(selectedEras, matchingAppearances);
-//         });
-//       }
-
-//       // if only one filter is applied
-//       const activeFilterKey = activeFilterKeys[0];
-
-//       return filteredPlanets.filter(({ appearances }) => {
-//         // a map of either all of the eras or all of the media values associated with all of the appearances
-//         const appearanceValues = appearances.map(
-//           appearance => appearance[activeFilterKey]
-//         );
-
-//         if (activeFilterKey === 'era') {
-//           return includesAny(selectedEras, appearanceValues);
-//         }
-
-//         // check if any of the film titles start with "Episode"
-//         return selectedMedia === 'Film (Episodes Only)'
-//           ? appearances
-//               .filter(({ media }) => media === 'Film')
-//               .some(({ title }) => title.startsWith('Episode'))
-//           : appearanceValues.includes(selectedMedia);
-//       });
-//     }
-
-//     return filteredPlanets;
-//   }

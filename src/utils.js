@@ -18,3 +18,20 @@ export const includesAny = (needles, haystack) =>
 export const search = (substring, string) => {
   return string.toLowerCase().includes(substring.toLowerCase());
 };
+
+export const getRandomIntInclusive = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+export const delayedMockFetch = (ms, value) => {
+  return new Promise(resolve => setTimeout(resolve, ms, value));
+};
+
+export const fetchData = async (setDataCallback, mockData) => {
+  const delay = getRandomIntInclusive(500, 1000);
+  const data = await delayedMockFetch(delay, mockData);
+
+  setDataCallback(data);
+};

@@ -85,8 +85,7 @@ function FilterBar({ register }) {
 }
 
 FilterBar.propTypes = {
-  filterFormHandler: PropTypes.func.isRequired,
-  searchFormHandler: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired
 };
 
 export default FilterBar;
