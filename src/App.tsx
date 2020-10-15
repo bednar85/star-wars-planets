@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { search, includesAny, fetchData } from 'utils';
+import { search, includesAny, fetchData } from './utils';
 
-import Header from 'components/Header/Header.jsx';
-import FilterBar from 'components/FilterBar/FilterBar.jsx';
-import PlanetCards from 'components/PlanetCards/PlanetCards.jsx';
+import Header from './components/Header/Header.jsx';
+import FilterBar from './components/FilterBar/FilterBar.jsx';
+import PlanetCards from './components/PlanetCards/PlanetCards.jsx';
 
-import planetsData from 'planets.json';
+import planetsData from './planets.json';
 
-const filterOutNonCanonAppearances = appearances =>
+interface Appearance {
+  title: string;
+  year: string;
+  media: string;
+  era: string;
+}
+
+interface Planet {
+  name: string;
+  appearances: Appearance[];
+  description: string;
+}
+
+interface Filters {
+  searchQuery: string;
+  media: string;
+  era: string[];
+  myCanon: boolean;
+}
+
+const filterOutNonCanonAppearances = (
+  appearances: Appearance[]
+): Appearance[] =>
   appearances.filter(
     ({ title }) =>
       title !== 'Star Wars: The Clone Wars' &&
@@ -18,17 +40,17 @@ const filterOutNonCanonAppearances = appearances =>
       !title.startsWith('Episode IX')
   );
 
-const filterBySearchQuery = (planets, filters) => {
+const filterBySearchQuery = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.searchQuery.length) return planets;
 
   return planets.filter(({ name }) => search(filters.searchQuery, name));
 };
 
-const filterByMyCanon = (planets, filters) => {
+const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.myCanon) return planets;
 
-  return planets.reduce((acc, planet) => {
-    const modifiedAppearances = filterOutNonCanonAppearances(
+  return planets.reduce((acc: Planet[], planet: Planet): Planet[] => {
+    const modifiedAppearances: Appearance[] = filterOutNonCanonAppearances(
       planet.appearances
     );
 
@@ -43,10 +65,10 @@ const filterByMyCanon = (planets, filters) => {
   }, []);
 };
 
-const filterByMedia = (planets, filters) => {
+const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
   if (filters.media === 'All') return planets;
 
-  return planets.filter(planet => {
+  return planets.filter((planet: Planet) => {
     const { appearances } = planet;
 
     const mediaPlanetAppearedIn = appearances.map(({ media }) => media);
@@ -59,7 +81,7 @@ const filterByMedia = (planets, filters) => {
   });
 };
 
-const filterByEra = (planets, filters) => {
+const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.era.length) return planets;
 
   return planets.filter(({ appearances }) => {
@@ -69,7 +91,7 @@ const filterByEra = (planets, filters) => {
   });
 };
 
-const filteredPlanets = (planets, filters) =>
+const filteredPlanets = (planets: Planet[], filters: Filters): Planet[] =>
   [
     filterBySearchQuery, //
     filterByMyCanon,
@@ -83,7 +105,7 @@ const filteredPlanets = (planets, filters) =>
 
 function App() {
   // SETUP FILTERS AND FORM
-  const defaultValues = {
+  const defaultValues: Filters = {
     searchQuery: '',
     media: 'All',
     era: [],
@@ -104,8 +126,12 @@ function App() {
     }
   }, [data]);
 
+  // console.log('data:', data);
+
   const planets = data.length ? filteredPlanets(data, filters) : data;
 
+  // change up the messaging based on if the data has loaded or not yet, like if it wasn't loaded yet don't show the sorry message
+  // if it was and after filtering it there is nothing then yeah show the sorry messaging
   return (
     <div className="App">
       <Header />
@@ -116,3 +142,4 @@ function App() {
 }
 
 export default App;
+/* tslint:enable */
