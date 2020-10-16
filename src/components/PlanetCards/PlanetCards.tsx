@@ -42,7 +42,7 @@ class PlanetCards extends Component<PlanetCardsProps> {
       'TV Series'
     );
 
-    const renderEntries = (appearances: Appearance[]) =>
+    const renderEntries = (appearances: Appearance[]): ReactElement[] =>
       appearances.map((appearance: Appearance, index: number) => {
         const { title, year, media, era } = appearance;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { FILTER_KEY } from '../../constants';
 
@@ -14,7 +14,12 @@ interface FilterBarProps {
 }
 
 function FilterBar({ register }: FilterBarProps) {
-  const renderInputs = ({ name, defaultChecked, labels, type }: Input) => {
+  const renderInputs = ({
+    type,
+    name,
+    labels,
+    defaultChecked
+  }: Input): ReactElement[] => {
     return labels.map((label: string, index: number) => {
       const isCheckedByDefault: boolean =
         defaultChecked !== undefined ? defaultChecked === index : false;

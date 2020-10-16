@@ -31,13 +31,15 @@ const filterOutNonCanonAppearances = (
 const filterBySearchQuery = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.searchQuery.length) return planets;
 
-  return planets.filter(({ name }) => search(filters.searchQuery, name));
+  return planets.filter(({ name }: Planet) =>
+    search(filters.searchQuery, name)
+  );
 };
 
 const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.myCanon) return planets;
 
-  return planets.reduce((acc: Planet[], planet: Planet): Planet[] => {
+  return planets.reduce((acc: Planet[], planet: Planet) => {
     const modifiedAppearances: Appearance[] = filterOutNonCanonAppearances(
       planet.appearances
     );
@@ -59,8 +61,12 @@ const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
   return planets.filter((planet: Planet) => {
     const { appearances } = planet;
 
-    const mediaPlanetAppearedIn = appearances.map(({ media }) => media);
-    const titlesPlanetAppearedIn = appearances.map(({ title }) => title);
+    const mediaPlanetAppearedIn: string[] = appearances.map(
+      ({ media }: Appearance) => media
+    );
+    const titlesPlanetAppearedIn: string[] = appearances.map(
+      ({ title }: Appearance) => title
+    );
 
     return filters.media === 'Film (Episodes Only)'
       ? mediaPlanetAppearedIn.includes('Film') &&
@@ -72,8 +78,10 @@ const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
 const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.era.length) return planets;
 
-  return planets.filter(({ appearances }) => {
-    const erasPlanetAppearedIn = appearances.map(({ era }) => era);
+  return planets.filter(({ appearances }: Planet) => {
+    const erasPlanetAppearedIn: string[] = appearances.map(
+      ({ era }: Appearance) => era
+    );
 
     return includesAny(filters.era, erasPlanetAppearedIn);
   });
@@ -86,7 +94,7 @@ const filteredPlanets = (planets: Planet[], filters: Filters): Planet[] =>
     filterByMedia,
     filterByEra
   ].reduce(
-    (newPlanetsArray, currentFilterFunction) =>
+    (newPlanetsArray: Planet[], currentFilterFunction: Function) =>
       currentFilterFunction(newPlanetsArray, filters),
     planets
   );
@@ -102,8 +110,10 @@ function App() {
 
   const methods = useForm({ defaultValues });
 
-  const watchAll = methods.watch();
-  const filters = Object.keys(watchAll).length ? watchAll : defaultValues;
+  const watchAll: Filters = methods.watch();
+  const filters: Filters = Object.keys(watchAll).length
+    ? watchAll
+    : defaultValues;
 
   // SETUP DATA
   const [data, setData] = useState([]);
