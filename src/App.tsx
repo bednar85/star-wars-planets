@@ -124,12 +124,8 @@ function App() {
     }
   }, [data]);
 
-  // console.log('data:', data);
-
   const planets: Planet[] = data.length ? filteredPlanets(data, filters) : data;
 
-  // change up the messaging based on if the data has loaded or not yet, like if it wasn't loaded yet don't show the sorry message
-  // if it was and after filtering it there is nothing then yeah show the sorry messaging
   return (
     <div className="App">
       <Header />
