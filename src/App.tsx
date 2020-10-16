@@ -119,10 +119,8 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!data.length) {
-      fetchData(setData, planetsData);
-    }
-  }, [data]);
+    fetchData(setData, planetsData);
+  }, []);
 
   const planets: Planet[] = data.length ? filteredPlanets(data, filters) : data;
 
