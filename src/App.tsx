@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { search, includesAny, fetchData } from './utils';
+import { search, includesAny, fetchData } from './utils/index';
+import { Appearance, Planet } from './models/ui';
 
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
-import PlanetCards from './components/PlanetCards/PlanetCards.jsx';
+import PlanetCards from './components/PlanetCards/PlanetCards';
 
 import planetsData from './planets.json';
-
-interface Appearance {
-  title: string;
-  year: string;
-  media: string;
-  era: string;
-}
-
-interface Planet {
-  name: string;
-  appearances: Appearance[];
-  description: string;
-}
 
 interface Filters {
   searchQuery: string;

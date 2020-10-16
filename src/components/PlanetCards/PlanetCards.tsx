@@ -1,16 +1,15 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment, ReactElement } from 'react';
+import { Appearance, Planet } from '../../models/ui';
 
-class PlanetCards extends Component {
-  constructor(props) {
-    super(props);
+interface PlanetCardsProps {
+  planets: Planet[];
+}
 
-    this.appearancesGroupedByEra = this.appearancesGroupedByEra.bind(this);
-    this.renderAppearances = this.renderAppearances.bind(this);
-    this.renderEraVisualizer = this.renderEraVisualizer.bind(this);
-  }
-
-  appearancesGroupedByEra(appearances, media) {
+class PlanetCards extends Component<PlanetCardsProps> {
+  appearancesGroupedByEra = (
+    appearances: Appearance[],
+    media?: string
+  ): Appearance[] => {
     const appearancesByMedia = media
       ? appearances.filter(appearance => appearance.media === media)
       : appearances;
@@ -32,9 +31,9 @@ class PlanetCards extends Component {
       ...originalAppearances,
       ...sequelAppearances
     ];
-  }
+  };
 
-  renderAppearances(planet) {
+  renderAppearances = (planet: Planet): ReactElement => {
     const { appearances } = planet;
 
     const filmAppearances = this.appearancesGroupedByEra(appearances, 'Film');
@@ -43,8 +42,8 @@ class PlanetCards extends Component {
       'TV Series'
     );
 
-    const renderEntries = appearances =>
-      appearances.map((appearance, index) => {
+    const renderEntries = (appearances: Appearance[]) =>
+      appearances.map((appearance: Appearance, index: number) => {
         const { title, year, media, era } = appearance;
 
         const eraModifier = era.split(' ')[0].toLowerCase();
@@ -83,9 +82,9 @@ class PlanetCards extends Component {
         ) : null}
       </div>
     );
-  }
+  };
 
-  renderEraVisualizer(planet) {
+  renderEraVisualizer = (planet: Planet): ReactElement => {
     const { appearances } = planet;
 
     const renderSegments = this.appearancesGroupedByEra(appearances).map(
@@ -102,7 +101,7 @@ class PlanetCards extends Component {
     );
 
     return <div className="planet-card-era-visualizer">{renderSegments}</div>;
-  }
+  };
 
   render() {
     const { planets } = this.props;
@@ -119,7 +118,7 @@ class PlanetCards extends Component {
 
     return (
       <div className="planet-cards">
-        {planets.map((planet, index) => (
+        {planets.map((planet: Planet, index: number) => (
           <div key={`planet-${index}`} className="planet-card">
             {this.renderEraVisualizer(planet)}
             <h3 className="planet-card-heading">{planet.name}</h3>
@@ -130,9 +129,5 @@ class PlanetCards extends Component {
     );
   }
 }
-
-PlanetCards.propTypes = {
-  planets: PropTypes.array.isRequired
-};
 
 export default PlanetCards;
