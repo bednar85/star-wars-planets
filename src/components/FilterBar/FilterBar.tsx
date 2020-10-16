@@ -1,15 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
 import { FILTER_KEY } from '../../constants';
 
-function FilterBar({ register }) {
-  const renderInputs = inputData => {
-    const { name, defaultChecked, labels, type } = inputData;
+interface Input {
+  type: string;
+  name: string;
+  labels: string[];
+  defaultChecked?: number;
+}
 
-    return labels.map((label, index) => {
-      const isCheckedByDefault =
+interface FilterBarProps {
+  register: ReturnType<typeof useForm>['register'];
+}
+
+function FilterBar({ register }: FilterBarProps) {
+  const renderInputs = ({ name, defaultChecked, labels, type }: Input) => {
+    return labels.map((label: string, index: number) => {
+      const isCheckedByDefault: boolean =
         defaultChecked !== undefined ? defaultChecked === index : false;
-      const labelKebabCased = label
+      const labelKebabCased: string = label
         .toLowerCase()
         .replace(/[^a-zA-Z']/gi, ' ')
         .trim()
@@ -83,9 +92,5 @@ function FilterBar({ register }) {
     </form>
   );
 }
-
-FilterBar.propTypes = {
-  register: PropTypes.func.isRequired
-};
 
 export default FilterBar;

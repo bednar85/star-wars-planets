@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { search, includesAny, fetchData } from './utils';
 
-import Header from './components/Header/Header.jsx';
-import FilterBar from './components/FilterBar/FilterBar.jsx';
+import Header from './components/Header/Header';
+import FilterBar from './components/FilterBar/FilterBar';
 import PlanetCards from './components/PlanetCards/PlanetCards.jsx';
 
 import planetsData from './planets.json';
@@ -128,7 +128,7 @@ function App() {
 
   // console.log('data:', data);
 
-  const planets = data.length ? filteredPlanets(data, filters) : data;
+  const planets: Planet[] = data.length ? filteredPlanets(data, filters) : data;
 
   // change up the messaging based on if the data has loaded or not yet, like if it wasn't loaded yet don't show the sorry message
   // if it was and after filtering it there is nothing then yeah show the sorry messaging
@@ -142,4 +142,3 @@ function App() {
 }
 
 export default App;
-/* tslint:enable */
