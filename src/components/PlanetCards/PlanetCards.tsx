@@ -109,7 +109,7 @@ class PlanetCards extends Component<PlanetCardsProps> {
     if (!planets.length) {
       return (
         <div className="planet-cards planet-cards--no-data">
-          <p className="">
+          <p className="planet-cards-no-data-message">
             Sorry, no planets match the filters you've selected.
           </p>
         </div>
@@ -121,7 +121,8 @@ class PlanetCards extends Component<PlanetCardsProps> {
         {planets.map((planet: Planet, index: number) => (
           <div key={`planet-${index}`} className="planet-card">
             {this.renderEraVisualizer(planet)}
-            <h3 className="planet-card-heading">{planet.name}</h3>
+            <h3 className="planet-card-name">{planet.name}</h3>
+            <p className="planet-card-description">{planet.description}</p>
             {this.renderAppearances(planet)}
           </div>
         ))}
