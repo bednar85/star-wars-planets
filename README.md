@@ -6,6 +6,10 @@ I took the data from this Wikipedia page, translated it into JSON, and made filt
 
 I'll be working on adding search and sorting logic soon as well as filters based on each the title of each Film/TV Series.
 
-## To Run Locally
+### `yarn start`
 
-Clone or download the repository, open your console, navigate to the directory, then run the following commands `npm install`, followed by `npm start`. You will need Node.js installed on your machine first.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.

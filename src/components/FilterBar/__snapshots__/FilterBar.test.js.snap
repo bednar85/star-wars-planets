@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component renders correctly 1`] = `
+<div
+  class="search-and-filter-forms"
+>
+  <form
+    class="search-form"
+  >
+    <input
+      class="search-form-input"
+      type="text"
+    />
+  </form>
+  <form
+    class="filter-form"
+  >
+    <fieldset
+      class="filter-form-fieldset"
+    >
+      <h2
+        class="filter-form-heading"
+      >
+        Media:
+      </h2>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          checked=""
+          class="filter-form-input"
+          id="media-all"
+          name="media"
+          type="radio"
+          value="media:All"
+        />
+        <label
+          class="filter-form-label"
+          for="media-all"
+        >
+          All
+        </label>
+      </div>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="media-film"
+          name="media"
+          type="radio"
+          value="media:Film"
+        />
+        <label
+          class="filter-form-label"
+          for="media-film"
+        >
+          Film
+        </label>
+      </div>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="media-film-episodes-only"
+          name="media"
+          type="radio"
+          value="media:Film (Episodes Only)"
+        />
+        <label
+          class="filter-form-label"
+          for="media-film-episodes-only"
+        >
+          Film (Episodes Only)
+        </label>
+      </div>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="media-tv-series"
+          name="media"
+          type="radio"
+          value="media:TV Series"
+        />
+        <label
+          class="filter-form-label"
+          for="media-tv-series"
+        >
+          TV Series
+        </label>
+      </div>
+    </fieldset>
+    <fieldset
+      class="filter-form-fieldset"
+    >
+      <h2
+        class="filter-form-heading"
+      >
+        Era:
+      </h2>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="era-prequel-trilogy"
+          name="era"
+          type="checkbox"
+          value="era:Prequel Trilogy"
+        />
+        <label
+          class="filter-form-label"
+          for="era-prequel-trilogy"
+        >
+          Prequel Trilogy
+        </label>
+      </div>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="era-original-trilogy"
+          name="era"
+          type="checkbox"
+          value="era:Original Trilogy"
+        />
+        <label
+          class="filter-form-label"
+          for="era-original-trilogy"
+        >
+          Original Trilogy
+        </label>
+      </div>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="era-sequel-trilogy"
+          name="era"
+          type="checkbox"
+          value="era:Sequel Trilogy"
+        />
+        <label
+          class="filter-form-label"
+          for="era-sequel-trilogy"
+        >
+          Sequel Trilogy
+        </label>
+      </div>
+    </fieldset>
+    <fieldset
+      class="filter-form-fieldset"
+    >
+      <h2
+        class="filter-form-heading"
+      >
+        Canon:
+      </h2>
+      <div
+        class="filter-form-input-wrapper"
+      >
+        <input
+          class="filter-form-input"
+          id="my-canon"
+          name="my-canon"
+          type="checkbox"
+          value="my-canon"
+        />
+        <label
+          class="filter-form-label"
+          for="my-canon"
+        >
+          My Canon
+        </label>
+      </div>
+    </fieldset>
+  </form>
+</div>
+`;
