@@ -33,6 +33,33 @@ class PlanetCards extends Component<PlanetCardsProps> {
     ];
   };
 
+  renderEraVisualizer = (planet: Planet): ReactElement => {
+    const { appearances } = planet;
+
+    const renderSegments = this.appearancesGroupedByEra(appearances).map(
+      (appearance, index) => {
+        const eraModifier = appearance.era.split(' ')[0].toLowerCase();
+
+        return (
+          <div
+            key={`appearance-${index}`}
+            className={`planet-card-era-visualizer-segment planet-card-era-visualizer-segment--${eraModifier}`}
+          />
+        );
+      }
+    );
+
+    return <div className="planet-card-era-visualizer">{renderSegments}</div>;
+  };
+
+  getBriefDescription = (description: string): string => {
+    const modifiedDescription = description.substring(0, 200);
+
+    return description.length > 200
+      ? modifiedDescription.concat('...')
+      : modifiedDescription;
+  };
+
   renderAppearances = (planet: Planet): ReactElement => {
     const { appearances } = planet;
 
@@ -84,25 +111,6 @@ class PlanetCards extends Component<PlanetCardsProps> {
     );
   };
 
-  renderEraVisualizer = (planet: Planet): ReactElement => {
-    const { appearances } = planet;
-
-    const renderSegments = this.appearancesGroupedByEra(appearances).map(
-      (appearance, index) => {
-        const eraModifier = appearance.era.split(' ')[0].toLowerCase();
-
-        return (
-          <div
-            key={`appearance-${index}`}
-            className={`planet-card-era-visualizer-segment planet-card-era-visualizer-segment--${eraModifier}`}
-          />
-        );
-      }
-    );
-
-    return <div className="planet-card-era-visualizer">{renderSegments}</div>;
-  };
-
   render() {
     const { planets } = this.props;
 
@@ -122,7 +130,9 @@ class PlanetCards extends Component<PlanetCardsProps> {
           <div key={`planet-${index}`} className="planet-card">
             {this.renderEraVisualizer(planet)}
             <h3 className="planet-card-name">{planet.name}</h3>
-            <p className="planet-card-description">{planet.description}</p>
+            <p className="planet-card-description">
+              {this.getBriefDescription(planet.description)}
+            </p>
             {this.renderAppearances(planet)}
           </div>
         ))}

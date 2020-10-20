@@ -63,7 +63,9 @@ function FilterBar({ register }: FilterBarProps) {
         ref={register}
       />
       <fieldset className="filter-form-fieldset">
-        <h2 className="filter-form-heading">Media:</h2>
+        <h2 className="filter-form-heading">
+          Media <em>(choose one)</em>
+        </h2>
         {renderInputs({
           type: 'radio',
           name: FILTER_KEY.MEDIA,
@@ -72,7 +74,7 @@ function FilterBar({ register }: FilterBarProps) {
         })}
       </fieldset>
       <fieldset className="filter-form-fieldset">
-        <h2 className="filter-form-heading">Era:</h2>
+        <h2 className="filter-form-heading">Era</h2>
         {renderInputs({
           type: 'checkbox',
           name: FILTER_KEY.ERA,
@@ -80,7 +82,7 @@ function FilterBar({ register }: FilterBarProps) {
         })}
       </fieldset>
       <fieldset className="filter-form-fieldset">
-        <h2 className="filter-form-heading">Canon:</h2>
+        <h2 className="filter-form-heading">Canon</h2>
         <div className="filter-form-input-wrapper">
           <input
             type="checkbox"
