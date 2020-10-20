@@ -6,6 +6,10 @@ I took the data from this Wikipedia page, translated it into JSON, and made filt
 
 I'll be working on adding search and sorting logic soon as well as filters based on each the title of each Film/TV Series.
 
+### View Live
+
+[https://bednar85.github.io/star-wars-planets/](https://bednar85.github.io/star-wars-planets/)
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
