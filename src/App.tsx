@@ -110,7 +110,7 @@ function App() {
 
   const methods = useForm({ defaultValues });
 
-  const watchAll: Filters = methods.watch();
+  const watchAll = methods.watch() as Filters;
   const filters: Filters = Object.keys(watchAll).length
     ? watchAll
     : defaultValues;
