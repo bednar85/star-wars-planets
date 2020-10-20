@@ -84,7 +84,7 @@ h6 {
     background-position: 0.625rem center;
     background-repeat: no-repeat;
     background-size: 10%;
-    border-radius: 1.875rem;
+    border-radius: 0.75rem;
     border: 1px solid #d8dde2;
     display: inline-block;
     font-size: 1rem;
@@ -110,6 +110,7 @@ h6 {
   }
 
   &-heading {
+    font-family: 'Outage', sans-serif;
     font-size: 1rem;
     margin-right: 0.625rem;
   }
