@@ -30,7 +30,8 @@ export const delayedMockFetch = (ms, value) => {
 };
 
 export const fetchData = async (setDataCallback, mockData) => {
-  const delay = getRandomIntInclusive(500, 1000);
+  // simulate a delay in loading of the data
+  const delay = getRandomIntInclusive(1000, 3000);
   const data = await delayedMockFetch(delay, mockData);
 
   setDataCallback(data);

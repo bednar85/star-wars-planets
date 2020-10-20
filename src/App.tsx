@@ -5,7 +5,7 @@ import { Appearance, Planet } from './models/ui';
 
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
-import PlanetCards from './components/PlanetCards/PlanetCards';
+import PlanetCards, { PlanetCardsProps } from './components/PlanetCards/PlanetCards';
 
 import planetsData from './planets.json';
 
@@ -104,7 +104,11 @@ function App() {
   const defaultValues: Filters = {
     searchQuery: '',
     media: 'All',
-    era: [],
+    era: [
+      'Prequel Trilogy',
+      'Original Trilogy',
+      'Sequel Trilogy',
+    ],
     myCanon: false
   };
 
@@ -122,13 +126,16 @@ function App() {
     fetchData(setData, planetsData);
   }, []);
 
-  const planets: Planet[] = data.length ? filteredPlanets(data, filters) : data;
+  const planetCardProps: PlanetCardsProps = {
+    planets: data.length ? filteredPlanets(data, filters) : data,
+    isLoaded: data.length > 0
+  };
 
   return (
     <div className="App">
       <Header />
       <FilterBar {...methods} />
-      <PlanetCards planets={planets} />
+      <PlanetCards {...planetCardProps} />
     </div>
   );
 }

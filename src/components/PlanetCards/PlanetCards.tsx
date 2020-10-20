@@ -1,8 +1,9 @@
 import React, { Component, Fragment, ReactElement } from 'react';
 import { Appearance, Planet } from '../../models/ui';
 
-interface PlanetCardsProps {
+export interface PlanetCardsProps {
   planets: Planet[];
+  isLoaded: boolean;
 }
 
 class PlanetCards extends Component<PlanetCardsProps> {
@@ -112,13 +113,15 @@ class PlanetCards extends Component<PlanetCardsProps> {
   };
 
   render() {
-    const { planets } = this.props;
+    const { planets, isLoaded } = this.props;
 
     if (!planets.length) {
+      const noDataMessage = isLoaded ? "Sorry, no planets match the filters you've selected.": 'Loading...';
+
       return (
         <div className="planet-cards planet-cards--no-data">
           <p className="planet-cards-no-data-message">
-            Sorry, no planets match the filters you've selected.
+            {noDataMessage}
           </p>
         </div>
       );
