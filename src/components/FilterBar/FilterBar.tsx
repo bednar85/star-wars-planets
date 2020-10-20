@@ -64,7 +64,7 @@ function FilterBar({ register }: FilterBarProps) {
       />
       <fieldset className="filter-form-fieldset">
         <h2 className="filter-form-heading">
-          Media <em>(choose one)</em>
+          Media
         </h2>
         {renderInputs({
           type: 'radio',
