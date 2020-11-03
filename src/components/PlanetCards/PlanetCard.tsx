@@ -1,7 +1,14 @@
 import React, { ReactElement } from 'react';
 import { Appearance, Planet } from '../../models/ui';
 
-const appearancesGroupedByEra = (
+
+interface AppearanceTally {
+  prequel: number;
+  original: number;
+  sequel: number;
+}
+
+const appearancesSortedByEra = (
   appearances: Appearance[],
   media?: string
 ): Appearance[] => {
@@ -29,20 +36,48 @@ const appearancesGroupedByEra = (
 };
 
 const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
-  const renderSegments = appearancesGroupedByEra(appearances).map(
-    (appearance, index) => {
-      const eraModifier = appearance.era.split(' ')[0].toLowerCase();
+  const totalAppearances = appearances.length;
 
-      return (
-        <div
-          key={`appearance-${index}`}
-          className={`planet-card-era-visualizer-segment planet-card-era-visualizer-segment--${eraModifier}`}
-        />
-      );
+  /**
+   * tally up all appearances by era
+   * on final item, convert tally to percents
+   */
+  const appearancesAsPercents = appearances.reduce((acc: AppearanceTally, appearance: Appearance, index: number): AppearanceTally => {
+    if (appearance.era === 'Prequel Trilogy') acc.prequel += 1;
+    if (appearance.era === 'Original Trilogy') acc.original += 1;
+    if (appearance.era === 'Sequel Trilogy') acc.sequel += 1;
+
+    // is last item
+    if (totalAppearances - 1 === index) {
+      return {
+        prequel: (acc.prequel / totalAppearances) * 100,
+        original: (acc.original / totalAppearances) * 100,
+        sequel: (acc.sequel / totalAppearances) * 100
+      };
     }
-  );
 
-  return <div className="planet-card-era-visualizer">{renderSegments}</div>;
+    return acc;
+  }, {
+    prequel: 0,
+    original: 0,
+    sequel: 0
+  });
+
+  // render out a segment per each percent, set each segments width equal to percent
+  const segments = Object.entries(appearancesAsPercents).map(([era, per]) => {
+    // if percent is 0, exclude segment
+    if (!per) return null;
+
+    return (
+      <div
+        key={era}
+        className={`planet-card-era-visualizer-segment planet-card-era-visualizer-segment--${era}`}
+        style={{width: `${per}%`}}
+      />
+    );
+  });
+
+  return (<div className="planet-card-era-visualizer">{segments}</div>);
 };
 
 const getBriefDescription = (description: string): string => {
@@ -54,8 +89,8 @@ const getBriefDescription = (description: string): string => {
 };
 
 const renderAppearances = (appearances: Appearance[]): ReactElement => {
-  const filmAppearances = appearancesGroupedByEra(appearances, 'Film');
-  const tvAppearances = appearancesGroupedByEra(
+  const filmAppearances = appearancesSortedByEra(appearances, 'Film');
+  const tvAppearances = appearancesSortedByEra(
     appearances,
     'TV Series'
   );
