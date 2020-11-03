@@ -1,19 +1,10 @@
-// import React, { useState, useEffect } from 'react';
-// import { useForm } from 'react-hook-form';
-// import { search, includesAny, fetchData } from './utils/index';
-// import { Appearance, Filters, Planet } from './models/ui';
-// import { ERA, MEDIA } from './constants';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Filters } from './models/ui';
 import { ERA, MEDIA } from './constants';
-
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
 import PlanetCards from './components/PlanetCards/PlanetCards';
-
-
-
 
 function App() {
   // SETUP FILTERS AND FORM
