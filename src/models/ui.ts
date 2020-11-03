@@ -6,6 +6,7 @@ export interface Appearance {
 }
 
 export interface Planet {
+  id: number;
   name: string;
   appearances: Appearance[];
   description: string;
