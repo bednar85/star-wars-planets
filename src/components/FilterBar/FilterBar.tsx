@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { ERA, FILTER_KEY, MEDIA } from '../../constants';
+import { toKebabCase } from '../../utils';
 
 interface Input {
   type: string;
@@ -23,11 +24,7 @@ function FilterBar({ register }: FilterBarProps) {
     return labels.map((label: string, index: number) => {
       const isCheckedByDefault: boolean =
         defaultChecked !== undefined ? defaultChecked === index : false;
-      const labelKebabCased: string = label
-        .toLowerCase()
-        .replace(/[^a-zA-Z']/gi, ' ')
-        .trim()
-        .replace(/\s+/g, '-');
+      const formFieldId: string = toKebabCase(label);
 
       return (
         <div
@@ -37,7 +34,7 @@ function FilterBar({ register }: FilterBarProps) {
           <input
             type={type}
             className="filter-form-input"
-            id={`${name}-${labelKebabCased}`}
+            id={`${name}-${formFieldId}`}
             name={name}
             value={label}
             defaultChecked={isCheckedByDefault}
@@ -45,7 +42,7 @@ function FilterBar({ register }: FilterBarProps) {
           />
           <label
             className="filter-form-label"
-            htmlFor={`${name}-${labelKebabCased}`}
+            htmlFor={`${name}-${formFieldId}`}
           >
             {label}
           </label>

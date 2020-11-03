@@ -36,3 +36,10 @@ export const fetchData = async (setDataCallback, mockData) => {
 
   setDataCallback(data);
 };
+
+export const toKebabCase = string =>
+  string
+    .toLowerCase()
+    .replace(/[^a-zA-Z']/gi, ' ')
+    .trim()
+    .replace(/\s+/g, '-');
