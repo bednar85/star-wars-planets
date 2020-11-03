@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
-import { FILTER_KEY } from '../../constants';
+import { ERA, FILTER_KEY, MEDIA } from '../../constants';
 
 interface Input {
   type: string;
@@ -69,7 +69,7 @@ function FilterBar({ register }: FilterBarProps) {
         {renderInputs({
           type: 'radio',
           name: FILTER_KEY.MEDIA,
-          labels: ['All', 'Film', 'Film (Episodes Only)', 'TV Series'],
+          labels: [...Object.values(MEDIA)],
           defaultChecked: 0
         })}
       </fieldset>
@@ -78,7 +78,7 @@ function FilterBar({ register }: FilterBarProps) {
         {renderInputs({
           type: 'checkbox',
           name: FILTER_KEY.ERA,
-          labels: ['Prequel Trilogy', 'Original Trilogy', 'Sequel Trilogy']
+          labels: [...Object.values(ERA)]
         })}
       </fieldset>
       <fieldset className="filter-form-fieldset">

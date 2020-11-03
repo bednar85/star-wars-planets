@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { search, includesAny, fetchData } from './utils/index';
 import { Appearance, Planet } from './models/ui';
+import { ERA, MEDIA } from './constants';
 
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
@@ -63,7 +64,7 @@ const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
 };
 
 const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
-  if (filters.media === 'All') return planets;
+  if (filters.media === MEDIA.ALL) return planets;
 
   return planets.filter((planet: Planet) => {
     const { appearances } = planet;
@@ -79,8 +80,8 @@ const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
      * if "Film (Episodes Only)" was selected
      * also verify that at least 1 title from that planet's appearances starts with the word "Episode"
      */
-    return filters.media === 'Film (Episodes Only)'
-      ? mediaPlanetAppearedIn.includes('Film') &&
+    return filters.media === MEDIA.EPISODES
+      ? mediaPlanetAppearedIn.includes(MEDIA.FILM) &&
           titlesPlanetAppearedIn.some(title => title.startsWith('Episode'))
       : mediaPlanetAppearedIn.includes(filters.media);
   });
@@ -115,11 +116,9 @@ function App() {
   // SETUP FILTERS AND FORM
   const defaultValues: Filters = {
     searchQuery: '',
-    media: 'All',
+    media: MEDIA.ALL,
     era: [
-      'Prequel Trilogy',
-      'Original Trilogy',
-      'Sequel Trilogy',
+      ...Object.values(ERA)
     ],
     myCanon: false
   };

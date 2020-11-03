@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Appearance, Planet } from '../../models/ui';
-
+import { ERA, MEDIA } from '../../constants';
 
 interface AppearanceTally {
   prequel: number;
@@ -17,15 +17,15 @@ const appearancesSortedByEra = (
     : appearances;
 
   const prequelAppearances = appearancesByMedia.filter(
-    appearance => appearance.era === 'Prequel Trilogy'
+    appearance => appearance.era === ERA.PREQUEL
   );
 
   const originalAppearances = appearancesByMedia.filter(
-    appearance => appearance.era === 'Original Trilogy'
+    appearance => appearance.era === ERA.ORIGINAL
   );
 
   const sequelAppearances = appearancesByMedia.filter(
-    appearance => appearance.era === 'Sequel Trilogy'
+    appearance => appearance.era === ERA.SEQUEL
   );
 
   return [
@@ -43,9 +43,9 @@ const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
    * on final item, convert tally to percents
    */
   const appearancesAsPercents = appearances.reduce((acc: AppearanceTally, appearance: Appearance, index: number): AppearanceTally => {
-    if (appearance.era === 'Prequel Trilogy') acc.prequel += 1;
-    if (appearance.era === 'Original Trilogy') acc.original += 1;
-    if (appearance.era === 'Sequel Trilogy') acc.sequel += 1;
+    if (appearance.era === ERA.PREQUEL) acc.prequel += 1;
+    if (appearance.era === ERA.ORIGINAL) acc.original += 1;
+    if (appearance.era === ERA.SEQUEL) acc.sequel += 1;
 
     // is last item
     if (totalAppearances - 1 === index) {
@@ -89,10 +89,10 @@ const getBriefDescription = (description: string): string => {
 };
 
 const renderAppearances = (appearances: Appearance[]): ReactElement => {
-  const filmAppearances = appearancesSortedByEra(appearances, 'Film');
+  const filmAppearances = appearancesSortedByEra(appearances, MEDIA.FILM);
   const tvAppearances = appearancesSortedByEra(
     appearances,
-    'TV Series'
+    MEDIA.TV
   );
 
   const renderEntries = (appearances: Appearance[]): ReactElement[] =>
@@ -101,7 +101,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
 
       const eraModifier = era.split(' ')[0].toLowerCase();
       const updatedTitle =
-        title.includes('Clone Wars') && media === 'TV Series'
+        title.includes('Clone Wars') && media === MEDIA.TV
           ? `${title} (${year})`
           : title;
 

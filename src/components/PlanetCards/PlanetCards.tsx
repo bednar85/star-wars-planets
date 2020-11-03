@@ -7,7 +7,6 @@ export interface PlanetCardsProps {
   isLoaded: boolean;
 }
 
-
 function PlanetCards(props: PlanetCardsProps) {
   const { planets, isLoaded } = props;
 
