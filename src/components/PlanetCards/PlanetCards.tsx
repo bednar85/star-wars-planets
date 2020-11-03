@@ -11,7 +11,7 @@ function PlanetCards(props: PlanetCardsProps) {
   const { planets, isLoaded } = props;
 
   if (!planets.length) {
-    const noDataMessage = isLoaded ? "Sorry, no planets match the filters you've selected.": 'Loading...';
+    const noDataMessage = isLoaded ? "Sorry, no planets match the filters you've selected.": "Loading...";
 
     return (
       <div className="planet-cards planet-cards--no-data">
