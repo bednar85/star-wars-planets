@@ -16,6 +16,7 @@ interface Filters {
   myCanon: boolean;
 }
 
+// if an appearance object includes the title
 const filterOutNonCanonAppearances = (
   appearances: Appearance[]
 ): Appearance[] =>
@@ -44,6 +45,12 @@ const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
       planet.appearances
     );
 
+    /**
+     * after filtering out non-canon appearances, if there are any left
+     * add that planet to the array of new planets
+     * and update that planet's appearances with the filtered appearances
+     * else skip/exclude the current planet from the array of new planets
+     */
     if (modifiedAppearances.length) {
       acc.push({
         ...planet,
@@ -68,6 +75,10 @@ const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
       ({ title }: Appearance) => title
     );
 
+    /**
+     * if "Film (Episodes Only)" was selected
+     * also verify that at least 1 title from that planet's appearances starts with the word "Episode"
+     */
     return filters.media === 'Film (Episodes Only)'
       ? mediaPlanetAppearedIn.includes('Film') &&
           titlesPlanetAppearedIn.some(title => title.startsWith('Episode'))
@@ -87,6 +98,7 @@ const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
   });
 };
 
+// iteratively filter all of the planets based on the filters applied
 const filteredPlanets = (planets: Planet[], filters: Filters): Planet[] =>
   [
     filterBySearchQuery, //
