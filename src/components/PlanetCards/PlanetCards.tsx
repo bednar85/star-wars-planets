@@ -3,7 +3,7 @@ import { fetchData, includesAny, search } from '../../utils';
 import { Appearance, Filters, Planet } from '../../models/ui';
 import { MEDIA } from '../../constants';
 import PlanetCard from './PlanetCard';
-import mockData from '../../planets.json';
+import mockData from '../../mockData/planets.json';
 
 export interface PlanetCardsProps {
   filters: Filters;
