@@ -15,9 +15,10 @@ interface FilterBarProps {
 }
 
 const getDisplayLabel = (label: string) => {
-  if (label === MEDIA.ALL) return `${MEDIA.ALL} – 🎥 🍿 📺`;
+  if (label === MEDIA.ALL) return `${MEDIA.ALL} – 🎥 📺`;
   if (label === MEDIA.FILM) return `${MEDIA.FILM} – 🎥`;
-  if (label === MEDIA.EPISODES) return `${MEDIA.EPISODES} – 🍿`;
+  if (label === MEDIA.EPISODES) return `${MEDIA.EPISODES}`;
+  if (label === MEDIA.SPINOFFS) return `${MEDIA.SPINOFFS}`;
   if (label === MEDIA.TV) return `${MEDIA.TV} – 📺`;
 
   return label;
@@ -32,11 +33,12 @@ function FilterBar({ register }: FilterBarProps) {
   }: Input): ReactElement[] => labels.map((label: string, index: number) => {
       const formFieldId: string = toKebabCase(label);
       const displayLabel = getDisplayLabel(label)
+      const subsetClass = (label === MEDIA.EPISODES || label === MEDIA.SPINOFFS) ? 'filter-form__input-wrapper--subset' : '';
 
       return (
         <div
           key={`filter-form__input-${index}`}
-          className="filter-form__input-wrapper"
+          className={`filter-form__input-wrapper ${subsetClass}`}
         >
           <input
             type={type}

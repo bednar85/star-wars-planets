@@ -7,12 +7,13 @@ export const FILTER_KEY = {
 export const MEDIA = {
   ALL: 'All',
   FILM: 'Film',
-  EPISODES: 'Film (Episodes Only)',
+  EPISODES: 'Episodes',
+  SPINOFFS: 'Spinoffs',
   TV: 'TV Series'
 };
 
 export const ERA = {
-  PREQUEL: 'Prequel Trilogy',
-  ORIGINAL: 'Original Trilogy',
-  SEQUEL: 'Sequel Trilogy'
+  PREQUEL: 'Prequel',
+  ORIGINAL: 'Original',
+  SEQUEL: 'Sequel'
 };

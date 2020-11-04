@@ -117,6 +117,10 @@ h6 {
   &__input-wrapper {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
+
+    &--subset {
+      padding-left: 3rem;
+    }
   }
 
   &__input {
@@ -144,15 +148,15 @@ h6 {
         width: 0.75rem;
       }
 
-      &[for='era-prequel-trilogy']:before {
+      &[for='era-prequel']:before {
         background-color: $prequelColor;
       }
 
-      &[for='era-original-trilogy']:before {
+      &[for='era-original']:before {
         background-color: $originalColor;
       }
 
-      &[for='era-sequel-trilogy']:before {
+      &[for='era-sequel']:before {
         background-color: $sequelColor;
       }
     }

@@ -95,7 +95,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
     MEDIA.TV
   );
 
-  const renderEntries = (appearances: Appearance[]): ReactElement[] =>
+  const renderAppearance = (appearances: Appearance[]): ReactElement[] =>
     appearances.map((appearance: Appearance, index: number) => {
       const { title, year, media, era } = appearance;
 
@@ -121,7 +121,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
         <>
           <h4 className="planet-card__appearances__heading">Film <span role="img" aria-label="film">🎥</span></h4>
           <ul className="planet-card__appearances__list">
-            {renderEntries(filmAppearances)}
+            {renderAppearance(filmAppearances)}
           </ul>
         </>
       ) : null}
@@ -129,7 +129,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
         <>
           <h4 className="planet-card__appearances__heading">TV <span role="img" aria-label="tv">📺</span></h4>
           <ul className="planet-card__appearances__list">
-            {renderEntries(tvAppearances)}
+            {renderAppearance(tvAppearances)}
           </ul>
         </>
       ) : null}

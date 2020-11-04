@@ -24,7 +24,10 @@ const filterAppearancesByCanon = (
 
 const filterAppearancesByMedia = (appearances: Appearance[], media: string): Appearance[] => appearances.filter(appearance => {
     if (media === MEDIA.EPISODES) {
-      return appearance.media === MEDIA.FILM && appearance.title.startsWith('Episode')
+      return appearance.media === MEDIA.FILM && appearance.title.includes('Episode')
+    }
+    if (media === MEDIA.SPINOFFS) {
+      return appearance.media === MEDIA.FILM && !appearance.title.includes('Episode')
     }
     
     return appearance.media === media;
