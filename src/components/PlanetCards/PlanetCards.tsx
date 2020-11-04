@@ -9,7 +9,6 @@ export interface PlanetCardsProps {
   filters: Filters;
 }
 
-// if an appearance object includes the title
 const filterAppearancesByCanon = (
   appearances: Appearance[]
 ): Appearance[] =>
