@@ -1,11 +1,13 @@
+export const unique = array => Array.from(new Set(array));
+
 /**
- * Search to see if any of the items of array are in the haystack array.
+ * Search to see if any of the items of array1 are in array2.
  *
  * @param {array} needles - the array which has the items you are searching for
  * @param {array} haystack - the array that you are searching in
- * @return {boolean} true any of the items in arr are in the haystack
+ * @return {boolean} true any of the items in array are in the haystack
  */
-export const includesAny = (needles, haystack) =>
+export const overlap = (needles, haystack) =>
   needles.some(needle => haystack.includes(needle));
 
 /**
