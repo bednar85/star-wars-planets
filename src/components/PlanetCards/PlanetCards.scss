@@ -1,0 +1,14 @@
+@import '../../styles/variables.scss';
+
+.planet-cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+
+  &--no-data {
+    color: $darkGray;
+    display: block;
+    font-family: 'Outage', sans-serif;
+    text-align: center;
+  }
+}

@@ -5,6 +5,7 @@ import { ERA, MEDIA } from './constants';
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
 import PlanetCards from './components/PlanetCards/PlanetCards';
+import './App.scss';
 
 function App() {
   // SETUP FILTERS AND FORM

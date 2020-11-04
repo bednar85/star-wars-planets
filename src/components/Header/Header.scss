@@ -1,0 +1,27 @@
+.header {
+  background-image: url('../../assets/imgs/rostyslav-zagornov-92gooayayc4.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 25rem;
+  padding: 1.25rem;
+  position: relative;
+  text-align: center;
+
+  .app-logo {
+    width: 12.5rem;
+  }
+
+  .image-attribution {
+    bottom: 1.25rem;
+    color: #fe5a6d;
+    font-size: 0.625rem;
+    font-style: italic;
+    position: absolute;
+    right: 1.25rem;
+
+    a {
+      color: #fe5a6d;
+    }
+  }
+}

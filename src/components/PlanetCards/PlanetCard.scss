@@ -1,0 +1,101 @@
+@import '../../styles/variables.scss';
+
+.planet-card {
+  align-self: flex-start;
+  background-color: white;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  flex-basis: calc(94% / 3);
+  margin: 0 3% 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+
+  &:nth-child(1n) {
+    margin-left: 0;
+  }
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  &__name {
+    font-family: 'Outage', sans-serif;
+  }
+
+  &__description {
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__appearances {
+    font-size: 0.75rem;
+
+    &__heading {
+      margin-bottom: 0.75rem;
+    }
+
+    &__list {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__list-item {
+      list-style: none;
+      margin-bottom: 0.75rem;
+
+      &--prequel,
+      &--original,
+      &--sequel {
+        position: relative;
+
+        &:before {
+          border-radius: 0.5rem;
+          content: '';
+          display: block;
+          height: 0.75rem;
+          left: -1.25rem;
+          position: absolute;
+          top: 0.15rem;
+          width: 0.75rem;
+        }
+      }
+
+      &--prequel:before {
+        background-color: $prequelColor;
+      }
+      &--original:before {
+        background-color: $originalColor;
+      }
+      &--sequel:before {
+        background-color: $sequelColor;
+      }
+    }
+  }
+
+  &__era-visualizer {
+    display: flex;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &__segment {
+      flex-grow: 1;
+      height: 0.75rem;
+
+      &--prequel {
+        background-color: $prequelColor;
+      }
+      &--original {
+        background-color: $originalColor;
+      }
+      &--sequel {
+        background-color: $sequelColor;
+      }
+    }
+  }
+}

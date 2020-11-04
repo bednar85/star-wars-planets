@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Appearance, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
+import './PlanetCard.scss';
 
 interface AppearanceTally {
   prequel: number;

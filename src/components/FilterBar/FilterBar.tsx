@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { ERA, FILTER_KEY, MEDIA } from '../../constants';
 import { toKebabCase } from '../../utils';
+import './FilterBar.scss';
 
 interface Input {
   type: string;
@@ -33,23 +34,23 @@ function FilterBar({ register }: FilterBarProps) {
   }: Input): ReactElement[] => labels.map((label: string, index: number) => {
       const formFieldId: string = toKebabCase(label);
       const displayLabel = getDisplayLabel(label)
-      const subsetClass = (label === MEDIA.EPISODES || label === MEDIA.SPINOFFS) ? 'filter-form__input-wrapper--subset' : '';
+      const subsetClass = (label === MEDIA.EPISODES || label === MEDIA.SPINOFFS) ? 'filter-bar__input-wrapper--subset' : '';
 
       return (
         <div
-          key={`filter-form__input-${index}`}
-          className={`filter-form__input-wrapper ${subsetClass}`}
+          key={`filter-bar__input-${index}`}
+          className={`filter-bar__input-wrapper ${subsetClass}`}
         >
           <input
             type={type}
-            className="filter-form__input"
+            className="filter-bar__input"
             id={`${name}-${formFieldId}`}
             name={name}
             value={label}
             ref={register}
           />
           <label
-            className="filter-form__label"
+            className="filter-bar__label"
             htmlFor={`${name}-${formFieldId}`}
           >
             {displayLabel}
@@ -59,15 +60,15 @@ function FilterBar({ register }: FilterBarProps) {
     });
 
   return (
-    <form className="filter-form">
+    <form className="filter-bar">
       <input
         type="text"
         name="searchQuery"
         className="search-form-input"
         ref={register}
       />
-      <fieldset className="filter-form__fieldset">
-        <h2 className="filter-form__heading">
+      <fieldset className="filter-bar__fieldset">
+        <h2 className="filter-bar__heading">
           Media
         </h2>
         {renderInputs({
@@ -76,25 +77,25 @@ function FilterBar({ register }: FilterBarProps) {
           labels: [...Object.values(MEDIA)]
         })}
       </fieldset>
-      <fieldset className="filter-form__fieldset">
-        <h2 className="filter-form__heading">Era</h2>
+      <fieldset className="filter-bar__fieldset">
+        <h2 className="filter-bar__heading">Era</h2>
         {renderInputs({
           type: 'checkbox',
           name: FILTER_KEY.ERA,
           labels: [...Object.values(ERA)]
         })}
       </fieldset>
-      <fieldset className="filter-form__fieldset">
-        <h2 className="filter-form__heading">Canon</h2>
-        <div className="filter-form__input-wrapper">
+      <fieldset className="filter-bar__fieldset">
+        <h2 className="filter-bar__heading">Canon</h2>
+        <div className="filter-bar__input-wrapper">
           <input
             type="checkbox"
-            className="filter-form__input"
+            className="filter-bar__input"
             id={FILTER_KEY.MY_CANON}
             name={FILTER_KEY.MY_CANON}
             ref={register}
           />
-          <label className="filter-form__label" htmlFor={FILTER_KEY.MY_CANON}>
+          <label className="filter-bar__label" htmlFor={FILTER_KEY.MY_CANON}>
             My Canon
           </label>
         </div>
