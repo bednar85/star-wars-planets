@@ -79,22 +79,28 @@ const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
 const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
   if (filters.media === MEDIA.ALL) return planets;
 
-  // if some eras but not all eras are selected, crossReference by those eras
-  const crossReferenceByEras = filters.era.length > 0 && filters.era.length < Object.values(ERA).length;
+  // if some eras but not all eras are selected, crossReference by selected eras
+  const crossReferenceByEras = filters.era.length && filters.era.length < Object.values(ERA).length;
 
   return planets.reduce((acc: Planet[], planet: Planet) => {
     const filteredAppearances = filterAppearancesByMedia(planet.appearances, filters.media);
-    const eras = unique(filteredAppearances.map(({ era }) => era));
-    const erasOverlapFilters = overlap(eras, filters.era);
+    
+    // if cross referencing
+    if (crossReferenceByEras) {
+      const eras = unique(filteredAppearances.map(({ era }) => era));
+      const erasOverlapFilters = overlap(eras, filters.era);
 
-    // if crossReferencing AND planet has appearances that match selected media AND eras overlap selected eras
-    // OR
-    // if not crossReferencing AND planet has appearances that match selected media
-    if (
-      (crossReferenceByEras && filteredAppearances.length && erasOverlapFilters) ||
-      (!crossReferenceByEras && filteredAppearances.length)
-    ) {
-      acc.push(planet);
+      // AND planet has appearances that match selected media AND eras overlap selected eras
+      if (filteredAppearances.length && erasOverlapFilters) {
+        acc.push(planet);
+      }
+    }
+    // if NOT cross referencing 
+    else {
+      // AND planet has appearances that match selected media
+      if (filteredAppearances.length) {
+        acc.push(planet);
+      }
     }
 
     return acc;
