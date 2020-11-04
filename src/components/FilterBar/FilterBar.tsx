@@ -31,7 +31,6 @@ function FilterBar({ register }: FilterBarProps) {
     defaultChecked
   }: Input): ReactElement[] => labels.map((label: string, index: number) => {
       const formFieldId: string = toKebabCase(label);
-      
       const displayLabel = getDisplayLabel(label)
 
       return (
