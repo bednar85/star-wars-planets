@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData, includesAny, search } from '../../utils';
+import { fetchData, overlap, search, unique } from '../../utils';
 import { Appearance, Filters, Planet } from '../../models/ui';
-import { MEDIA } from '../../constants';
+import { ERA, MEDIA } from '../../constants';
 import PlanetCard from './PlanetCard';
 import mockData from '../../mockData/planets.json';
 
@@ -10,7 +10,7 @@ export interface PlanetCardsProps {
 }
 
 // if an appearance object includes the title
-const filterOutNonCanonAppearances = (
+const filterAppearancesByCanon = (
   appearances: Appearance[]
 ): Appearance[] =>
   appearances.filter(
@@ -21,6 +21,14 @@ const filterOutNonCanonAppearances = (
       !title.startsWith('Episode VIII') &&
       !title.startsWith('Episode IX')
   );
+
+const filterAppearancesByMedia = (appearances: Appearance[], media: string): Appearance[] => appearances.filter(appearance => {
+    if (media === MEDIA.EPISODES) {
+      return appearance.media === MEDIA.FILM && appearance.title.startsWith('Episode')
+    }
+    
+    return appearance.media === media;
+  });
 
 const filterBySearchQuery = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.searchQuery.length) return planets;
@@ -34,7 +42,7 @@ const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
   if (!filters.myCanon) return planets;
 
   return planets.reduce((acc: Planet[], planet: Planet) => {
-    const modifiedAppearances: Appearance[] = filterOutNonCanonAppearances(
+    const modifiedAppearances: Appearance[] = filterAppearancesByCanon(
       planet.appearances
     );
 
@@ -55,49 +63,51 @@ const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
   }, []);
 };
 
-const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
-  if (filters.media === MEDIA.ALL) return planets;
+const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
+  if (!filters.era.length || filters.era.length === Object.values(ERA).length) return planets;
 
   return planets.filter((planet: Planet) => {
-    const { appearances } = planet;
-
-    const mediaPlanetAppearedIn: string[] = appearances.map(
-      ({ media }: Appearance) => media
-    );
-    const titlesPlanetAppearedIn: string[] = appearances.map(
-      ({ title }: Appearance) => title
-    );
-
-    /**
-     * if "Film (Episodes Only)" was selected
-     * also verify that at least 1 title from that planet's appearances starts with the word "Episode"
-     */
-    return filters.media === MEDIA.EPISODES
-      ? mediaPlanetAppearedIn.includes(MEDIA.FILM) &&
-          titlesPlanetAppearedIn.some(title => title.startsWith('Episode'))
-      : mediaPlanetAppearedIn.includes(filters.media);
-  });
-};
-
-const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
-  if (!filters.era.length) return planets;
-
-  return planets.filter(({ appearances }: Planet) => {
-    const erasPlanetAppearedIn: string[] = appearances.map(
+    const eras: string[] = planet.appearances.map(
       ({ era }: Appearance) => era
     );
 
-    return includesAny(filters.era, erasPlanetAppearedIn);
+    // return overlap(filters.era, eras);
+    return overlap(eras, filters.era);
   });
+};
+
+const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
+  if (filters.media === MEDIA.ALL) return planets;
+
+  // if some eras but not all eras are selected, crossReference by those eras
+  const crossReferenceByEras = filters.era.length > 0 && filters.era.length < Object.values(ERA).length;
+
+  return planets.reduce((acc: Planet[], planet: Planet) => {
+    const filteredAppearances = filterAppearancesByMedia(planet.appearances, filters.media);
+    const eras = unique(filteredAppearances.map(({ era }) => era));
+    const erasOverlapFilters = overlap(eras, filters.era);
+
+    // if crossReferencing AND planet has appearances that match selected media AND eras overlap selected eras
+    // OR
+    // if not crossReferencing AND planet has appearances that match selected media
+    if (
+      (crossReferenceByEras && filteredAppearances.length && erasOverlapFilters) ||
+      (!crossReferenceByEras && filteredAppearances.length)
+    ) {
+      acc.push(planet);
+    }
+
+    return acc;
+  }, []);
 };
 
 // iteratively filter all of the planets based on the filters applied
 const getFilteredPlanets = (planets: Planet[], filters: Filters): Planet[] =>
   [
-    filterBySearchQuery, //
+    filterBySearchQuery,
     filterByMyCanon,
-    filterByMedia,
-    filterByEra
+    filterByEra,
+    filterByMedia
   ].reduce(
     (newPlanetsArray: Planet[], currentFilterFunction: Function) =>
       currentFilterFunction(newPlanetsArray, filters),
