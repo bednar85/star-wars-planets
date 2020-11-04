@@ -71,13 +71,13 @@ const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
     return (
       <div
         key={era}
-        className={`planet-card-era-visualizer-segment planet-card-era-visualizer-segment--${era}`}
+        className={`planet-card__era-visualizer__segment planet-card__era-visualizer__segment--${era}`}
         style={{width: `${per}%`}}
       />
     );
   });
 
-  return (<div className="planet-card-era-visualizer">{segments}</div>);
+  return (<div className="planet-card__era-visualizer">{segments}</div>);
 };
 
 const getBriefDescription = (description: string): string => {
@@ -108,7 +108,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
       return (
         <li
           key={`appearance-${index}`}
-          className={`planet-card-appearances-list-item planet-card-appearances-list-item--${eraModifier}`}
+          className={`planet-card__appearances__list-item planet-card__appearances__list-item--${eraModifier}`}
         >
           {updatedTitle}
         </li>
@@ -116,19 +116,19 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
     });
 
   return (
-    <div className="planet-card-appearances">
+    <div className="planet-card__appearances">
       {filmAppearances.length ? (
         <>
-          <h4 className="planet-card-appearances-heading">Film</h4>
-          <ul className="planet-card-appearances-list">
+          <h4 className="planet-card__appearances__heading">Film</h4>
+          <ul className="planet-card__appearances__list">
             {renderEntries(filmAppearances)}
           </ul>
         </>
       ) : null}
       {tvAppearances.length ? (
         <>
-          <h4 className="planet-card-appearances-heading">TV</h4>
-          <ul className="planet-card-appearances-list">
+          <h4 className="planet-card__appearances__heading">TV</h4>
+          <ul className="planet-card__appearances__list">
             {renderEntries(tvAppearances)}
           </ul>
         </>
@@ -143,8 +143,8 @@ function PlanetCard(props: Planet) {
   return (
     <div className="planet-card">
       {renderEraVisualizer(appearances)}
-      <h3 className="planet-card-name">{name}</h3>
-      <p className="planet-card-description">
+      <h3 className="planet-card__name">{name}</h3>
+      <p className="planet-card__description">
         {getBriefDescription(description)}
       </p>
       {renderAppearances(appearances)}

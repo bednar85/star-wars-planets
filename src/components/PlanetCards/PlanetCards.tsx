@@ -139,7 +139,7 @@ function PlanetCards(props: PlanetCardsProps) {
 
     return (
       <div className="planet-cards planet-cards--no-data">
-        <p className="planet-cards-no-data-message">
+        <p className="planet-cards__message">
           {noDataMessage}
         </p>
       </div>

@@ -28,12 +28,12 @@ function FilterBar({ register }: FilterBarProps) {
 
       return (
         <div
-          key={`filter-form-input-${index}`}
-          className="filter-form-input-wrapper"
+          key={`filter-form__input-${index}`}
+          className="filter-form__input-wrapper"
         >
           <input
             type={type}
-            className="filter-form-input"
+            className="filter-form__input"
             id={`${name}-${formFieldId}`}
             name={name}
             value={label}
@@ -41,7 +41,7 @@ function FilterBar({ register }: FilterBarProps) {
             ref={register}
           />
           <label
-            className="filter-form-label"
+            className="filter-form__label"
             htmlFor={`${name}-${formFieldId}`}
           >
             {label}
@@ -59,8 +59,8 @@ function FilterBar({ register }: FilterBarProps) {
         className="search-form-input"
         ref={register}
       />
-      <fieldset className="filter-form-fieldset">
-        <h2 className="filter-form-heading">
+      <fieldset className="filter-form__fieldset">
+        <h2 className="filter-form__heading">
           Media
         </h2>
         {renderInputs({
@@ -70,25 +70,25 @@ function FilterBar({ register }: FilterBarProps) {
           defaultChecked: 0
         })}
       </fieldset>
-      <fieldset className="filter-form-fieldset">
-        <h2 className="filter-form-heading">Era</h2>
+      <fieldset className="filter-form__fieldset">
+        <h2 className="filter-form__heading">Era</h2>
         {renderInputs({
           type: 'checkbox',
           name: FILTER_KEY.ERA,
           labels: [...Object.values(ERA)]
         })}
       </fieldset>
-      <fieldset className="filter-form-fieldset">
-        <h2 className="filter-form-heading">Canon</h2>
-        <div className="filter-form-input-wrapper">
+      <fieldset className="filter-form__fieldset">
+        <h2 className="filter-form__heading">Canon</h2>
+        <div className="filter-form__input-wrapper">
           <input
             type="checkbox"
-            className="filter-form-input"
+            className="filter-form__input"
             id={FILTER_KEY.MY_CANON}
             name={FILTER_KEY.MY_CANON}
             ref={register}
           />
-          <label className="filter-form-label" htmlFor={FILTER_KEY.MY_CANON}>
+          <label className="filter-form__label" htmlFor={FILTER_KEY.MY_CANON}>
             My Canon
           </label>
         </div>

@@ -97,7 +97,7 @@ h6 {
     max-width: 15rem;
   }
 
-  &-fieldset {
+  &__fieldset {
     border: none;
     flex-grow: 1;
     margin: 0;
@@ -105,7 +105,7 @@ h6 {
     padding: 0;
   }
 
-  &-heading {
+  &__heading {
     border-bottom: 2px solid $lightGray;
     font-family: 'Outage', sans-serif;
     font-size: 1rem;
@@ -113,21 +113,21 @@ h6 {
     padding-bottom: 0.5rem;
   }
 
-  &-input-wrapper {
+  &__input-wrapper {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
   }
 
-  &-input {
+  &__input {
     display: none;
   }
 
-  &-label {
+  &__label {
     color: $lightGray;
     cursor: pointer;
     font-size: 1rem;
 
-    .filter-form-input:checked + & {
+    .filter-form__input:checked + & {
       color: $darkGray;
       position: relative;
 
@@ -189,20 +189,20 @@ h6 {
     margin-right: 0;
   }
 
-  &-name {
+  &__name {
     font-family: 'Outage', sans-serif;
   }
 
-  &-appearances {
-    &-heading {
+  &__appearances {
+    &__heading {
       margin-bottom: 0.75rem;
     }
 
-    &-list {
+    &__list {
       padding-left: 1.5rem;
     }
 
-    &-list-item {
+    &__list-item {
       list-style: none;
       margin-bottom: 0.75rem;
 
@@ -235,14 +235,14 @@ h6 {
     }
   }
 
-  &-era-visualizer {
+  &__era-visualizer {
     display: flex;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
 
-    &-segment {
+    &__segment {
       flex-grow: 1;
       height: 0.75rem;
 

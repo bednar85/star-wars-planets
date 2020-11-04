@@ -26,7 +26,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="star-wars-planets-app">
       <Header />
       <FilterBar {...methods} />
       <PlanetCards filters={filters} />
