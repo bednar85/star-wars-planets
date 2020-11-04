@@ -14,17 +14,25 @@ interface FilterBarProps {
   register: ReturnType<typeof useForm>['register'];
 }
 
+const getDisplayLabel = (label: string) => {
+  if (label === MEDIA.ALL) return `${MEDIA.ALL} – 🎥 🍿 📺`;
+  if (label === MEDIA.FILM) return `${MEDIA.FILM} – 🎥`;
+  if (label === MEDIA.EPISODES) return `${MEDIA.EPISODES} – 🍿`;
+  if (label === MEDIA.TV) return `${MEDIA.TV} – 📺`;
+
+  return label;
+}
+
 function FilterBar({ register }: FilterBarProps) {
   const renderInputs = ({
     type,
     name,
     labels,
     defaultChecked
-  }: Input): ReactElement[] => {
-    return labels.map((label: string, index: number) => {
-      const isCheckedByDefault: boolean =
-        defaultChecked !== undefined ? defaultChecked === index : false;
+  }: Input): ReactElement[] => labels.map((label: string, index: number) => {
       const formFieldId: string = toKebabCase(label);
+      
+      const displayLabel = getDisplayLabel(label)
 
       return (
         <div
@@ -37,19 +45,17 @@ function FilterBar({ register }: FilterBarProps) {
             id={`${name}-${formFieldId}`}
             name={name}
             value={label}
-            defaultChecked={isCheckedByDefault}
             ref={register}
           />
           <label
             className="filter-form__label"
             htmlFor={`${name}-${formFieldId}`}
           >
-            {label}
+            {displayLabel}
           </label>
         </div>
       );
     });
-  };
 
   return (
     <form className="filter-form">
@@ -66,8 +72,7 @@ function FilterBar({ register }: FilterBarProps) {
         {renderInputs({
           type: 'radio',
           name: FILTER_KEY.MEDIA,
-          labels: [...Object.values(MEDIA)],
-          defaultChecked: 0
+          labels: [...Object.values(MEDIA)]
         })}
       </fieldset>
       <fieldset className="filter-form__fieldset">

@@ -119,7 +119,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
     <div className="planet-card__appearances">
       {filmAppearances.length ? (
         <>
-          <h4 className="planet-card__appearances__heading">Film</h4>
+          <h4 className="planet-card__appearances__heading">Film <span role="img" aria-label="film">🎥</span></h4>
           <ul className="planet-card__appearances__list">
             {renderEntries(filmAppearances)}
           </ul>
@@ -127,7 +127,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
       ) : null}
       {tvAppearances.length ? (
         <>
-          <h4 className="planet-card__appearances__heading">TV</h4>
+          <h4 className="planet-card__appearances__heading">TV <span role="img" aria-label="tv">📺</span></h4>
           <ul className="planet-card__appearances__list">
             {renderEntries(tvAppearances)}
           </ul>

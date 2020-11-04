@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
 @font-face {
   font-family: 'Outage';
@@ -23,7 +23,7 @@ $sequelColor: #006480;
 body {
   background-color: #e8e6e9;
   color: $mediumGray;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   margin: 0;
 }
 
@@ -64,7 +64,7 @@ h6 {
   .image-attribution {
     bottom: 1.25rem;
     color: #fe5a6d;
-    font-size: 0.8125rem;
+    font-size: 0.625rem;
     font-style: italic;
     position: absolute;
     right: 1.25rem;
@@ -81,14 +81,15 @@ h6 {
   padding: 1.25rem;
 
   .search-form-input {
-    background-image: url(./assets/icons/search.svg);
+    background-image: url('./assets/icons/search.svg');
     background-position: 0.625rem center;
     background-repeat: no-repeat;
-    background-size: 10%;
+    background-size: 8%;
     border-radius: 0.75rem;
     border: 2px solid #d8dde2;
     display: inline-block;
-    font-size: 1rem;
+    font-family: 'Outage', sans-serif;
+    font-size: 0.875rem;
     max-height: 3rem;
     outline: none;
     padding: 0.75rem;
@@ -125,7 +126,7 @@ h6 {
   &__label {
     color: $lightGray;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.75rem;
 
     .filter-form__input:checked + & {
       color: $darkGray;
@@ -193,13 +194,25 @@ h6 {
     font-family: 'Outage', sans-serif;
   }
 
+  &__description {
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
   &__appearances {
+    font-size: 0.75rem;
+
     &__heading {
       margin-bottom: 0.75rem;
     }
 
     &__list {
+      margin-bottom: 1.5rem;
       padding-left: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     &__list-item {
@@ -218,7 +231,7 @@ h6 {
           height: 0.75rem;
           left: -1.25rem;
           position: absolute;
-          top: 0.25rem;
+          top: 0.15rem;
           width: 0.75rem;
         }
       }
