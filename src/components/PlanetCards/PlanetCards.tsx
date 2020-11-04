@@ -3,6 +3,7 @@ import { fetchData, overlap, search, unique } from '../../utils';
 import { Appearance, Filters, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
 import PlanetCard from './PlanetCard';
+import Loader from '../Loader/Loader';
 import mockData from '../../mockData/planets.json';
 
 export interface PlanetCardsProps {
@@ -135,13 +136,22 @@ function PlanetCards(props: PlanetCardsProps) {
      * display a message related to the filters and not being able to find any matching planets
      * else, display a loading message
      */
-    const noDataMessage = initialPlanets.length ? "Sorry, no planets match the filters you've selected." : "Loading...";
+    const content = initialPlanets.length ? (
+      <p className="planet-cards__message">
+        Sorry, no planets match the filters you've selected.
+      </p>
+    ) : (
+      <>
+        <Loader />
+        <p className="planet-cards__message">
+          Loading...
+        </p>
+      </>
+    );
 
     return (
       <div className="planet-cards planet-cards--no-data">
-        <p className="planet-cards__message">
-          {noDataMessage}
-        </p>
+        {content}
       </div>
     );
   }
