@@ -48,7 +48,7 @@ h6 {
 }
 
 .header {
-  background-image: url(./assets/imgs/rostyslav-zagornov-92gooayayc4.jpg);
+  background-image: url('./assets/imgs/rostyslav-zagornov-92gooayayc4.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -89,12 +89,12 @@ h6 {
     border: 2px solid #d8dde2;
     display: inline-block;
     font-size: 1rem;
-    max-height: 3.125rem;
+    max-height: 3rem;
     outline: none;
-    padding: 0.625rem;
+    padding: 0.75rem;
     padding-left: 2.5rem;
-    padding-right: 0.9375rem;
-    width: 14.0625rem;
+    padding-right: 1rem;
+    max-width: 15rem;
   }
 
   &-fieldset {
@@ -114,8 +114,8 @@ h6 {
   }
 
   &-input-wrapper {
-    margin-bottom: 0.625rem;
-    padding-left: 1.5625rem;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
   }
 
   &-input {
@@ -123,9 +123,9 @@ h6 {
   }
 
   &-label {
+    color: $lightGray;
     cursor: pointer;
     font-size: 1rem;
-    color: $lightGray;
 
     .filter-form-input:checked + & {
       color: $darkGray;
@@ -159,8 +159,8 @@ h6 {
 }
 
 .planet-cards {
-  display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
+  display: flex;
+  flex-wrap: wrap;
   padding: 1.25rem;
 
   &--no-data {
@@ -172,12 +172,22 @@ h6 {
 }
 
 .planet-card {
+  align-self: flex-start;
   background-color: white;
-  border-bottom-left-radius: 0.75rem;
-  border-bottom-right-radius: 0.75rem;
-  margin: 0 0.75rem 1.25rem;
-  padding: 1.875rem 1.25rem 1.25rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  flex-basis: calc(94% / 3);
+  margin: 0 3% 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
   position: relative;
+
+  &:nth-child(1n) {
+    margin-left: 0;
+  }
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
 
   &-name {
     font-family: 'Outage', sans-serif;
@@ -189,7 +199,7 @@ h6 {
     }
 
     &-list {
-      padding-left: 1.5625rem;
+      padding-left: 1.5rem;
     }
 
     &-list-item {
@@ -234,7 +244,7 @@ h6 {
 
     &-segment {
       flex-grow: 1;
-      height: 0.625rem;
+      height: 0.75rem;
 
       &--prequel {
         background-color: $prequelColor;
