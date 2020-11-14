@@ -33,7 +33,7 @@ const FilterBar: FunctionComponent<FilterBarProps> = ({
       const displayLabel = getDisplayLabel(label);
       const subsetClass =
         label === MEDIA.EPISODES || label === MEDIA.SPINOFFS
-          ? 'filter-form__input-wrapper--subset'
+          ? 'filter-bar__input-wrapper--subset'
           : '';
 
       return (
@@ -67,8 +67,8 @@ const FilterBar: FunctionComponent<FilterBarProps> = ({
         className="search-form-input"
         ref={register}
       />
-      <fieldset className="filter-form__fieldset">
-        <h2 className="filter-form__heading">Media</h2>
+      <fieldset className="filter-bar__fieldset">
+        <h2 className="filter-bar__heading">Media</h2>
         {renderInputs({
           type: 'radio',
           name: FILTER_KEY.MEDIA,
