@@ -1,4 +1,9 @@
-import React, { FunctionComponent, ReactElement, useState, useEffect } from 'react';
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useState,
+  useEffect
+} from 'react';
 import { fetchData, overlap, search, unique } from '../../utils';
 import { Appearance, Filters, Media, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
@@ -12,13 +17,11 @@ interface PlanetCardsProps {
 
 type AppearancesFilterFunction = (
   appearances: Appearance[],
-  media?: Media
+  selectedMedia?: Media
 ) => Appearance[];
 type PlanetsFilterFunction = (planets: Planet[], filters: Filters) => Planet[];
 
-const filterAppearancesByCanon: AppearancesFilterFunction = (
-  appearances: Appearance[]
-): Appearance[] =>
+const filterAppearancesByCanon: AppearancesFilterFunction = appearances =>
   appearances.filter(
     ({ title }) =>
       title !== 'Star Wars: The Clone Wars' &&
@@ -29,29 +32,31 @@ const filterAppearancesByCanon: AppearancesFilterFunction = (
   );
 
 const filterAppearancesByMedia: AppearancesFilterFunction = (
-  appearances: Appearance[],
-  media?: Media
-): Appearance[] => {
-  return appearances.filter(appearance => {
-    if (media === MEDIA.EPISODES) {
-      return appearance.media === MEDIA.FILM && appearance.title.includes('Episode');
+  appearances,
+  selectedMedia
+) =>
+  appearances.filter(({ media, title }) => {
+    if (selectedMedia === MEDIA.EPISODES) {
+      return media === MEDIA.FILM && title.includes('Episode');
     }
-    if (media === MEDIA.SPINOFFS) {
-      return appearance.media === MEDIA.FILM && !appearance.title.includes('Episode');
+    if (selectedMedia === MEDIA.SPINOFFS) {
+      return media === MEDIA.FILM && !title.includes('Episode');
     }
 
-    return appearance.media === media;
+    return media === selectedMedia;
   });
+
+const filterBySearchQuery: PlanetsFilterFunction = (
+  planets,
+  { searchQuery }
+) => {
+  if (!searchQuery.length) return planets;
+
+  return planets.filter(({ name }: Planet) => search(searchQuery, name));
 };
 
-const filterBySearchQuery: PlanetsFilterFunction = (planets, filters) => {
-  if (!filters.searchQuery.length) return planets;
-
-  return planets.filter(({ name }: Planet) => search(filters.searchQuery, name));
-};
-
-const filterByMyCanon: PlanetsFilterFunction = (planets, filters) => {
-  if (!filters.myCanon) return planets;
+const filterByMyCanon: PlanetsFilterFunction = (planets, { myCanon }) => {
+  if (!myCanon) return planets;
 
   return planets.reduce((acc: Planet[], planet: Planet) => {
     const modifiedAppearances: Appearance[] = filterAppearancesByCanon(
@@ -76,11 +81,12 @@ const filterByMyCanon: PlanetsFilterFunction = (planets, filters) => {
 };
 
 const filterByEra: PlanetsFilterFunction = (planets, filters) => {
-  if (!filters.era.length || filters.era.length === Object.values(ERA).length)
+  if (!filters.era.length || filters.era.length === Object.values(ERA).length) {
     return planets;
+  }
 
   return planets.filter((planet: Planet) => {
-    const eras: string[] = planet.appearances.map(({ era }: Appearance) => era);
+    const eras: string[] = planet.appearances.map(({ era }) => era);
 
     return overlap(eras, filters.era);
   });
@@ -129,7 +135,7 @@ const getFilteredPlanets: PlanetsFilterFunction = (planets, filters) =>
     filterByEra,
     filterByMedia
   ].reduce(
-    (newPlanetsArray: Planet[], currentFilterFunction: PlanetsFilterFunction) =>
+    (newPlanetsArray, currentFilterFunction) =>
       currentFilterFunction(newPlanetsArray, filters),
     planets
   );
