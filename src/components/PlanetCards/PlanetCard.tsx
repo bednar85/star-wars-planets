@@ -2,11 +2,11 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import { Appearance, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
 
-interface AppearanceTally {
-  prequel: number;
-  original: number;
-  sequel: number;
-}
+type AppearanceTally = {
+  Prequel: number;
+  Original: number;
+  Sequel: number;
+};
 
 const appearancesSortedByEra = (
   appearances: Appearance[],
@@ -39,26 +39,24 @@ const renderEraBar = (appearances: Appearance[]): ReactElement => {
    * on final item, convert tally to percents
    */
   const appearancesAsPercents = appearances.reduce(
-    (acc: AppearanceTally, appearance: Appearance, index: number): AppearanceTally => {
-      if (appearance.era === ERA.PREQUEL) acc.prequel += 1;
-      if (appearance.era === ERA.ORIGINAL) acc.original += 1;
-      if (appearance.era === ERA.SEQUEL) acc.sequel += 1;
+    (acc: AppearanceTally, { era }: Appearance, index: number): AppearanceTally => {
+      acc[era] += 1;
 
       // is last item
       if (totalAppearances - 1 === index) {
         return {
-          prequel: (acc.prequel / totalAppearances) * 100,
-          original: (acc.original / totalAppearances) * 100,
-          sequel: (acc.sequel / totalAppearances) * 100
+          Prequel: (acc.Prequel / totalAppearances) * 100,
+          Original: (acc.Original / totalAppearances) * 100,
+          Sequel: (acc.Sequel / totalAppearances) * 100
         };
       }
 
       return acc;
     },
     {
-      prequel: 0,
-      original: 0,
-      sequel: 0
+      Prequel: 0,
+      Original: 0,
+      Sequel: 0
     }
   );
 

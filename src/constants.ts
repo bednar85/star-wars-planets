@@ -1,3 +1,5 @@
+import { Era } from './models/ui';
+
 export const FILTER_KEY = {
   MEDIA: 'media',
   ERA: 'era',
@@ -12,7 +14,9 @@ export const MEDIA = {
   TV: 'TV Series'
 };
 
-export const ERA = {
+export const ERA: {
+  [x: string]: Era;
+} = {
   PREQUEL: 'Prequel',
   ORIGINAL: 'Original',
   SEQUEL: 'Sequel'
