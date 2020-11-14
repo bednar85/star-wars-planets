@@ -1,4 +1,4 @@
-import { Era } from './models/ui';
+import { Era, Media } from './models/ui';
 
 export const FILTER_KEY = {
   MEDIA: 'media',
@@ -6,7 +6,9 @@ export const FILTER_KEY = {
   MY_CANON: 'myCanon'
 };
 
-export const MEDIA = {
+export const MEDIA: {
+  [x: string]: Media;
+} = {
   ALL: 'All',
   FILM: 'Film',
   EPISODES: 'Episodes',
