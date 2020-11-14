@@ -1,184 +1,440 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Component renders correctly 1`] = `
-<div
-  class="search-and-filter-forms"
->
-  <form
-    class="search-form"
-  >
-    <input
-      class="search-form-input"
-      type="text"
-    />
-  </form>
-  <form
-    class="filter-form"
-  >
-    <fieldset
-      class="filter-form-fieldset"
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <form
+        class="filter-form"
+      >
+        <input
+          class="search-form-input"
+          name="searchQuery"
+          type="text"
+        />
+        <fieldset
+          class="filter-form__fieldset"
+        >
+          <h2
+            class="filter-form__heading"
+          >
+            Media
+          </h2>
+          <div
+            class="filter-form__input-wrapper "
+          >
+            <input
+              class="filter-form__input"
+              id="media-all"
+              name="media"
+              type="radio"
+              value="All"
+            />
+            <label
+              class="filter-form__label"
+              for="media-all"
+            >
+              All – 🎥 📺
+            </label>
+          </div>
+          <div
+            class="filter-form__input-wrapper "
+          >
+            <input
+              class="filter-form__input"
+              id="media-film"
+              name="media"
+              type="radio"
+              value="Film"
+            />
+            <label
+              class="filter-form__label"
+              for="media-film"
+            >
+              Film – 🎥
+            </label>
+          </div>
+          <div
+            class="filter-form__input-wrapper filter-form__input-wrapper--subset"
+          >
+            <input
+              class="filter-form__input"
+              id="media-episodes"
+              name="media"
+              type="radio"
+              value="Episodes"
+            />
+            <label
+              class="filter-form__label"
+              for="media-episodes"
+            >
+              Episodes
+            </label>
+          </div>
+          <div
+            class="filter-form__input-wrapper filter-form__input-wrapper--subset"
+          >
+            <input
+              class="filter-form__input"
+              id="media-spinoffs"
+              name="media"
+              type="radio"
+              value="Spinoffs"
+            />
+            <label
+              class="filter-form__label"
+              for="media-spinoffs"
+            >
+              Spinoffs
+            </label>
+          </div>
+          <div
+            class="filter-form__input-wrapper "
+          >
+            <input
+              class="filter-form__input"
+              id="media-tv-series"
+              name="media"
+              type="radio"
+              value="TV Series"
+            />
+            <label
+              class="filter-form__label"
+              for="media-tv-series"
+            >
+              TV Series – 📺
+            </label>
+          </div>
+        </fieldset>
+        <fieldset
+          class="filter-form__fieldset"
+        >
+          <h2
+            class="filter-form__heading"
+          >
+            Era
+          </h2>
+          <div
+            class="filter-form__input-wrapper "
+          >
+            <input
+              class="filter-form__input"
+              id="era-prequel"
+              name="era"
+              type="checkbox"
+              value="Prequel"
+            />
+            <label
+              class="filter-form__label"
+              for="era-prequel"
+            >
+              Prequel
+            </label>
+          </div>
+          <div
+            class="filter-form__input-wrapper "
+          >
+            <input
+              class="filter-form__input"
+              id="era-original"
+              name="era"
+              type="checkbox"
+              value="Original"
+            />
+            <label
+              class="filter-form__label"
+              for="era-original"
+            >
+              Original
+            </label>
+          </div>
+          <div
+            class="filter-form__input-wrapper "
+          >
+            <input
+              class="filter-form__input"
+              id="era-sequel"
+              name="era"
+              type="checkbox"
+              value="Sequel"
+            />
+            <label
+              class="filter-form__label"
+              for="era-sequel"
+            >
+              Sequel
+            </label>
+          </div>
+        </fieldset>
+        <fieldset
+          class="filter-form__fieldset"
+        >
+          <h2
+            class="filter-form__heading"
+          >
+            Canon
+          </h2>
+          <div
+            class="filter-form__input-wrapper"
+          >
+            <input
+              class="filter-form__input"
+              id="myCanon"
+              name="myCanon"
+              type="checkbox"
+            />
+            <label
+              class="filter-form__label"
+              for="myCanon"
+            >
+              My Canon
+            </label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <form
+      class="filter-form"
     >
-      <h2
-        class="filter-form-heading"
+      <input
+        class="search-form-input"
+        name="searchQuery"
+        type="text"
+      />
+      <fieldset
+        class="filter-form__fieldset"
       >
-        Media:
-      </h2>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          checked=""
-          class="filter-form-input"
-          id="media-all"
-          name="media"
-          type="radio"
-          value="media:All"
-        />
-        <label
-          class="filter-form-label"
-          for="media-all"
+        <h2
+          class="filter-form__heading"
         >
-          All
-        </label>
-      </div>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          class="filter-form-input"
-          id="media-film"
-          name="media"
-          type="radio"
-          value="media:Film"
-        />
-        <label
-          class="filter-form-label"
-          for="media-film"
+          Media
+        </h2>
+        <div
+          class="filter-form__input-wrapper "
         >
-          Film
-        </label>
-      </div>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          class="filter-form-input"
-          id="media-film-episodes-only"
-          name="media"
-          type="radio"
-          value="media:Film (Episodes Only)"
-        />
-        <label
-          class="filter-form-label"
-          for="media-film-episodes-only"
+          <input
+            class="filter-form__input"
+            id="media-all"
+            name="media"
+            type="radio"
+            value="All"
+          />
+          <label
+            class="filter-form__label"
+            for="media-all"
+          >
+            All – 🎥 📺
+          </label>
+        </div>
+        <div
+          class="filter-form__input-wrapper "
         >
-          Film (Episodes Only)
-        </label>
-      </div>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          class="filter-form-input"
-          id="media-tv-series"
-          name="media"
-          type="radio"
-          value="media:TV Series"
-        />
-        <label
-          class="filter-form-label"
-          for="media-tv-series"
+          <input
+            class="filter-form__input"
+            id="media-film"
+            name="media"
+            type="radio"
+            value="Film"
+          />
+          <label
+            class="filter-form__label"
+            for="media-film"
+          >
+            Film – 🎥
+          </label>
+        </div>
+        <div
+          class="filter-form__input-wrapper filter-form__input-wrapper--subset"
         >
-          TV Series
-        </label>
-      </div>
-    </fieldset>
-    <fieldset
-      class="filter-form-fieldset"
-    >
-      <h2
-        class="filter-form-heading"
-      >
-        Era:
-      </h2>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          class="filter-form-input"
-          id="era-prequel-trilogy"
-          name="era"
-          type="checkbox"
-          value="era:Prequel Trilogy"
-        />
-        <label
-          class="filter-form-label"
-          for="era-prequel-trilogy"
+          <input
+            class="filter-form__input"
+            id="media-episodes"
+            name="media"
+            type="radio"
+            value="Episodes"
+          />
+          <label
+            class="filter-form__label"
+            for="media-episodes"
+          >
+            Episodes
+          </label>
+        </div>
+        <div
+          class="filter-form__input-wrapper filter-form__input-wrapper--subset"
         >
-          Prequel Trilogy
-        </label>
-      </div>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          class="filter-form-input"
-          id="era-original-trilogy"
-          name="era"
-          type="checkbox"
-          value="era:Original Trilogy"
-        />
-        <label
-          class="filter-form-label"
-          for="era-original-trilogy"
+          <input
+            class="filter-form__input"
+            id="media-spinoffs"
+            name="media"
+            type="radio"
+            value="Spinoffs"
+          />
+          <label
+            class="filter-form__label"
+            for="media-spinoffs"
+          >
+            Spinoffs
+          </label>
+        </div>
+        <div
+          class="filter-form__input-wrapper "
         >
-          Original Trilogy
-        </label>
-      </div>
-      <div
-        class="filter-form-input-wrapper"
+          <input
+            class="filter-form__input"
+            id="media-tv-series"
+            name="media"
+            type="radio"
+            value="TV Series"
+          />
+          <label
+            class="filter-form__label"
+            for="media-tv-series"
+          >
+            TV Series – 📺
+          </label>
+        </div>
+      </fieldset>
+      <fieldset
+        class="filter-form__fieldset"
       >
-        <input
-          class="filter-form-input"
-          id="era-sequel-trilogy"
-          name="era"
-          type="checkbox"
-          value="era:Sequel Trilogy"
-        />
-        <label
-          class="filter-form-label"
-          for="era-sequel-trilogy"
+        <h2
+          class="filter-form__heading"
         >
-          Sequel Trilogy
-        </label>
-      </div>
-    </fieldset>
-    <fieldset
-      class="filter-form-fieldset"
-    >
-      <h2
-        class="filter-form-heading"
-      >
-        Canon:
-      </h2>
-      <div
-        class="filter-form-input-wrapper"
-      >
-        <input
-          class="filter-form-input"
-          id="my-canon"
-          name="my-canon"
-          type="checkbox"
-          value="my-canon"
-        />
-        <label
-          class="filter-form-label"
-          for="my-canon"
+          Era
+        </h2>
+        <div
+          class="filter-form__input-wrapper "
         >
-          My Canon
-        </label>
-      </div>
-    </fieldset>
-  </form>
-</div>
+          <input
+            class="filter-form__input"
+            id="era-prequel"
+            name="era"
+            type="checkbox"
+            value="Prequel"
+          />
+          <label
+            class="filter-form__label"
+            for="era-prequel"
+          >
+            Prequel
+          </label>
+        </div>
+        <div
+          class="filter-form__input-wrapper "
+        >
+          <input
+            class="filter-form__input"
+            id="era-original"
+            name="era"
+            type="checkbox"
+            value="Original"
+          />
+          <label
+            class="filter-form__label"
+            for="era-original"
+          >
+            Original
+          </label>
+        </div>
+        <div
+          class="filter-form__input-wrapper "
+        >
+          <input
+            class="filter-form__input"
+            id="era-sequel"
+            name="era"
+            type="checkbox"
+            value="Sequel"
+          />
+          <label
+            class="filter-form__label"
+            for="era-sequel"
+          >
+            Sequel
+          </label>
+        </div>
+      </fieldset>
+      <fieldset
+        class="filter-form__fieldset"
+      >
+        <h2
+          class="filter-form__heading"
+        >
+          Canon
+        </h2>
+        <div
+          class="filter-form__input-wrapper"
+        >
+          <input
+            class="filter-form__input"
+            id="myCanon"
+            name="myCanon"
+            type="checkbox"
+          />
+          <label
+            class="filter-form__label"
+            for="myCanon"
+          >
+            My Canon
+          </label>
+        </div>
+      </fieldset>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;

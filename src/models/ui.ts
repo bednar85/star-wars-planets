@@ -1,15 +1,18 @@
+export type Media = 'All' | 'Film' | 'Episodes' | 'Spinoffs' | 'TV Series';
+export type Era = 'Prequel' | 'Original' | 'Sequel';
+
 export interface Filters {
   searchQuery: string;
-  media: string;
-  era: string[];
+  media: Media;
+  era: Era[];
   myCanon: boolean;
 }
 
 export interface Appearance {
   title: string;
   year: string;
-  media: string;
-  era: string;
+  media: Media;
+  era: Era;
 }
 
 export interface Planet {

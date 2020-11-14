@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import './Loader.scss';
 
-function Loader() {
+function Loader(): ReactElement {
   return (
     <div className="sk-cube-grid">
       <div className="sk-cube sk-cube1"></div>
