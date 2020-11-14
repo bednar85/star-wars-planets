@@ -75,7 +75,7 @@ h6 {
   }
 }
 
-.filter-form {
+.filter-bar {
   display: flex;
   flex-grow: 3;
   padding: 1.25rem;
@@ -253,6 +253,7 @@ h6 {
   }
 
   &__era-bar {
+    content: '';
     display: flex;
     left: 0;
     position: absolute;

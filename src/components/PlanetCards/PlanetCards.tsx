@@ -10,6 +10,7 @@ import { ERA, MEDIA } from '../../constants';
 import PlanetCard from './PlanetCard';
 import Loader from '../Loader/Loader';
 import mockData from '../../mockData/planets.json';
+import './PlanetCards.scss';
 
 interface PlanetCardsProps {
   filters: Filters;

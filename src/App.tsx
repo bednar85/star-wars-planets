@@ -5,6 +5,7 @@ import { ERA, MEDIA } from './constants';
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
 import PlanetCards from './components/PlanetCards/PlanetCards';
+import './index.scss';
 
 const App = (): ReactElement => {
   // SETUP FILTERS AND FORM
@@ -21,7 +22,6 @@ const App = (): ReactElement => {
   const filters: Filters = Object.keys(watchAll).length
     ? watchAll
     : defaultValues;
-
 
   return (
     <div className="star-wars-planets-app">
