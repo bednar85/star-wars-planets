@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactElement, useState, useEffect } from 'react';
 import { fetchData, overlap, search, unique } from '../../utils';
-import { Appearance, Filters, Planet } from '../../models/ui';
+import { Appearance, Filters, Media, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
 import PlanetCard from './PlanetCard';
 import Loader from '../Loader/Loader';
@@ -12,7 +12,7 @@ interface PlanetCardsProps {
 
 type AppearancesFilterFunction = (
   appearances: Appearance[],
-  media?: string
+  media?: Media
 ) => Appearance[];
 type PlanetsFilterFunction = (planets: Planet[], filters: Filters) => Planet[];
 
@@ -30,7 +30,7 @@ const filterAppearancesByCanon: AppearancesFilterFunction = (
 
 const filterAppearancesByMedia: AppearancesFilterFunction = (
   appearances: Appearance[],
-  media?: string
+  media?: Media
 ): Appearance[] => {
   return appearances.filter(appearance => {
     if (media === MEDIA.EPISODES) {

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactElement } from 'react';
-import { Appearance, Planet } from '../../models/ui';
+import { Appearance, Media, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
 
 type AppearanceTally = {
@@ -10,7 +10,7 @@ type AppearanceTally = {
 
 const appearancesSortedByEra = (
   appearances: Appearance[],
-  media?: string
+  media?: Media
 ): Appearance[] => {
   const appearancesByMedia = media
     ? appearances.filter(appearance => appearance.media === media)
