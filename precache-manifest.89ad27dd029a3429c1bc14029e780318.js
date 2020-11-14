@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2e6204c4e2d6eb62e1fde10dea0dc42e",
+    "revision": "d657e971bd4cb28a98300e9eb0859f2f",
     "url": "/star-wars-planets/index.html"
   },
   {
-    "revision": "3ffa1244140febd75fb5",
-    "url": "/star-wars-planets/static/css/main.d4012cc3.chunk.css"
+    "revision": "e2641de1eea160adff4e",
+    "url": "/star-wars-planets/static/css/main.d9ffad23.chunk.css"
   },
   {
-    "revision": "3ada644e93745238b730",
-    "url": "/star-wars-planets/static/js/2.c8fabf95.chunk.js"
+    "revision": "7d7166790d7a8fa6d130",
+    "url": "/star-wars-planets/static/js/2.85c74b9b.chunk.js"
   },
   {
     "revision": "5b571a43117d7de158db9e221eaa0225",
-    "url": "/star-wars-planets/static/js/2.c8fabf95.chunk.js.LICENSE.txt"
+    "url": "/star-wars-planets/static/js/2.85c74b9b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3ffa1244140febd75fb5",
-    "url": "/star-wars-planets/static/js/main.3de8339a.chunk.js"
+    "revision": "e2641de1eea160adff4e",
+    "url": "/star-wars-planets/static/js/main.4dfbe3f6.chunk.js"
   },
   {
     "revision": "872288d1b88b38025f08",
