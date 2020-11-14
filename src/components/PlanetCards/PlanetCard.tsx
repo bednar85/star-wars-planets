@@ -68,13 +68,13 @@ const renderEraBar = (appearances: Appearance[]): ReactElement => {
     return (
       <div
         key={era}
-        className={`planet-card__era-visualizer__segment planet-card__era-visualizer__segment--${era}`}
+        className={`planet-card__era-bar__segment planet-card__era-bar__segment--${era.toLowerCase()}`}
         style={{ width: `${perc}%` }}
       />
     );
   });
 
-  return <div className="planet-card__era-visualizer">{segments}</div>;
+  return <div className="planet-card__era-bar">{segments}</div>;
 };
 
 const getBriefDescription = (description: string): string => {

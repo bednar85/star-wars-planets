@@ -10,8 +10,8 @@ const App = (): ReactElement => {
   // SETUP FILTERS AND FORM
   const defaultValues: Filters = {
     searchQuery: '',
-    media: MEDIA.EPISODES,
-    era: [ERA.ORIGINAL],
+    media: MEDIA.ALL,
+    era: [...Object.values(ERA)],
     myCanon: false
   };
 

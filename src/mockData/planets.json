@@ -1111,19 +1111,6 @@
   },
   {
     "id": 73,
-    "name": "Starkiller Base",
-    "appearances": [
-      {
-        "title": "Episode VII - The Force Awakens",
-        "year": "2015",
-        "media": "Film",
-        "era": "Sequel"
-      }
-    ],
-    "description": "Snowy planet of forested mountains converted by the First Order into a superweapon. It is later revealed to have once been the planet Illum, where lightsaber crystals originated from, as the video game Jedi: Fallen Order revealed that the Galactic Empire had been doing excavation on Ilum, resulting in a large trench along the equator of the planet, giving it an appearance similar to the superweapon. Ilum and Starkiller Base also share the same dimensions, being 660 kilometres (410 mi). The planet is ultimately destroyed by the Resistance, becoming a small star after the explosion. Being the death place of Han Solo, the star was named \"Solo\" in his homage."
-  },
-  {
-    "id": 74,
     "name": "Takodana",
     "appearances": [
       {
@@ -1136,7 +1123,7 @@
     "description": "Forest planet and site of Maz Kanata's castle. Neutral territory between First Order and Resistance."
   },
   {
-    "id": 75,
+    "id": 74,
     "name": "Tatooine",
     "appearances": [
       {
@@ -1197,7 +1184,7 @@
     "description": "Desert planet and childhood home of Anakin Skywalker and Luke Skywalker. Location of Jabba the Hutt's palace."
   },
   {
-    "id": 76,
+    "id": 75,
     "name": "Toydaria",
     "appearances": [
       {
@@ -1210,7 +1197,7 @@
     "description": "Home planet of Watto and other Toydarians. Close to Nal Hutta."
   },
   {
-    "id": 77,
+    "id": 76,
     "name": "Trandosha",
     "appearances": [
       {
@@ -1223,7 +1210,7 @@
     "description": "Homeworld of the Trandoshan hunters. Close to Kashyyyk."
   },
   {
-    "id": 78,
+    "id": 77,
     "name": "Umbara",
     "appearances": [
       {
@@ -1236,7 +1223,7 @@
     "description": "Planet with a thick, foggy atmosphere. Home to the Umbarans."
   },
   {
-    "id": 79,
+    "id": 78,
     "name": "Utapau",
     "appearances": [
       {
@@ -1249,7 +1236,7 @@
     "description": "Remote planet, covered in deep sinkholes and home to the Utai and Pau'ans. Site of General Grievous' defeat and a separatist base during the last days of the Clone Wars."
   },
   {
-    "id": 80,
+    "id": 79,
     "name": "Vandor-1",
     "appearances": [
       {
@@ -1262,7 +1249,7 @@
     "description": "Icy, mountainous planet that is the site of a Crimson Dawn train heist led by Tobias Beckett in Solo: A Star Wars Story."
   },
   {
-    "id": 81,
+    "id": 80,
     "name": "Wobani",
     "appearances": [
       {
@@ -1275,7 +1262,7 @@
     "description": "A desolate wasteland and the site of an Imperial penal labor colony."
   },
   {
-    "id": 82,
+    "id": 81,
     "name": "Yavin",
     "appearances": [
       {
@@ -1288,7 +1275,7 @@
     "description": "Gas planet with several moons, including Yavin 4."
   },
   {
-    "id": 83,
+    "id": 82,
     "name": "Yavin 4",
     "appearances": [
       {
@@ -1307,7 +1294,7 @@
     "description": "Forest moon and base for the Rebel Alliance."
   },
   {
-    "id": 84,
+    "id": 83,
     "name": "Zygerria",
     "appearances": [
       {
