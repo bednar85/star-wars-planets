@@ -1,8 +1,9 @@
+export type Media = 'All' | 'Film' | 'Episodes' | 'Spinoffs' | 'TV Series';
 export type Era = 'Prequel' | 'Original' | 'Sequel';
 
 export interface Filters {
   searchQuery: string;
-  media: string;
+  media: Media;
   era: Era[];
   myCanon: boolean;
 }
@@ -10,7 +11,7 @@ export interface Filters {
 export interface Appearance {
   title: string;
   year: string;
-  media: string;
+  media: Media;
   era: Era;
 }
 
