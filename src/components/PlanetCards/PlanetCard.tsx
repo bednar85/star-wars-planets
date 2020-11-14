@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import { Appearance, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
 
@@ -28,11 +28,7 @@ const appearancesSortedByEra = (
     appearance => appearance.era === ERA.SEQUEL
   );
 
-  return [
-    ...prequelAppearances,
-    ...originalAppearances,
-    ...sequelAppearances
-  ];
+  return [...prequelAppearances, ...originalAppearances, ...sequelAppearances];
 };
 
 const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
@@ -42,26 +38,29 @@ const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
    * tally up all appearances by era
    * on final item, convert tally to percents
    */
-  const appearancesAsPercents = appearances.reduce((acc: AppearanceTally, appearance: Appearance, index: number): AppearanceTally => {
-    if (appearance.era === ERA.PREQUEL) acc.prequel += 1;
-    if (appearance.era === ERA.ORIGINAL) acc.original += 1;
-    if (appearance.era === ERA.SEQUEL) acc.sequel += 1;
+  const appearancesAsPercents = appearances.reduce(
+    (acc: AppearanceTally, appearance: Appearance, index: number): AppearanceTally => {
+      if (appearance.era === ERA.PREQUEL) acc.prequel += 1;
+      if (appearance.era === ERA.ORIGINAL) acc.original += 1;
+      if (appearance.era === ERA.SEQUEL) acc.sequel += 1;
 
-    // is last item
-    if (totalAppearances - 1 === index) {
-      return {
-        prequel: (acc.prequel / totalAppearances) * 100,
-        original: (acc.original / totalAppearances) * 100,
-        sequel: (acc.sequel / totalAppearances) * 100
-      };
+      // is last item
+      if (totalAppearances - 1 === index) {
+        return {
+          prequel: (acc.prequel / totalAppearances) * 100,
+          original: (acc.original / totalAppearances) * 100,
+          sequel: (acc.sequel / totalAppearances) * 100
+        };
+      }
+
+      return acc;
+    },
+    {
+      prequel: 0,
+      original: 0,
+      sequel: 0
     }
-
-    return acc;
-  }, {
-    prequel: 0,
-    original: 0,
-    sequel: 0
-  });
+  );
 
   // render out a segment per each percent, set each segments width equal to percent
   const segments = Object.entries(appearancesAsPercents).map(([era, per]) => {
@@ -72,12 +71,12 @@ const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
       <div
         key={era}
         className={`planet-card__era-visualizer__segment planet-card__era-visualizer__segment--${era}`}
-        style={{width: `${per}%`}}
+        style={{ width: `${per}%` }}
       />
     );
   });
 
-  return (<div className="planet-card__era-visualizer">{segments}</div>);
+  return <div className="planet-card__era-visualizer">{segments}</div>;
 };
 
 const getBriefDescription = (description: string): string => {
@@ -90,10 +89,7 @@ const getBriefDescription = (description: string): string => {
 
 const renderAppearances = (appearances: Appearance[]): ReactElement => {
   const filmAppearances = appearancesSortedByEra(appearances, MEDIA.FILM);
-  const tvAppearances = appearancesSortedByEra(
-    appearances,
-    MEDIA.TV
-  );
+  const tvAppearances = appearancesSortedByEra(appearances, MEDIA.TV);
 
   const renderAppearance = (appearances: Appearance[]): ReactElement[] =>
     appearances.map((appearance: Appearance, index: number) => {
@@ -101,9 +97,7 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
 
       const eraModifier = era.split(' ')[0].toLowerCase();
       const updatedTitle =
-        title.includes('Clone Wars') && media === MEDIA.TV
-          ? `${title} (${year})`
-          : title;
+        title.includes('Clone Wars') && media === MEDIA.TV ? `${title} (${year})` : title;
 
       return (
         <li
@@ -119,7 +113,12 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
     <div className="planet-card__appearances">
       {filmAppearances.length ? (
         <>
-          <h4 className="planet-card__appearances__heading">Film <span role="img" aria-label="film">🎥</span></h4>
+          <h4 className="planet-card__appearances__heading">
+            Film{' '}
+            <span role="img" aria-label="film">
+              🎥
+            </span>
+          </h4>
           <ul className="planet-card__appearances__list">
             {renderAppearance(filmAppearances)}
           </ul>
@@ -127,7 +126,12 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
       ) : null}
       {tvAppearances.length ? (
         <>
-          <h4 className="planet-card__appearances__heading">TV <span role="img" aria-label="tv">📺</span></h4>
+          <h4 className="planet-card__appearances__heading">
+            TV{' '}
+            <span role="img" aria-label="tv">
+              📺
+            </span>
+          </h4>
           <ul className="planet-card__appearances__list">
             {renderAppearance(tvAppearances)}
           </ul>
@@ -137,19 +141,17 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
   );
 };
 
-function PlanetCard(props: Planet) {
-  const { appearances, name, description } = props;
-
-  return (
-    <div className="planet-card">
-      {renderEraVisualizer(appearances)}
-      <h3 className="planet-card__name">{name}</h3>
-      <p className="planet-card__description">
-        {getBriefDescription(description)}
-      </p>
-      {renderAppearances(appearances)}
-    </div>
-  );
-}
+const PlanetCard: FunctionComponent<Planet> = ({
+  appearances,
+  name,
+  description
+}: Planet): ReactElement => (
+  <div className="planet-card">
+    {renderEraVisualizer(appearances)}
+    <h3 className="planet-card__name">{name}</h3>
+    <p className="planet-card__description">{getBriefDescription(description)}</p>
+    {renderAppearances(appearances)}
+  </div>
+);
 
 export default PlanetCard;

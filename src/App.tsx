@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { Filters } from './models/ui';
 import { ERA, MEDIA } from './constants';
@@ -6,32 +6,28 @@ import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
 import PlanetCards from './components/PlanetCards/PlanetCards';
 
-function App() {
+const App = (): ReactElement => {
   // SETUP FILTERS AND FORM
   const defaultValues: Filters = {
     searchQuery: '',
-    media: MEDIA.ALL,
-    era: [
-      ...Object.values(ERA)
-    ],
+    media: MEDIA.EPISODES,
+    era: [ERA.ORIGINAL],
     myCanon: false
   };
 
-  const methods = useForm({ defaultValues });
+  const { watch, register } = useForm({ defaultValues });
 
-  const watchAll = methods.watch() as Filters;
-  const filters: Filters = Object.keys(watchAll).length
-    ? watchAll
-    : defaultValues;
+  const watchAll = watch() as Filters;
+  const filters: Filters = Object.keys(watchAll).length ? watchAll : defaultValues;
 
 
   return (
     <div className="star-wars-planets-app">
       <Header />
-      <FilterBar {...methods} />
+      <FilterBar register={register} />
       <PlanetCards filters={filters} />
     </div>
   );
-}
+};
 
 export default App;

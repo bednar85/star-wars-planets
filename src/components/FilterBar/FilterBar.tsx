@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { ERA, FILTER_KEY, MEDIA } from '../../constants';
 import { toKebabCase } from '../../utils';
@@ -7,7 +7,6 @@ interface Input {
   type: string;
   name: string;
   labels: string[];
-  defaultChecked?: number;
 }
 
 interface FilterBarProps {
@@ -22,18 +21,19 @@ const getDisplayLabel = (label: string) => {
   if (label === MEDIA.TV) return `${MEDIA.TV} – 📺`;
 
   return label;
-}
+};
 
-function FilterBar({ register }: FilterBarProps) {
-  const renderInputs = ({
-    type,
-    name,
-    labels,
-    defaultChecked
-  }: Input): ReactElement[] => labels.map((label: string, index: number) => {
+const FilterBar: FunctionComponent<FilterBarProps> = ({
+  register
+}: FilterBarProps): ReactElement => {
+  const renderInputs = ({ type, name, labels }: Input): ReactElement[] =>
+    labels.map((label: string, index: number) => {
       const formFieldId: string = toKebabCase(label);
-      const displayLabel = getDisplayLabel(label)
-      const subsetClass = (label === MEDIA.EPISODES || label === MEDIA.SPINOFFS) ? 'filter-form__input-wrapper--subset' : '';
+      const displayLabel = getDisplayLabel(label);
+      const subsetClass =
+        label === MEDIA.EPISODES || label === MEDIA.SPINOFFS
+          ? 'filter-form__input-wrapper--subset'
+          : '';
 
       return (
         <div
@@ -48,10 +48,7 @@ function FilterBar({ register }: FilterBarProps) {
             value={label}
             ref={register}
           />
-          <label
-            className="filter-form__label"
-            htmlFor={`${name}-${formFieldId}`}
-          >
+          <label className="filter-form__label" htmlFor={`${name}-${formFieldId}`}>
             {displayLabel}
           </label>
         </div>
@@ -67,9 +64,7 @@ function FilterBar({ register }: FilterBarProps) {
         ref={register}
       />
       <fieldset className="filter-form__fieldset">
-        <h2 className="filter-form__heading">
-          Media
-        </h2>
+        <h2 className="filter-form__heading">Media</h2>
         {renderInputs({
           type: 'radio',
           name: FILTER_KEY.MEDIA,
@@ -101,6 +96,6 @@ function FilterBar({ register }: FilterBarProps) {
       </fieldset>
     </form>
   );
-}
+};
 
 export default FilterBar;
