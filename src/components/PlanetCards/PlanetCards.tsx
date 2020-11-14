@@ -1,18 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useState,
+  useEffect
+} from 'react';
 import { fetchData, overlap, search, unique } from '../../utils';
-import { Appearance, Filters, Planet } from '../../models/ui';
+import { Appearance, Filters, Media, Planet } from '../../models/ui';
 import { ERA, MEDIA } from '../../constants';
 import PlanetCard from './PlanetCard';
 import Loader from '../Loader/Loader';
 import mockData from '../../mockData/planets.json';
 
-export interface PlanetCardsProps {
+interface PlanetCardsProps {
   filters: Filters;
 }
 
-const filterAppearancesByCanon = (
-  appearances: Appearance[]
-): Appearance[] =>
+type AppearancesFilterFunction = (
+  appearances: Appearance[],
+  selectedMedia?: Media
+) => Appearance[];
+type PlanetsFilterFunction = (planets: Planet[], filters: Filters) => Planet[];
+
+const filterAppearancesByCanon: AppearancesFilterFunction = appearances =>
   appearances.filter(
     ({ title }) =>
       title !== 'Star Wars: The Clone Wars' &&
@@ -22,27 +31,32 @@ const filterAppearancesByCanon = (
       !title.startsWith('Episode IX')
   );
 
-const filterAppearancesByMedia = (appearances: Appearance[], media: string): Appearance[] => appearances.filter(appearance => {
-    if (media === MEDIA.EPISODES) {
-      return appearance.media === MEDIA.FILM && appearance.title.includes('Episode')
+const filterAppearancesByMedia: AppearancesFilterFunction = (
+  appearances,
+  selectedMedia
+) =>
+  appearances.filter(({ media, title }) => {
+    if (selectedMedia === MEDIA.EPISODES) {
+      return media === MEDIA.FILM && title.includes('Episode');
     }
-    if (media === MEDIA.SPINOFFS) {
-      return appearance.media === MEDIA.FILM && !appearance.title.includes('Episode')
+    if (selectedMedia === MEDIA.SPINOFFS) {
+      return media === MEDIA.FILM && !title.includes('Episode');
     }
-    
-    return appearance.media === media;
+
+    return media === selectedMedia;
   });
 
-const filterBySearchQuery = (planets: Planet[], filters: Filters): Planet[] => {
-  if (!filters.searchQuery.length) return planets;
+const filterBySearchQuery: PlanetsFilterFunction = (
+  planets,
+  { searchQuery }
+) => {
+  if (!searchQuery.length) return planets;
 
-  return planets.filter(({ name }: Planet) =>
-    search(filters.searchQuery, name)
-  );
+  return planets.filter(({ name }: Planet) => search(searchQuery, name));
 };
 
-const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
-  if (!filters.myCanon) return planets;
+const filterByMyCanon: PlanetsFilterFunction = (planets, { myCanon }) => {
+  if (!myCanon) return planets;
 
   return planets.reduce((acc: Planet[], planet: Planet) => {
     const modifiedAppearances: Appearance[] = filterAppearancesByCanon(
@@ -66,39 +80,41 @@ const filterByMyCanon = (planets: Planet[], filters: Filters): Planet[] => {
   }, []);
 };
 
-const filterByEra = (planets: Planet[], filters: Filters): Planet[] => {
-  if (!filters.era.length || filters.era.length === Object.values(ERA).length) return planets;
+const filterByEra: PlanetsFilterFunction = (planets, filters) => {
+  if (!filters.era.length || filters.era.length === Object.values(ERA).length) {
+    return planets;
+  }
 
   return planets.filter((planet: Planet) => {
-    const eras: string[] = planet.appearances.map(
-      ({ era }: Appearance) => era
-    );
+    const eras: string[] = planet.appearances.map(({ era }) => era);
 
-    // return overlap(filters.era, eras);
     return overlap(eras, filters.era);
   });
 };
 
-const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
+const filterByMedia: PlanetsFilterFunction = (planets, filters) => {
   if (filters.media === MEDIA.ALL) return planets;
 
   // if some eras but not all eras are selected, crossReference by selected eras
-  const crossReferenceByEras = filters.era.length && filters.era.length < Object.values(ERA).length;
+  const crossReferenceByEras =
+    filters.era.length && filters.era.length < Object.values(ERA).length;
 
   return planets.reduce((acc: Planet[], planet: Planet) => {
-    const filteredAppearances = filterAppearancesByMedia(planet.appearances, filters.media);
-    
+    const filteredAppearances = filterAppearancesByMedia(
+      planet.appearances,
+      filters.media
+    );
+
     // if cross referencing
     if (crossReferenceByEras) {
       const eras = unique(filteredAppearances.map(({ era }) => era));
       const erasOverlapFilters = overlap(eras, filters.era);
-
       // AND planet has appearances that match selected media AND eras overlap selected eras
       if (filteredAppearances.length && erasOverlapFilters) {
         acc.push(planet);
       }
     }
-    // if NOT cross referencing 
+    // if NOT cross referencing
     else {
       // AND planet has appearances that match selected media
       if (filteredAppearances.length) {
@@ -111,22 +127,27 @@ const filterByMedia = (planets: Planet[], filters: Filters): Planet[] => {
 };
 
 // iteratively filter all of the planets based on the filters applied
-const getFilteredPlanets = (planets: Planet[], filters: Filters): Planet[] =>
+const getFilteredPlanets: PlanetsFilterFunction = (planets, filters) =>
+  // prettier-ignore
   [
     filterBySearchQuery,
     filterByMyCanon,
     filterByEra,
     filterByMedia
   ].reduce(
-    (newPlanetsArray: Planet[], currentFilterFunction: Function) =>
+    (newPlanetsArray, currentFilterFunction) =>
       currentFilterFunction(newPlanetsArray, filters),
     planets
   );
 
-function PlanetCards(props: PlanetCardsProps) {
+const PlanetCards: FunctionComponent<PlanetCardsProps> = ({
+  filters
+}: PlanetCardsProps): ReactElement => {
   const [initialPlanets, setInitialPlanets] = useState([]);
 
-  const filteredPlanets = initialPlanets.length ? getFilteredPlanets(initialPlanets, props.filters) : initialPlanets;
+  const filteredPlanets = initialPlanets.length
+    ? getFilteredPlanets(initialPlanets, filters)
+    : initialPlanets;
 
   useEffect(() => {
     fetchData(setInitialPlanets, mockData);
@@ -141,22 +162,16 @@ function PlanetCards(props: PlanetCardsProps) {
      */
     const content = initialPlanets.length ? (
       <p className="planet-cards__message">
-        Sorry, no planets match the filters you've selected.
+        Sorry, no planets match the filters you&apos;ve selected.
       </p>
     ) : (
       <>
         <Loader />
-        <p className="planet-cards__message">
-          Loading...
-        </p>
+        <p className="planet-cards__message">Loading...</p>
       </>
     );
 
-    return (
-      <div className="planet-cards planet-cards--no-data">
-        {content}
-      </div>
-    );
+    return <div className="planet-cards planet-cards--no-data">{content}</div>;
   }
 
   return (
@@ -166,6 +181,6 @@ function PlanetCards(props: PlanetCardsProps) {
       ))}
     </div>
   );
-}
+};
 
 export default PlanetCards;
