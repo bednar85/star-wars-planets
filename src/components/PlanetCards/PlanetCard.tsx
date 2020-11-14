@@ -31,7 +31,7 @@ const appearancesSortedByEra = (
   return [...prequelAppearances, ...originalAppearances, ...sequelAppearances];
 };
 
-const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
+const renderEraBar = (appearances: Appearance[]): ReactElement => {
   const totalAppearances = appearances.length;
 
   /**
@@ -63,15 +63,15 @@ const renderEraVisualizer = (appearances: Appearance[]): ReactElement => {
   );
 
   // render out a segment per each percent, set each segments width equal to percent
-  const segments = Object.entries(appearancesAsPercents).map(([era, per]) => {
+  const segments = Object.entries(appearancesAsPercents).map(([era, perc]) => {
     // if percent is 0, exclude segment
-    if (!per) return null;
+    if (!perc) return null;
 
     return (
       <div
         key={era}
         className={`planet-card__era-visualizer__segment planet-card__era-visualizer__segment--${era}`}
-        style={{ width: `${per}%` }}
+        style={{ width: `${perc}%` }}
       />
     );
   });
@@ -91,52 +91,40 @@ const renderAppearances = (appearances: Appearance[]): ReactElement => {
   const filmAppearances = appearancesSortedByEra(appearances, MEDIA.FILM);
   const tvAppearances = appearancesSortedByEra(appearances, MEDIA.TV);
 
-  const renderAppearance = (appearances: Appearance[]): ReactElement[] =>
-    appearances.map((appearance: Appearance, index: number) => {
-      const { title, year, media, era } = appearance;
+  const renderAppearanceList = (
+    appearances: Appearance[],
+    categoryHeading: string
+  ): ReactElement => (
+    <>
+      <h4 className="planet-card__appearances__heading">{categoryHeading}</h4>
+      <ul className="planet-card__appearances__list">
+        {appearances.map(
+          ({ title, year, media, era }: Appearance, index: number): ReactElement => {
+            const eraModifier = era.split(' ')[0].toLowerCase();
+            const updatedTitle =
+              title.includes('Clone Wars') && media === MEDIA.TV
+                ? `${title} (${year})`
+                : title;
 
-      const eraModifier = era.split(' ')[0].toLowerCase();
-      const updatedTitle =
-        title.includes('Clone Wars') && media === MEDIA.TV ? `${title} (${year})` : title;
+            return (
+              <li
+                key={`appearance-${index}`}
+                className={`planet-card__appearances__list-item planet-card__appearances__list-item--${eraModifier}`}
+              >
+                {updatedTitle}
+              </li>
+            );
+          }
+        )}
+      </ul>
+    </>
+  );
 
-      return (
-        <li
-          key={`appearance-${index}`}
-          className={`planet-card__appearances__list-item planet-card__appearances__list-item--${eraModifier}`}
-        >
-          {updatedTitle}
-        </li>
-      );
-    });
-
+  // there will always be at least one appearance/group
   return (
     <div className="planet-card__appearances">
-      {filmAppearances.length ? (
-        <>
-          <h4 className="planet-card__appearances__heading">
-            Film{' '}
-            <span role="img" aria-label="film">
-              🎥
-            </span>
-          </h4>
-          <ul className="planet-card__appearances__list">
-            {renderAppearance(filmAppearances)}
-          </ul>
-        </>
-      ) : null}
-      {tvAppearances.length ? (
-        <>
-          <h4 className="planet-card__appearances__heading">
-            TV{' '}
-            <span role="img" aria-label="tv">
-              📺
-            </span>
-          </h4>
-          <ul className="planet-card__appearances__list">
-            {renderAppearance(tvAppearances)}
-          </ul>
-        </>
-      ) : null}
+      {filmAppearances.length ? renderAppearanceList(filmAppearances, 'Film 🎥') : null}
+      {tvAppearances.length ? renderAppearanceList(tvAppearances, 'TV 📺') : null}
     </div>
   );
 };
@@ -147,7 +135,7 @@ const PlanetCard: FunctionComponent<Planet> = ({
   description
 }: Planet): ReactElement => (
   <div className="planet-card">
-    {renderEraVisualizer(appearances)}
+    {renderEraBar(appearances)}
     <h3 className="planet-card__name">{name}</h3>
     <p className="planet-card__description">{getBriefDescription(description)}</p>
     {renderAppearances(appearances)}

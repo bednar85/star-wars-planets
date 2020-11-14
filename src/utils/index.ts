@@ -1,5 +1,5 @@
-export const unique = (array: (string | number)[]): (string | number)[] =>
-  Array.from(new Set(array));
+export const unique = (arr: (string | number)[]): (string | number)[] =>
+  Array.from(new Set(arr));
 
 /**
  * Search to see if any of the items of array1 are in array2.
@@ -20,8 +20,8 @@ export const overlap = (
  * @param {string} string - the full string that you are searching
  * @return {boolean} true if the substring is a full or partial match
  */
-export const search = (substring: string, string: string): boolean => {
-  return string.toLowerCase().includes(substring.toLowerCase());
+export const search = (substr: string, str: string): boolean => {
+  return str.toLowerCase().includes(substr.toLowerCase());
 };
 
 export const getRandomIntInclusive = (min: number, max: number): number => {
@@ -45,8 +45,8 @@ export const fetchData = async (
   setDataCallback(data);
 };
 
-export const toKebabCase = (string: string): string =>
-  string
+export const toKebabCase = (str: string): string =>
+  str
     .toLowerCase()
     .replace(/[^a-zA-Z']/gi, ' ')
     .trim()

@@ -82,7 +82,6 @@ const filterByEra: PlanetsFilterFunction = (planets, filters) => {
   return planets.filter((planet: Planet) => {
     const eras: string[] = planet.appearances.map(({ era }: Appearance) => era);
 
-    // return overlap(filters.era, eras);
     return overlap(eras, filters.era);
   });
 };
