@@ -18,7 +18,9 @@ const App = (): ReactElement => {
   const { watch, register } = useForm({ defaultValues });
 
   const watchAll = watch() as Filters;
-  const filters: Filters = Object.keys(watchAll).length ? watchAll : defaultValues;
+  const filters: Filters = Object.keys(watchAll).length
+    ? watchAll
+    : defaultValues;
 
 
   return (

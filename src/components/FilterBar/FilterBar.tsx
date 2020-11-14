@@ -48,7 +48,10 @@ const FilterBar: FunctionComponent<FilterBarProps> = ({
             value={label}
             ref={register}
           />
-          <label className="filter-form__label" htmlFor={`${name}-${formFieldId}`}>
+          <label
+            className="filter-form__label"
+            htmlFor={`${name}-${formFieldId}`}
+          >
             {displayLabel}
           </label>
         </div>
