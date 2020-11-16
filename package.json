@@ -4,13 +4,6 @@
   "private": true,
   "homepage": "https://bednar85.github.io/star-wars-planets",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.8",
-    "@types/react": "^16.9.52",
-    "@types/react-dom": "^16.9.8",
     "gh-pages": "^3.1.0",
     "lodash": "^4.17.15",
     "react": "^16.12.0",
@@ -40,6 +33,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.8",
+    "@types/react-dom": "^16.9.8",
+    "@types/react": "^16.9.52",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
@@ -50,8 +50,8 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
     "node-sass": "^4.13.1",
-    "prettier": "^2.1.2",
     "prettier-eslint": "^11.0.0",
+    "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0"
   },
   "husky": {

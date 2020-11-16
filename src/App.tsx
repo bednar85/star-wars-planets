@@ -5,7 +5,7 @@ import { ERA, MEDIA } from './constants';
 import Header from './components/Header/Header';
 import FilterBar from './components/FilterBar/FilterBar';
 import PlanetCards from './components/PlanetCards/PlanetCards';
-import './index.scss';
+import './App.scss';
 
 const App = (): ReactElement => {
   // SETUP FILTERS AND FORM
